@@ -7,32 +7,31 @@
 google.load("jquery", "1.3.2");
 </script>
 <script type="text/javascript">
-var url = 'http://pipes.yahoo.com/pipes/pipe.run?_id=9471f9d1faa1018490a267ad445c7bad&_render=json&user_id=hail2u&_callback=?';
-$.getJSON(url, cbGitHubFollowingActivity);
+var url = 'http://pipes.yahoo.com/pipes/pipe.run?_callback=?&' + $.param({
+  _id:       '9471f9d1faa1018490a267ad445c7bad',
+  _render:   'json',
+  user_id:   'hail2u'
+});
+var buf = ['<h2>Following Activity</h2>'];
 
-function cbGitHubFollowingActivity(data) {
-  var activities = data.value.items;
-  var buf = [];
-
-  for (var i = 0; i < activities.length; i++) {
-    var a = activities[i];
+$.getJSON(url, function (data) {
+  $.each(data.value.items, function (i, a) {
     buf.push([
       '<div class="section">',
       '<h3><a href="', a.link, '">', a.title, '</a></h3>',
       '<p>', a.pubDate, '</p>',
       a.description,
-      '<hr>',
       '</div>'
     ].join(''));
-  }
+    return (i + 1 < 10);
+  });
 
-  document.getElementById('following-activity').innerHTML += buf.join('');
-}
+  document.getElementById('following-activity').innerHTML = buf.join('');
+});
 </script>
 </head>
 <body>
 <h1>Hello GitHub!</h1>
-<h2>Following Activity</h2>
 <div id="following-activity"></div>
 </body>
 </html>
