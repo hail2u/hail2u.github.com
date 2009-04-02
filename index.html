@@ -7,15 +7,19 @@
 google.load("jquery", "1.3.2");
 </script>
 <script type="text/javascript">
-var url = 'http://pipes.yahoo.com/pipes/pipe.run?_callback=?&' + $.param({
+var url = 'http://pipes.yahoo.com/pipes/pipe.run?_callback=?';
+var buf = ['<h2>Following Activity</h2>'];
+
+// jQuery.getJSON(url, data, callback)
+// 第二引数でパラメータを組み立てることができる(jQuery.param()に渡されるだけ？
+// 第三引数でコールバック関数
+// 引数が二つだけの場合はdataが省略されたものとみなされる
+$.getJSON(url, {
   _id:       '9471f9d1faa1018490a267ad445c7bad',
   _render:   'json',
   user_id:   'hail2u'
-});
-var buf = ['<h2>Following Activity</h2>'];
-
-$.getJSON(url, function (data) {
-  $.each(data.value.items, function (i, a) {
+}, function (data, textStatus) {
+  $.each(data.value.items, function (i, a) { // jQuery.each()
     buf.push([
       '<div class="section">',
       '<h3><a href="', a.link, '">', a.title, '</a></h3>',
@@ -23,10 +27,11 @@ $.getJSON(url, function (data) {
       a.description,
       '</div>'
     ].join(''));
-    return (i + 1 < 10);
+
+    return (i + 1 < 10); // continue相当？
   });
 
-  document.getElementById('following-activity').innerHTML = buf.join('');
+  $('#following-activity').html(buf.join('')); // Selectorで拾ってhtml()
 });
 </script>
 </head>
