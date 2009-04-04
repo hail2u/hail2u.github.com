@@ -1,5 +1,6 @@
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Hello GitHub!</title>
 <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/fonts/fonts-min.css">
 <script type="text/javascript" src="http://www.google.com/jsapi"></script>
@@ -21,7 +22,9 @@ $.getJSON(url, {
 }, function (data) {
   $.each(data.value.items, function (i, a) { // jQuery.each()
     buf.push([
-      '<div class="section">',
+    ]);
+    buf.push([
+      '<div class="section ', (i % 2 == 0) ? 'odd' : 'even', '">',
       '<h3><a href="', a.link, '">', a.title, '</a></h3>',
       '<p>', a.pubDate, '</p>',
       a.description,
@@ -34,9 +37,68 @@ $.getJSON(url, {
   $('#following-activity').html(buf.join('')); // Selectorで拾ってhtml()
 });
 </script>
+<style type="text/css">
+body {
+  margin: 1em auto;
+  width: 60em;
+  font-family: 'Lucida Grande', 'Lucida Sans', sans-serif;
+}
+
+#header h1 {
+  font-size: 300%;
+}
+
+#contents #following-activity {
+}
+
+#contents #following-activity h2 {
+  margin-bottom: 2em;
+  color: #336699;
+}
+
+#contents #following-activity .section {
+  padding: 0 1em;
+}
+
+#contents #following-activity .odd {
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+  background-color: #eeeeee;
+}
+
+#contents #following-activity .section h3 {
+}
+
+#contents #following-activity .section h3 a {
+  color: #336699;
+  text-decoration: none;
+}
+
+#contents #following-activity .section .message {
+  margin: 1em 0;
+}
+
+#footer {
+  padding: 0 1em;
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+  background-color: #eeeeee;
+}
+</style>
 </head>
 <body>
-<h1>Hello GitHub!</h1>
-<div id="following-activity"></div>
+<div id="header">
+  <h1>Hello GitHub!</h1>
+</div>
+
+<div id="contents">
+  <div id="following-activity">
+    <p><del>じっと</del><ins>ぎっと</ins></p>
+  </div>
+</div>
+
+<div id="footer">
+  <p>End of noise.</p>
+</div>
 </body>
 </html>
