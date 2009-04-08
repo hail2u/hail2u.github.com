@@ -9,7 +9,10 @@ google.load("jquery", "1.3.2");
 </script>
 <script type="text/javascript">
 var url = 'http://pipes.yahoo.com/pipes/pipe.run?_callback=?';
-var buf = ['<h2>Following Activity</h2>'];
+var buf = [
+  '<h2>Following Activity</h2>',
+  '<p>自分がフォローしている人達のActivitiyがまとめて表示されます。</p>'
+];
 
 // jQuery.getJSON(url, data, callback)
 // 第二引数でパラメータを組み立てることができる(jQuery.param()に渡されるだけ？
@@ -31,7 +34,7 @@ $.getJSON(url, {
       '</div>'
     ].join(''));
 
-    return (i + 1 < 10); // continue相当？
+    return (i + 1 < 50); // continue相当？
   });
 
   $('#following-activity').html(buf.join('')); // Selectorで拾ってhtml()
