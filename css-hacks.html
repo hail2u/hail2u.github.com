@@ -1,0 +1,681 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>CSS Hacks</title>
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/fonts/fonts-min.css">
+<style type="text/css">
+body {
+  font-family: "Lucida Grande", "Lucida Sans", sans-serif;
+}
+
+#header {
+  margin: 0 auto;
+  width: 640px;
+}
+
+#navigation {
+  margin: 0 auto;
+  width: 640px;
+}
+
+#navigation ul {
+  margin: 0;
+  padding: 0;
+}
+
+#navigation ul li {
+  margin: 0;
+  padding: 0;
+  display: inline;
+  cursor: pointer;
+}
+
+#navigation ul li.on {
+  color: #ffffff;
+  background-color: #336699;
+}
+
+#contents {
+  margin: 0 auto;
+  width: 640px;
+}
+
+#contents .section {
+  margin-bottom: 3em;
+}
+
+#contents .section pre {
+  padding: 0.5em;
+  border: 3px solid #eeeeee;
+  background-color: #f9f9f9;
+}
+
+#contents .section ul {
+  margin: 0;
+  padding: 0;
+}
+
+#contents .section ul li {
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
+
+#footer {
+  margin: 0 auto;
+  width: 640px;
+}
+</style>
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+google.load("jquery", "1.3.2");
+</script>
+<script type="text/javascript">
+var current = [];
+
+$(function () {
+  $(".filter").each(function () {
+    var target = $(this).text();
+    $(this).click(function () {
+      if (target == "[reset]") {
+        current = [];
+        $(".section").show();
+      } else {
+        if ($(this).hasClass("on")) {
+          current = $.grep(current, function(a) {
+            return a != target;
+          });
+          $(this).removeClass("on");
+        } else {
+          current.push(target);
+          $(this).addClass("on");
+        }
+
+        $(".section").show(1000).each(function () {
+          var self = this;
+          var show = 0;
+          $.each(current, function () {
+            if ($(self).hasClass(this)) show++;
+          });
+          if (show < current.length) $(self).hide(1000);
+        });
+      }
+    });
+  });
+});
+</script>
+</head>
+<body>
+<div id="header">
+<h1>CSS Hacks</h1>
+</div>
+
+<div id="navigation">
+<ul>
+<li class="filter">[reset]</li>
+<li class="filter">ie4</li>
+<li class="filter">ie5</li>
+<li class="filter">ie5_5</li>
+<li class="filter">ie6</li>
+<li class="filter">ie7</li>
+<li class="filter">mie5</li>
+<li class="filter">nn4</li>
+<li class="filter">nn6</li>
+<li class="filter">nn7</li>
+<li class="filter">op6</li>
+<li class="filter">op7</li>
+<li class="filter">op8</li>
+<li class="filter">op9</li>
+<li class="filter">op9_5</li>
+<li class="filter">fx2</li>
+<li class="filter">fx3</li>
+<li class="filter">sf1</li>
+<li class="filter">sf2</li>
+<li class="filter">sf3</li>
+</ul>
+</div>
+
+<div id="contents">
+<div class="section ie6 ie7 mie5 nn6 nn7 op6 op7 op8 op9 op9_5 fx2 fx3 sf1 sf2 sf3">
+<pre class="">
+voice-family:&quot;\&quot;}\&quot;&quot;;
+voice-family:inherit;
+property:value;
+</pre>
+<ul>
+<li>ie6</li>
+<li>ie7</li>
+<li>mie5</li>
+<li>nn6</li>
+<li>nn7</li>
+<li>op6</li>
+<li>op7</li>
+<li>op8</li>
+<li>op9</li>
+<li>op9_5</li>
+<li>fx2</li>
+<li>fx3</li>
+<li>sf1</li>
+<li>sf2</li>
+<li>sf3</li>
+</ul>
+</div>
+
+<div class="section ie6 ie7 mie5 nn6 nn7 op6 op7 op8 op9 op9_5 fx2 fx3 sf1 sf2 sf3">
+<pre class="">
+p\roperty:value;
+</pre>
+<ul>
+<li>ie6</li>
+<li>ie7</li>
+<li>mie5</li>
+<li>nn6</li>
+<li>nn7</li>
+<li>op6</li>
+<li>op7</li>
+<li>op8</li>
+<li>op9</li>
+<li>op9_5</li>
+<li>fx2</li>
+<li>fx3</li>
+<li>sf1</li>
+<li>sf2</li>
+<li>sf3</li>
+</ul>
+</div>
+
+<div class="section ie4 ie5 ie5_5 ie6 ie7 mie5 nn6 nn7 op6 op7 op8 op9 op9_5 fx2 fx3 sf1 sf2 sf3">
+<pre class="">
+/*/*/property:value;/* */
+</pre>
+<ul>
+<li>ie4</li>
+<li>ie5</li>
+<li>ie5_5</li>
+<li>ie6</li>
+<li>ie7</li>
+<li>mie5</li>
+<li>nn6</li>
+<li>nn7</li>
+<li>op6</li>
+<li>op7</li>
+<li>op8</li>
+<li>op9</li>
+<li>op9_5</li>
+<li>fx2</li>
+<li>fx3</li>
+<li>sf1</li>
+<li>sf2</li>
+<li>sf3</li>
+</ul>
+</div>
+
+<div class="section nn4">
+<pre class="">
+/*/*//*/property:value;/* */
+</pre>
+<ul>
+<li>nn4</li>
+</div>
+
+<div class="section ie4 ie5 ie5_5 ie6 ie7 mie5 nn6 nn7 op6 op7 op8 op9 op9_5 fx2 fx3 sf1 sf2 sf3">
+<pre class="">
+div#test
+</pre>
+<ul>
+<li>ie4</li>
+<li>ie5</li>
+<li>ie5_5</li>
+<li>ie6</li>
+<li>ie7</li>
+<li>mie5</li>
+<li>nn6</li>
+<li>nn7</li>
+<li>op6</li>
+<li>op7</li>
+<li>op8</li>
+<li>op9</li>
+<li>op9_5</li>
+<li>fx2</li>
+<li>fx3</li>
+<li>sf1</li>
+<li>sf2</li>
+<li>sf3</li>
+</ul>
+</div>
+
+<div class="section ie7 nn6 nn7 op7 op8 op9 op9_5 fx2 fx3 sf1 sf2 sf3">
+<pre class="">
+head:first-child+body div
+</pre>
+<ul>
+<li>ie7</li>
+<li>nn6</li>
+<li>nn7</li>
+<li>op7</li>
+<li>op8</li>
+<li>op9</li>
+<li>op9_5</li>
+<li>fx2</li>
+<li>fx3</li>
+<li>sf1</li>
+<li>sf2</li>
+<li>sf3</li>
+</ul>
+</div>
+
+<div class="section ie7 mie5 nn6 nn7 op6 op7 op8 op9 op9_5 fx2 fx3 sf1 sf2 sf3">
+<pre class="">
+body&gt;div
+</pre>
+<ul>
+<li>ie7</li>
+<li>mie5</li>
+<li>nn6</li>
+<li>nn7</li>
+<li>op6</li>
+<li>op7</li>
+<li>op8</li>
+<li>op9</li>
+<li>op9_5</li>
+<li>fx2</li>
+<li>fx3</li>
+<li>sf1</li>
+<li>sf2</li>
+<li>sf3</li>
+</ul>
+</div>
+
+<div class="section ie7 nn6 nn7 op6 op7 op8 op9 op9_5 fx2 fx3 sf1 sf2 sf3">
+<pre class="">
+html[xmlns] div
+</pre>
+<ul>
+<li>ie7</li>
+<li>nn6</li>
+<li>nn7</li>
+<li>op6</li>
+<li>op7</li>
+<li>op8</li>
+<li>op9</li>
+<li>op9_5</li>
+<li>fx2</li>
+<li>fx3</li>
+<li>sf1</li>
+<li>sf2</li>
+<li>sf3</li>
+</ul>
+</div>
+
+<div class="section ie5 ie5_5 ie6 ie7 nn6 nn7 op6 op7 op8 op9 op9_5 fx2 fx3 sf1 sf2 sf3">
+<pre class="">
+@import &#39;styles.css&#39;
+</pre>
+<ul>
+<li>ie5</li>
+<li>ie5_5</li>
+<li>ie6</li>
+<li>ie7</li>
+<li>nn6</li>
+<li>nn7</li>
+<li>op6</li>
+<li>op7</li>
+<li>op8</li>
+<li>op9</li>
+<li>op9_5</li>
+<li>fx2</li>
+<li>fx3</li>
+<li>sf1</li>
+<li>sf2</li>
+<li>sf3</li>
+</ul>
+</div>
+
+<div class="section ie5 ie5_5 ie6 ie7 mie5 nn6 nn7 op6 op7 op8 op9 op9_5 fx2 fx3 sf1 sf2 sf">
+<pre class="3">
+@import &quot;styles.css&quot;
+</pre>
+<ul>
+<li>ie5</li>
+<li>ie5_5</li>
+<li>ie6</li>
+<li>ie7</li>
+<li>mie5</li>
+<li>nn6</li>
+<li>nn7</li>
+<li>op6</li>
+<li>op7</li>
+<li>op8</li>
+<li>op9</li>
+<li>op9_5</li>
+<li>fx2</li>
+<li>fx3</li>
+<li>sf1</li>
+<li>sf2</li>
+<li>sf3</li>
+</ul>
+</div>
+
+<div class="section ie4 ie5 ie5_5 ie6 ie7 mie5 nn6 nn7 op6 op7 op8 op9 op9_5 fx2 fx3 sf1 sf2 sf3">
+<pre class="">
+@import url(styles.css)
+</pre>
+<ul>
+<li>ie4</li>
+<li>ie5</li>
+<li>ie5_5</li>
+<li>ie6</li>
+<li>ie7</li>
+<li>mie5</li>
+<li>nn6</li>
+<li>nn7</li>
+<li>op6</li>
+<li>op7</li>
+<li>op8</li>
+<li>op9</li>
+<li>op9_5</li>
+<li>fx2</li>
+<li>fx3</li>
+<li>sf1</li>
+<li>sf2</li>
+<li>sf3</li>
+</ul>
+</div>
+
+<div class="section ie4 ie5 ie5_5 ie6 ie7 nn6 nn7 op6 op7 op8 op9 op9_5 fx2 fx3 sf1 sf2 sf3">
+<pre class="">
+@import url(&#39;styles.css&#39;)
+</pre>
+<ul>
+<li>ie4</li>
+<li>ie5</li>
+<li>ie5_5</li>
+<li>ie6</li>
+<li>ie7</li>
+<li>nn6</li>
+<li>nn7</li>
+<li>op6</li>
+<li>op7</li>
+<li>op8</li>
+<li>op9</li>
+<li>op9_5</li>
+<li>fx2</li>
+<li>fx3</li>
+<li>sf1</li>
+<li>sf2</li>
+<li>sf3</li>
+</ul>
+</div>
+
+<div class="section ie4 ie5 ie5_5 ie6 ie7 mie5 nn6 nn7 op6 op7 op8 op9 op9_5 fx2 fx3 sf1 sf2 sf3">
+<pre class="">
+@import url(&quot;styles.css&quot;)
+</pre>
+<ul>
+<li>ie4</li>
+<li>ie5</li>
+<li>ie5_5</li>
+<li>ie6</li>
+<li>ie7</li>
+<li>mie5</li>
+<li>nn6</li>
+<li>nn7</li>
+<li>op6</li>
+<li>op7</li>
+<li>op8</li>
+<li>op9</li>
+<li>op9_5</li>
+<li>fx2</li>
+<li>fx3</li>
+<li>sf1</li>
+<li>sf2</li>
+<li>sf3</li>
+</ul>
+</div>
+
+<div class="section ie5_5 ie6 ie7 mie5 nn6 nn7 op6 op7 op8 op9 op9_5 fx2 fx3 sf1 sf2 sf3">
+<pre class="">
+@import &quot;null?\&quot;\{&quot;;
+@import &quot;styles.css&quot;;
+</pre>
+<ul>
+<li>ie5_5</li>
+<li>ie6</li>
+<li>ie7</li>
+<li>mie5</li>
+<li>nn6</li>
+<li>nn7</li>
+<li>op6</li>
+<li>op7</li>
+<li>op8</li>
+<li>op9</li>
+<li>op9_5</li>
+<li>fx2</li>
+<li>fx3</li>
+<li>sf1</li>
+<li>sf2</li>
+<li>sf3</li>
+</ul>
+</div>
+
+<div class="section ie5 ie5_5 ie6 ie7 mie5 nn6 nn7 op6 op7 op8 op9 op9_5 fx2 fx3 sf1 sf2 sf3">
+<pre class="">
+@media all{/* rules */}
+</pre>
+<ul>
+<li>ie5</li>
+<li>ie5_5</li>
+<li>ie6</li>
+<li>ie7</li>
+<li>mie5</li>
+<li>nn6</li>
+<li>nn7</li>
+<li>op6</li>
+<li>op7</li>
+<li>op8</li>
+<li>op9</li>
+<li>op9_5</li>
+<li>fx2</li>
+<li>fx3</li>
+<li>sf1</li>
+<li>sf2</li>
+<li>sf3</li>
+</ul>
+</div>
+
+<div class="section ie4 ie5 ie5_5 ie6 ie7 mie5 nn6 nn7 op6 op7 op8 op9 op9_5 fx2 fx3 sf1 sf2 sf3">
+<pre class="">
+&lt;link media=&quot;all&quot;&gt;
+</pre>
+<ul>
+<li>ie4</li>
+<li>ie5</li>
+<li>ie5_5</li>
+<li>ie6</li>
+<li>ie7</li>
+<li>mie5</li>
+<li>nn6</li>
+<li>nn7</li>
+<li>op6</li>
+<li>op7</li>
+<li>op8</li>
+<li>op9</li>
+<li>op9_5</li>
+<li>fx2</li>
+<li>fx3</li>
+<li>sf1</li>
+<li>sf2</li>
+<li>sf3</li>
+</ul>
+</div>
+
+<div class="section ie4 ie5 ie5_5 ie6 mie5">
+<pre class="">
+* html div
+</pre>
+<ul>
+<li>ie4</li>
+<li>ie5</li>
+<li>ie5_5</li>
+<li>ie6</li>
+<li>mie5</li>
+</ul>
+</div>
+
+<div class="section ie5 ie7">
+<pre class="">
+*+html div
+</pre>
+<ul>
+<li>ie5</li>
+<li>ie7</li>
+</ul>
+</div>
+
+<div class="section ie6 ie7 mie5 nn6 nn7 op6 op7 op8 op9 op9_5 fx2 fx3 sf1 sf2 sf3">
+<pre class="">
+i{content:&quot;\&quot;/*&quot;}
+div{property:value}
+</pre>
+<ul>
+<li>ie6</li>
+<li>ie7</li>
+<li>mie5</li>
+<li>nn6</li>
+<li>nn7</li>
+<li>op6</li>
+<li>op7</li>
+<li>op8</li>
+<li>op9</li>
+<li>op9_5</li>
+<li>fx2</li>
+<li>fx3</li>
+<li>sf1</li>
+<li>sf2</li>
+<li>sf3</li>
+</ul>
+</div>
+
+<div class="section ie4 ie5 ie5_5 ie6 ie7 nn4 nn6 nn7 op6 op7 op8 op9 op9_5 fx2 fx3 sf1 sf2 sf3">
+<pre class="">
+/* \*/
+div{property:value}
+/* */
+</pre>
+<ul>
+<li>ie4</li>
+<li>ie5</li>
+<li>ie5_5</li>
+<li>ie6</li>
+<li>ie7</li>
+<li>mie5</li>
+<li>nn4</li>
+<li>nn6</li>
+<li>nn7</li>
+<li>op6</li>
+<li>op7</li>
+<li>op8</li>
+<li>op9</li>
+<li>op9_5</li>
+<li>fx2</li>
+<li>fx3</li>
+<li>sf1</li>
+<li>sf2</li>
+<li>sf3</li>
+</ul>
+</div>
+
+<div class="section ie5_5 ie6 ie7 nn6 nn7 sf1 sf2 sf3">
+<pre class="">
+html*#test
+</pre>
+<ul>
+<li>ie5_5</li>
+<li>ie6</li>
+<li>ie7</li>
+<li>nn6</li>
+<li>nn7</li>
+<li>sf1</li>
+<li>sf2</li>
+<li>sf3</li>
+</ul>
+</div>
+
+<div class="section ie4 ie5 ie5_5 ie6 mie5">
+<pre class="">
+_property:value
+</pre>
+<ul>
+<li>ie4</li>
+<li>ie5</li>
+<li>ie5_5</li>
+<li>ie6</li>
+<li>mie5</li>
+</ul>
+</div>
+
+<div class="section ie4 ie5 ie5_5 ie6 ie7 mie5">
+<pre class="">
+*property:value
+</pre>
+<ul>
+<li>ie4</li>
+<li>ie5</li>
+<li>ie5_5</li>
+<li>ie6</li>
+<li>ie7</li>
+<li>mie5</li>
+</ul>
+</div>
+
+<div class="section ie5 ie5_5">
+<pre class="">
+@media tty {
+i{content:&quot;\&quot;;/*&quot; &quot;*/}} @import &#39;styles.css&#39;; /*&quot;;}
+}/* */
+</pre>
+<ul>
+<li>ie5</li>
+<li>ie5_5</li>
+</ul>
+</div>
+
+<div class="section ie5">
+<pre class="">
+@media tty {
+i{content:&quot;\&quot;;/*&quot; &quot;*/}}; @import &#39;styles.css&#39;; {;}/*&quot;;}
+}/* */
+</pre>
+<ul>
+<li>ie5</li>
+</ul>
+</div>
+
+<div class="section ie5_5">
+<pre class="">
+@media tty {
+i{content:&quot;\&quot;;/*&quot; &quot;*/}}@m; @import &#39;styles.css&#39;; /*&quot;;}
+}/* */
+</pre>
+<ul>
+<li>ie5_5</li>
+</ul>
+</div>
+
+<div class="section mie5">
+<pre class="">
+/*\*//*/
+@import &quot;styles.css&quot;;
+/**/
+</pre>
+<ul>
+<li>mie5</li>
+</ul>
+</div>
+</div>
+
+<div id="footer">
+<p>Kyo Nagashima &lt;kyo@hail2u.net&gt;, http://hail2u.net</p>
+</div>
+</body>
+</html>
