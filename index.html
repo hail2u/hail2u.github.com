@@ -1,3 +1,4 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,36 +9,27 @@
 google.load("jquery", "1.3.2");
 </script>
 <script type="text/javascript">
-var url = 'http://pipes.yahoo.com/pipes/pipe.run?_callback=?';
-var buf = [
-  '<h2>Following Activity</h2>',
-  '<p>自分がフォローしている人達のActivitiyがまとめて表示されます。</p>'
-];
+var url = "http://pipes.yahoo.com/pipes/pipe.run?_callback=?";
 
-// jQuery.getJSON(url, data, callback)
-// 第二引数でパラメータを組み立てることができる(jQuery.param()に渡されるだけ？
-// 第三引数でコールバック関数
-// 引数が二つだけの場合はdataが省略されたものとみなされる
 $.getJSON(url, {
   _id:       '9471f9d1faa1018490a267ad445c7bad',
   _render:   'json',
   user_id:   'hail2u'
 }, function (data) {
-  $.each(data.value.items, function (i, a) { // jQuery.each()
-    buf.push([
-    ]);
-    buf.push([
-      '<div class="section ', (i % 2 == 0) ? 'odd' : 'even', '">',
-      '<h3><a href="', a.link, '">', a.title, '</a></h3>',
-      '<p>', a.pubDate, '</p>',
-      a.description,
-      '</div>'
-    ].join(''));
+  $("#following-activity").empty().append($("<h2/>").text("Following Activity"));
+  $("#following-activity").append($("<p/>").text("自分がフォローしている人達のActivitiyがまとめて表示されます。"));
+  $.each(data.value.items, function (i, a) {
+    var div = $("<div/>").addClass("section");
+    (i % 2 == 1) ? div.addClass("odd") : div.addClass("even");
+    div.append($("<h3/>").append($("<a/>").attr({
+      href: a.link
+    }).append(a.title)));
+    div.append($("<p/>").append(a.pubDate));
+    div.append(a.description);
+    div.appendTo("#following-activity");
 
-    return (i + 1 < 50); // continue相当？
+    return (i + 1 < 50);
   });
-
-  $('#following-activity').html(buf.join('')); // Selectorで拾ってhtml()
 });
 </script>
 <style type="text/css">
@@ -63,7 +55,7 @@ body {
   padding: 0 1em;
 }
 
-#contents #following-activity .odd {
+#contents #following-activity .even {
   border-top: 1px solid #cccccc;
   border-bottom: 1px solid #cccccc;
   background-color: #eeeeee;
