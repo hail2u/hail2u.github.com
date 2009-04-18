@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JSON2XMLのサンプル</title>
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/fonts/fonts-min.css">
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+google.load("jquery", "1.3.2");
+</script>
+<script type="text/javascript">
+var data = {"pokedex":[{"name":"フシギダネ","type":["くさ","どく"],"hp":45,"attack":49,"defence":49,"sattack":65,"sdefence":65,"speed":45,"ability":["しんりょく"]},{"name":"フシギソウ","type":["くさ","どく"],"hp":60,"attack":62,"defence":63,"sattack":80,"sdefence":80,"speed":60,"ability":["しんりょく"]},{"name":"フシギバナ","type":["くさ","どく"],"hp":80,"attack":82,"defence":83,"sattack":100,"sdefence":100,"speed":80,"ability":["しんりょく"]},{"name":"ヒトカゲ","type":["ほのお"],"hp":39,"attack":52,"defence":43,"sattack":60,"sdefence":50,"speed":65,"ability":["もうか"]},{"name":"リザード","type":["ほのお"],"hp":58,"attack":64,"defence":58,"sattack":80,"sdefence":65,"speed":80,"ability":["もうか"]},{"name":"リザードン","type":["ほのお","ひこう"],"hp":78,"attack":84,"defence":78,"sattack":109,"sdefence":85,"speed":100,"ability":["もうか"]},{"name":"ゼニガメ","type":["みず"],"hp":44,"attack":48,"defence":65,"sattack":50,"sdefence":64,"speed":43,"ability":["げきりゅう"]},{"name":"カメール","type":["みず"],"hp":59,"attack":63,"defence":80,"sattack":65,"sdefence":80,"speed":58,"ability":["げきりゅう"]},{"name":"カメックス","type":["みず"],"hp":79,"attack":83,"defence":100,"sattack":85,"sdefence":105,"speed":78,"ability":["げきりゅう"]}]};
+
+$(function () {
+  var xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + JSONtoXML(data, 0);
+  $("<a/>").attr({
+    href: "data:application/xml," + encodeURIComponent(xml)
+  }).text("ブラウザで XML を開く").appendTo("#result");
+});
+
+function JSONtoXML (obj, depth) {
+  var result = "", indent = "";
+
+  for (var i = 0; i < depth; i++) {
+    indent += "  ";
+  }
+
+  for (var key in obj) {
+    var name = key;
+    if (key.match(/^\d+$/)) name = "item";
+
+    if (typeof(obj[key]) == "object") {
+      result += indent + "<" + name + ">\n";
+      depth++;
+      result += JSONtoXML(obj[key], depth);
+      result += indent + "</" + name + ">\n";
+      depth--;
+    } else {
+      result += indent + "<" + name + ">" + obj[key] + "</" + name + ">\n";
+    }
+  }
+
+  return result;
+}
+</script>
+</head>
+<body>
+<h1>JSON2XMLのサンプル</h1>
+<div id="result"></div>
+<hr>
+<p>JSONをXMLに変換して、dataスキームでそのデータをhrefに指定したa要素を作り、それを開いてブラウザに表示させるというもの。改行やインデントがなかったりして読みづらいJSONを、Firefoxの折りたたみできるXML表示機能を使って読もうという感じ。Firefox 3で確認。他は知らない。</p>
+<p>どっかのJSONを指定して表示するためには、JSONのURLを入力させるフォームを作って、Pipesを使ってそのJSONにPaddingをつけてやれば良いと思う。ローカルのJSONデータに対しては別に作る必要がありそう。</p>
+<p>dataスキームのネタは<a href="http://piro.sakura.ne.jp/latest/blosxom.cgi/webtech/javascript/2005-10-05_download.htm">Latest topics &gt; JavaScriptでテキストファイルを生成してダウンロードさせる - outsider reflex</a>から。</p>
+</body>
+</html>
