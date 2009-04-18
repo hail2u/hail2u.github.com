@@ -24,10 +24,10 @@ $(function () {
   $.getScript("http://hail2u.github.com/pokedex.json");
 });
 
-function cbPokedex (pokedex) {
+function cbPokedex (d) {
   var dex = $("<table/>");
 
-  $.each(pokedex, function (i, pokemon) {
+  $.each(d.pokedex, function (i, pokemon) {
     $("<tr/>")
       .append($("<td/>").append(i))
       .append($("<td/>").append(pokemon.name))
