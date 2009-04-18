@@ -9,15 +9,10 @@
 google.load("jquery", "1.3.2");
 </script>
 <script type="text/javascript">
-$(function () {
-  $("#json2xml").submit(function () {
-    loadJSON($("#url").val());
-    return false;
-  });
-});
-
-function loadJSON(url) {
+function loadJSON (url) {
   $("#result").empty().append("<p/>").addClass("status").append(url + " をロードしています･･･");
+
+  location.hash = "#" + url;
 
   $.getJSON("http://pipes.yahoo.com/pipes/pipe.run?_callback=?", {
     _id:     "332d9216d8910ba39e6c2577fd321a6a",
@@ -38,6 +33,7 @@ function loadJSON(url) {
       $("#result").empty().append("<p/>").append($("<a/>").attr({
         href: "data:application/xml," + encodeURIComponent(xml)
       }).text("ブラウザで XML を開く"));
+      /* location.href = "data:application/xml," + encodeURIComponent(xml); */
     }
   });
 }
@@ -70,6 +66,19 @@ function JSONtoXML (obj, depth) {
 function encodeEntities (s) {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); //"
 }
+
+$(function () {
+  $("#json2xml").submit(function () {
+    loadJSON($("#url").val());
+    return false;
+  });
+
+  if (location.hash.match(/^#(http:\/\/.+)$/)) {
+    var url = encodeEntities(RegExp.$1);
+    $("#url").val(url);
+    loadJSON(url);
+  }
+});
 </script>
 </head>
 <body>
