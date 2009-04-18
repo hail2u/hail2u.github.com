@@ -31,7 +31,10 @@ function loadJSON(url) {
     } else {
       $("#result").empty().append("<p/>").addClass("status").append("XML に変換しています･･･");
 
-      var xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<root>\n" + JSONtoXML(res, 0) + "</root>";
+      var xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+              + "<root>\n"
+              + JSONtoXML(res, 0)
+              + "</root>\n";
       $("#result").empty().append("<p/>").append($("<a/>").attr({
         href: "data:application/xml," + encodeURIComponent(xml)
       }).text("ブラウザで XML を開く"));
@@ -78,7 +81,7 @@ function encodeEntities (s) {
     <input type="submit" value="Convert">
   </p>
 </form>
-<div id="result"></div>
+<div id="result"><p>ready.</p></div>
 <hr>
 <p>JSONをXMLに変換して、dataスキームでそのデータをhrefに指定したa要素を作り、それを開いてブラウザに表示させるというもの。改行やインデントがなかったりして読みづらいJSONを、Firefoxの折りたたみできるXML表示機能を使って読もうという感じ。Firefox 3で確認。他は知らない。</p>
 <p>ローカルのJSONデータに対しては別に作る必要がありそう。</p>
