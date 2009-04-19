@@ -9,6 +9,12 @@
 google.load("jquery", "1.3.2");
 </script>
 <script type="text/javascript">
+/**
+ * Copyright (c) 2009 Kyo Nagashima <kyo@hail2u.net>
+ * This library licensed under MIT license:
+ * http://opensource.org/licenses/mit-license.php
+ */
+
 function loadJSON (url) {
   $("#result").empty().append("<p/>").addClass("status").append(url + " をロードしています･･･");
 
@@ -90,13 +96,21 @@ $(function () {
     <input type="submit" value="Convert">
   </p>
 </form>
-<div id="result"><p>ready.</p></div>
+<div id="result"><p>Ready.</p></div>
 <hr>
 <h2>覚え書き他</h2>
-<p>JSONをXMLに変換して、dataスキームでそのデータをhrefに指定したa要素を作り、それを開いてブラウザに表示させるというもの。改行やインデントがなかったりして読みづらいJSONを、Firefoxの折りたたみできるXML表示機能を使って読もうという感じ。Firefox 3で確認。他は知らない。</p>
-<p>ローカルのJSONデータに対しては別に作る必要がありそう。</p>
-<p>リンクをクリックして開くのではなく、即結果表示にリダイレクトさせることも可能だけど、使いづらいようなきがしたのでコメントアウト。</p>
-<p>UTF-8以外の文字コードのことは忘れると良いと思います。</p>
-<p>dataスキームのネタは<a href="http://piro.sakura.ne.jp/latest/blosxom.cgi/webtech/javascript/2005-10-05_download.htm">Latest topics &gt; JavaScriptでテキストファイルを生成してダウンロードさせる - outsider reflex</a>から。</p>
+<ul>
+<li>JSONをXMLに変換し、dataスキームを使ってそのデータをhrefに指定したa要素を作成する</li>
+<li>リンクを開くとブラウザに表示される</li>
+<li>改行やインデントがなく読みづらいJSONを、Firefoxの折りたたみできるXML表示機能を使って読むことができる</li>
+<li>Firefox 3で確認</li>
+<li>ローカルのJSONデータに対しては別にちゃんと作る必要がある</li>
+<li>JSONバリデータ的には機能しない</li>
+<li>リンクをクリックして開くのではなく、即結果表示にリダイレクトさせることも可能だが使いづらい感じ</li>
+<li>UTF-8以外の文字コードのことは忘れると良い</li>
+<li>いきなり配列ではじまるJSON対策にrootというでっち上げ要素ではさんでいる</li>
+<li>JSONデータに配列が含まれる場合はitemというでっち上げ要素を並べる</li>
+<li>dataスキームのネタは<a href="http://piro.sakura.ne.jp/latest/blosxom.cgi/webtech/javascript/2005-10-05_download.htm">Latest topics &gt; JavaScriptでテキストファイルを生成してダウンロードさせる - outsider reflex</a>から。</li>
+</ul>
 </body>
 </html>
