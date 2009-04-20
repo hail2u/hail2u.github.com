@@ -8,6 +8,15 @@
 body, input {
   font-family: Verdana, sans-serif;
 }
+
+p, ul {
+  line-height: 1.75;
+}
+
+pre {
+  font-family: "Andale Mono", monospace;
+  line-height: 1.5;
+}
 </style>
 <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 <script type="text/javascript">
@@ -45,6 +54,7 @@ function loadJSON (url) {
         href: "data:application/xml," + encodeURIComponent(xml)
       }).append("ブラウザで XML を開く")));
       /* location.href = "data:application/xml," + encodeURIComponent(xml); */
+      $("#result").append($("<pre/>").text(xml));
     }
   });
 }
@@ -105,7 +115,8 @@ $(function () {
 <h2>覚え書き他</h2>
 <ul>
 <li>JSONをXML(らしき何か)に変換し、dataスキームを使ってそのデータをhrefに指定したa要素を作成する</li>
-<li>リンクを開くと変換結果がブラウザに表示されるので、改行やインデントがなく読みづらいJSONを、Firefoxの折りたたみできるXML表示機能を使って読むことができる</li>
+<li>リンクを開くと変換結果がブラウザに表示される</li>
+<li>改行やインデントがなく読みづらいJSONデータをFirefoxの折りたたみできるXML表示機能を使って読むことができる</li>
 <li>location.hashにURLを指定できる</li>
 <li>Firefox 3で確認</li>
 <li>ローカルのJSONデータに対しては別にちゃんと作る必要がある</li>
@@ -114,7 +125,7 @@ $(function () {
 <li>UTF-8以外の文字コードのことは忘れると良い</li>
 <li>いきなり配列ではじまるJSON対策にrootというでっち上げ要素ではさんでいる</li>
 <li>JSONデータに配列が含まれる場合はitemというでっち上げ要素を並べる</li>
-<li>dataスキームのネタは<a href="http://piro.sakura.ne.jp/latest/blosxom.cgi/webtech/javascript/2005-10-05_download.htm">Latest topics &gt; JavaScriptでテキストファイルを生成してダウンロードさせる - outsider reflex</a>から。</li>
+<li>dataスキームのネタは<a href="http://piro.sakura.ne.jp/latest/blosxom.cgi/webtech/javascript/2005-10-05_download.htm">Latest topics &gt; JavaScriptでテキストファイルを生成してダウンロードさせる - outsider reflex</a>から</li>
 </ul>
 </body>
 </html>
