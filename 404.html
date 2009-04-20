@@ -7,21 +7,23 @@
 body {
   margin: 0;
   padding: 0;
+  color: #333333;
+  background-color: skyblue;
 }
 
-.code {
-  margin: -180px 0 0 -180px;
+#code {
+  margin: 0;
   padding: 0;
   border-top: 12px solid #333333;
   border-left: 12px solid #333333;
   border-right: 12px solid #333333;
-  display: block;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  z-index: 3;
+  right: 60px;
+  bottom: 360px;
   width: 336px;
-  height: 240px;
-  line-height: 240px;
+  height: 228px;
+  line-height: 228px;
   font-size: 120px;
   color: #333333;
   background-color: #ffcc00;
@@ -34,13 +36,13 @@ body {
   -webkit-border-radius-topright: 36px;
 }
 
-.message {
-  margin: 60px 0 0 -180px;
+#message {
+  margin: 0;
   padding: 0;
-  display: block;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  z-index: 2;
+  right: 60px;
+  bottom: 240px;
   width: 360px;
   height: 120px;
   line-height: 120px;
@@ -56,10 +58,61 @@ body {
   -webkit-border-radius-bottomleft: 36px;
   -webkit-border-radius-bottomright: 36px;
 }
+
+#back {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  right: 57px;
+  bottom: 237px;
+  width: 366px;
+  height: 366px;
+  background-color: #ffcc00;
+  text-align: center;
+  border-radius: 39px;
+  -moz-border-radius: 39px;
+  -webkit-border-radius: 39px;
+}
+
+#pole {
+  border-right: 3px solid #333333;
+  border-left: 3px solid #333333;
+  position: absolute;
+  z-index: 0;
+  right: 222px;
+  bottom: 0px;
+  width: 30px;
+  height: 360px;
+  background-color: #ffffff;
+}
+
+#sub-message {
+  margin: 0;
+  padding: 0;
+  border: 3px solid #333333;
+  position: absolute;
+  z-index: 1;
+  right: 150px;
+  bottom: 150px;
+  width: 174px;
+  height: 66px;
+  line-height: 33px;
+  color: #333333;
+  background-color: #ffffff;
+  font-size: 24px;
+  text-align: center;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+}
 </style>
 </head>
 <body>
-<h1 class="code">404</h1>
-<p class="message">Not Found</p>
+<h1 id="code">404</h1>
+<p id="message">Not Found</p>
+<div id="back"></div>
+<div id="pole"></div>
+<p id="sub-message">この先通り抜け<br>できません</p>
 </body>
 </html>
