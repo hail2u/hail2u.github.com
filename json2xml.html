@@ -70,7 +70,7 @@ function JSONtoXML (obj, depth) {
     var name = key;
     if (key.match(/^\d+$/)) name = "item";
 
-    if (typeof(obj[key]) == "object") {
+    if (typeof(obj[key]) === "object") {
       result += indent + "<" + name + ">\n";
       depth++;
       result += JSONtoXML(obj[key], depth);
@@ -85,7 +85,7 @@ function JSONtoXML (obj, depth) {
 }
 
 function encodeEntities (s) {
-  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); //"
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/'/g, "&apos;").replace(/"/g, "&quot;"); //"'
 }
 
 $(function () {
