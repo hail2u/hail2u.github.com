@@ -14,7 +14,7 @@ p, ul {
 }
 
 pre {
-  font-family: "Andale Mono", monospace;
+  font-family: "Consolas", monospace;
   line-height: 1.5;
 }
 </style>
@@ -46,10 +46,7 @@ function loadJSON (url) {
     } else {
       $("#result").empty().append("<p/>").addClass("status").append("XML に変換しています･･･");
 
-      var xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
-              + "<root>\n"
-              + JSONtoXML(res, 0)
-              + "</root>\n";
+      var xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" + "<root>\n" + JSONtoXML(res, 0) + "</root>\n";
       $("#result").empty().append($("<p/>").append($("<a/>").attr({
         href: "data:application/xml," + encodeURIComponent(xml)
       }).append("ブラウザで XML を開く")));
@@ -68,7 +65,7 @@ function JSONtoXML (obj, depth) {
 
   for (var key in obj) {
     var name = key;
-    if (key.match(/^\d+$/)) name = "item";
+    if ($.isArray(obj)) name = "array";
 
     if (typeof(obj[key]) === "object") {
       result += indent + "<" + name + ">\n";
