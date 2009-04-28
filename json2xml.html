@@ -82,7 +82,7 @@ function JSONtoXML (obj, depth) {
 }
 
 function encodeEntities (s) {
-  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/'/g, "&apos;").replace(/"/g, "&quot;"); //"'
+  return s.replace(/&amp;/g, "&").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;"); // '"
 }
 
 $(function () {
