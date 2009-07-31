@@ -10,7 +10,7 @@ function doSearch (q, p) {
     Operation:      "ItemSearch",
     SearchIndex:    "All",
     ResponseGroup:  "Small,Images,OfferSummary",
-    Version:        "2009-06-01",
+    Version:        "2009-07-01",
     AWSAccessKeyId: "08PWFCAAQ5TZJT30SKG2",
     AssociateTag:   TRACKING_ID,
     Keywords:       q,
