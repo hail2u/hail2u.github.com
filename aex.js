@@ -18,9 +18,30 @@ var PRODUCT_GROUP_JA = {
   "Video Games":       "TVゲーム",
   "Watch":             "時計"
 };
+var DEFAULT_MESSAGE;
+var DEFAULT_RESULT;
 
-function doSearch (q, p) {
+function doSearch () {
   var result = $("#result").empty();
+
+  // location.hashがないURLにブラウザの戻る(進む)で移動した時
+  // デフォルトの状態に戻して検索しない
+  if (!location.hash) {
+    $("#message").html(DEFAULT_MESSAGE);
+    $("#result").html(DEFAULT_RESULT);
+
+    return;
+  }
+
+  var p = 1;
+  var q = decodeURIComponent(location.hash.replace(/^#/, ""));
+
+  if (q.match(/^(.+):(\d+)$/)) {
+    q = RegExp.$1;
+    p = RegExp.$2;
+  }
+
+  $("#q").val(q);
 
   showMessage("検索中……");
 
@@ -172,25 +193,19 @@ function showMessage (s) {
 }
 
 $(function () {
+  $(window).hashchange(doSearch);
+
   $("#searchForm").submit(function () {
     q = $("#q").val();
     location.hash = "#" + encodeURIComponent(q);
-    doSearch(q, 1);
+
     return false;
   });
 
-  showMessage("初期化完了");
+  DEFAULT_MESSAGE = $("#message").html();
+  DEFAULT_RESULT  = $("#result").html();
 
   if (location.hash) {
-    var p = 1;
-    var q = decodeURIComponent(location.hash.replace(/^#/, ""));
-
-    if (q.match(/^(.+):(\d+)$/)) {
-      q = RegExp.$1;
-      p = RegExp.$2;
-    }
-
-    $("#q").val(q);
-    doSearch(q, p);
+    doSearch();
   }
 });
