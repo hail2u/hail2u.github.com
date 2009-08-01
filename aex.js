@@ -48,7 +48,7 @@ function doSearch (q, p) {
 
         // 画像
         var image = $("<img/>").attr({
-          alt: this.ItemAttributes.Title,
+          alt: this.ItemAttributes.Title
         });
 
         if (this.MediumImage) {
@@ -121,8 +121,7 @@ function doSearch (q, p) {
 
       if (page > 1) {
         var pagePrev = page / 1 - 1;
-        var urlPrev = (pagePrev === 1) ? "#" + encodeURIComponent(q)
-                                       : "#" + encodeURIComponent(q) + ":" + pagePrev;
+        var urlPrev = (pagePrev === 1) ? "#" + encodeURIComponent(q) : "#" + encodeURIComponent(q) + ":" + pagePrev;
         prev.append($("<a/>").attr({
           href: urlPrev
         }).click(function () {
@@ -136,7 +135,7 @@ function doSearch (q, p) {
         next.append("次へ");
       } else {
         var pageNext = page / 1 + 1;
-        var urlNext = "#" + encodeURIComponent(q) + ":" + pageNext
+        var urlNext = "#" + encodeURIComponent(q) + ":" + pageNext;
         next.append($("<a/>").attr({
           href: urlNext
         }).click(function () {
