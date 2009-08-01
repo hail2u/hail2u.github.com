@@ -1,4 +1,23 @@
 var TRACKING_ID = "hail2unet-22";
+var PRODUCT_GROUP_JA = {
+  "Apparel":           "アパレル&ファッション雑貨",
+  "Baby Product":      "ベビー&マタニティ",
+  "Book":              "本・漫画・雑誌",
+  "CE":                "家電&カメラ",
+  "DVD":               "DVD",
+  "Grocery":           "食品&飲料",
+  "Health and Beauty": "ヘルス&ビューティー",
+  "Kitchen":           "ホーム&キッチン",
+  "Music":             "ミュージック",
+  "Office Product":    "文房具・オフィス用品",
+  "Shoes":             "シューズ",
+  "Software":          "PCソフト",
+  "Sports":            "スポーツ&アウトドア",
+  "Toy":               "おもちゃ",
+  "VHS":               "ビデオ",
+  "Video Games":       "TVゲーム",
+  "Watch":             "時計"
+};
 
 function doSearch (q, p) {
   var result = $("#result").empty();
@@ -93,7 +112,7 @@ function doSearch (q, p) {
           $("<li/>").append(this.ItemAttributes.Manufacturer.toString()).appendTo(detail);
         }
 
-        $("<li/>").append(this.ItemAttributes.ProductGroup.toString()).appendTo(detail);
+        $("<li/>").append(PRODUCT_GROUP_JA[this.ItemAttributes.ProductGroup.toString()]).appendTo(detail);
         $("<li/>").append(this.ASIN.toString()).appendTo(detail);
         detail.appendTo(item);
 
