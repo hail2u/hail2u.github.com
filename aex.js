@@ -1,6 +1,6 @@
 var SYSTEM_MESSAGES = {
   "defaultMessage": "初期化完了",
-  "defaultResult":  "フォームにキーワードを入力してGoボタンを押して下さい。",
+  "defaultResult":  "<p>フォームにキーワードを入力してGoボタンを押して下さい。</p>",
   "searching":      "検索中……",
   "resultSummary":  "<a href=\"http://www.amazon.co.jp/\">Amazon.co.jp</a> から <em><%QUERY%></em> を検索した結果 約 <em><%TOTAL_RESULTS%></em> 件中 <em><%RANGE%></em> 件を表示中", 
   "noPrice":        "新品の価格情報がありません",
@@ -33,7 +33,7 @@ function doItemSearch () {
 
   // location.hashが空だったらデフォルトの状態に戻して検索しない
   if (!location.hash) {
-    $("#message").html(SYSTEM_MESSAGES.defaultMessage);
+    showMessage(SYSTEM_MESSAGES.defaultMessage);
     $("#result").html(SYSTEM_MESSAGES.defaultResult);
 
     return;
@@ -103,12 +103,25 @@ function doItemSearch () {
         }
 
         $("<p/>").addClass("image").append($("<a/>").attr({
-           href: this.DetailPageURL
+          href: this.DetailPageURL,
+          title: this.ItemAttributes.Title
         }).append(image)).appendTo(item);
+
+        // 価格
+        var price = $("<p/>").addClass("price");
+
+        if (this.OfferSummary.TotalNew > 0 && this.OfferSummary.LowestNewPrice) {
+          price.append(this.OfferSummary.LowestNewPrice.FormattedPrice + " ～");
+        } else {
+          price.append(SYSTEM_MESSAGES.noPrice);
+        }
+
+        price.appendTo(item);
 
         // タイトル
         var title = $("<h2/>").addClass("title").append($("<a/>").attr({
-           href: this.DetailPageURL
+          href: this.DetailPageURL,
+          title: this.ItemAttributes.Title
         }).append(this.ItemAttributes.Title)).appendTo(item);
 
         // その他情報
@@ -133,17 +146,6 @@ function doItemSearch () {
         $("<li/>").append(PRODUCT_GROUP_JA[this.ItemAttributes.ProductGroup.toString()]).appendTo(detail);
         $("<li/>").append(this.ASIN.toString()).appendTo(detail);
         detail.appendTo(item);
-
-        // 価格
-        var price = $("<p/>").addClass("price");
-
-        if (this.OfferSummary.TotalNew > 0 && this.OfferSummary.LowestNewPrice) {
-          price.append(this.OfferSummary.LowestNewPrice.FormattedPrice + " ～");
-        } else {
-          price.append(SYSTEM_MESSAGES.noPrice);
-        }
-
-        price.appendTo(item);
 
         // 区切り
         $("<hr/>").appendTo(item);
@@ -201,7 +203,7 @@ $(function () {
     return false;
   });
 
-  $("#message").html(SYSTEM_MESSAGES.defaultMessage);
+  showMessage(SYSTEM_MESSAGES.defaultMessage);
   $("#result").html(SYSTEM_MESSAGES.defaultResult);
 
   if (location.hash) {
