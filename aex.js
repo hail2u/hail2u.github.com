@@ -39,14 +39,15 @@ function doItemSearch () {
     return;
   }
 
+  var q = "";
   var p = 1;
-  var q = decodeURIComponent(location.hash.replace(/^#/, ""));
-
-  if (q.match(/^(.+):(\d+)$/)) {
-    q = RegExp.$1;
-    p = RegExp.$2;
-  }
-
+  $.each(decodeURIComponent(location.hash.replace(/^#/, "")).split(";"), function () {
+    if (this.match(/^q=(.*)$/)) {
+      q = RegExp.$1;
+    } else if (this.match(/^p=([1-9]\d*)$/)) {
+      p = RegExp.$1;
+    }
+  });
   $("#q").val(q);
 
   showMessage(SYSTEM_MESSAGES.searching);
@@ -158,7 +159,7 @@ function doItemSearch () {
       if (page < 2) {
         prev.append(SYSTEM_MESSAGES.prevLink);
       } else {
-        var urlPrev = (page === 2) ? "#" + encodeURIComponent(q) : "#" + encodeURIComponent(q) + ":" + (page - 1);
+        var urlPrev = (page === 2) ? "#q=" + encodeURIComponent(q) : "#q=" + encodeURIComponent(q) + ";p=" + (page - 1);
         prev.append($("<a/>").attr({
           href: urlPrev
         }).click(function () {
@@ -170,7 +171,7 @@ function doItemSearch () {
       if (page > 4 || page >= res.Items.TotalPages) {
         next.append(SYSTEM_MESSAGES.nextLink);
       } else {
-        var urlNext = "#" + encodeURIComponent(q) + ":" + (page + 1);
+        var urlNext = "#q=" + encodeURIComponent(q) + ";p=" + (page + 1);
         next.append($("<a/>").attr({
           href: urlNext
         }).click(function () {
@@ -194,7 +195,7 @@ $(function () {
     q = $("#q").val();
 
     if (q) {
-      location.hash = "#" + encodeURIComponent(q);
+      location.hash = "#q=" + encodeURIComponent(q);
     }
 
     return false;
