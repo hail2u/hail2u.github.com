@@ -1,3 +1,12 @@
+var SYSTEM_MESSAGES = {
+  "defaultMessage": "初期化完了",
+  "defaultResult":  "フォームにキーワードを入力してGoボタンを押して下さい。",
+  "searching":      "検索中……",
+  "resultSummary":  "<a href=\"http://www.amazon.co.jp/\">Amazon.co.jp</a> から <em><%QUERY%></em> を検索した結果 約 <em><%TOTAL_RESULTS%></em> 件中 <em><%RANGE%></em> 件を表示中", 
+  "noPrice":        "新品の価格情報がありません",
+  "prevLink":       "戻る",
+  "nextLink":       "次へ"
+};
 var TRACKING_ID = "hail2unet-22";
 var PRODUCT_GROUP_JA = {
   "Apparel":           "アパレル&ファッション雑貨",
@@ -18,17 +27,14 @@ var PRODUCT_GROUP_JA = {
   "Video Games":       "TVゲーム",
   "Watch":             "時計"
 };
-var DEFAULT_MESSAGE;
-var DEFAULT_RESULT;
 
-function doSearch () {
+function doItemSearch () {
   var result = $("#result").empty();
 
-  // location.hashがないURLにブラウザの戻る(進む)で移動した時
-  // デフォルトの状態に戻して検索しない
+  // location.hashが空だったらデフォルトの状態に戻して検索しない
   if (!location.hash) {
-    $("#message").html(DEFAULT_MESSAGE);
-    $("#result").html(DEFAULT_RESULT);
+    $("#message").html(SYSTEM_MESSAGES.defaultMessage);
+    $("#result").html(SYSTEM_MESSAGES.defaultResult);
 
     return;
   }
@@ -43,7 +49,7 @@ function doSearch () {
 
   $("#q").val(q);
 
-  showMessage("検索中……");
+  showMessage(SYSTEM_MESSAGES.searching);
 
   var url = "http://aap.hail2u.net/?" + $.param({
     Service:        "AWSECommerceService",
@@ -65,22 +71,12 @@ function doSearch () {
         res.Items.Request.Errors.Error.Message
       ].join(": "));
     } else {
-      var page = res.Items.Request.ItemSearchRequest.ItemPage;
+      var page = Number(res.Items.Request.ItemSearchRequest.ItemPage);
       var items = $.makeArray(res.Items.Item); // 検索結果が1件の時も配列にしておく
 
       // 概要
       var from = ((page - 1) * 10 + 1);
-      showMessage([
-        "<a href=\"http://www.amazon.co.jp/\">Amazon.co.jp</a> から <em>",
-        q,
-        "</em> を検索した結果 約 <em>",
-        res.Items.TotalResults,
-        "</em> 件中 <em>",
-        from,
-        "-",
-        (from + items.length - 1),
-        "</em> 件を表示しています"
-      ].join(""));
+      showMessage(SYSTEM_MESSAGES.resultSummary.replace("<%QUERY%>", q).replace("<%TOTAL_RESULTS%>", res.Items.TotalResults).replace("<%RANGE%>", from + "-" + (from + items.length - 1)));
 
       // 検索結果のリスト
       $.each(items, function () {
@@ -143,7 +139,7 @@ function doSearch () {
         if (this.OfferSummary.TotalNew > 0 && this.OfferSummary.LowestNewPrice) {
           price.append(this.OfferSummary.LowestNewPrice.FormattedPrice + " ～");
         } else {
-          price.append("新品の価格情報がありません");
+          price.append(SYSTEM_MESSAGES.noPrice);
         }
 
         price.appendTo(item);
@@ -159,28 +155,27 @@ function doSearch () {
       var prev = $("<p/>").addClass("prev");
       var next = $("<p/>").addClass("next");
 
-      if (page > 1) {
-        var pagePrev = page / 1 - 1;
-        var urlPrev = (pagePrev === 1) ? "#" + encodeURIComponent(q) : "#" + encodeURIComponent(q) + ":" + pagePrev;
+      if (page < 2) {
+        prev.append(SYSTEM_MESSAGES.prevLink);
+      } else {
+        var urlPrev = (page === 2) ? "#" + encodeURIComponent(q) : "#" + encodeURIComponent(q) + ":" + (page - 1);
         prev.append($("<a/>").attr({
           href: urlPrev
         }).click(function () {
-          doSearch(q, pagePrev);
-        }).append("戻る"));
-      } else {
-        prev.append("戻る");
+          doItemSearch(q, pagePrev);
+          location.hash = urlPrev;
+        }).append(SYSTEM_MESSAGES.prevLink));
       }
 
       if (page > 4 || page >= res.Items.TotalPages) {
-        next.append("次へ");
+        next.append(SYSTEM_MESSAGES.nextLink);
       } else {
-        var pageNext = page / 1 + 1;
-        var urlNext = "#" + encodeURIComponent(q) + ":" + pageNext;
+        var urlNext = "#" + encodeURIComponent(q) + ":" + (page + 1);
         next.append($("<a/>").attr({
           href: urlNext
         }).click(function () {
-          doSearch(q, pageNext);
-        }).append("次へ"));
+          location.hash = urlNext;
+        }).append(SYSTEM_MESSAGES.nextLink));
       }
 
       paging.append(prev).append(next).appendTo(result);
@@ -193,19 +188,22 @@ function showMessage (s) {
 }
 
 $(function () {
-  $(window).hashchange(doSearch);
+  $(window).hashchange(doItemSearch);
 
   $("#searchForm").submit(function () {
     q = $("#q").val();
-    location.hash = "#" + encodeURIComponent(q);
+
+    if (q) {
+      location.hash = "#" + encodeURIComponent(q);
+    }
 
     return false;
   });
 
-  DEFAULT_MESSAGE = $("#message").html();
-  DEFAULT_RESULT  = $("#result").html();
+  $("#message").html(SYSTEM_MESSAGES.defaultMessage);
+  $("#result").html(SYSTEM_MESSAGES.defaultResult);
 
   if (location.hash) {
-    doSearch();
+    doItemSearch();
   }
 });
