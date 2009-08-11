@@ -1,0 +1,32 @@
+body {
+  margin: 12px 36px;
+  font-family: 'Lucida Sans', 'Lucida Grande', sans-serif;
+}
+
+#header {
+  margin-bottom: 72px;
+}
+
+#header h1 {
+  font-size: 371%;
+}
+
+#contents {
+  margin-bottom: 72px;
+}
+
+#contents .section {
+  margin: 36px auto;
+}
+
+#contents h2 {
+  font-size: 182%;
+}
+
+#contents ul {
+  line-height: 1.5;
+}
+
+#footer {
+  margin-bottom: 72px;
+}
