@@ -1,0 +1,32 @@
+/*
+ * Font:    Cantarell-Regular
+ * Author:  Abattis
+ * license: http://www.gnu.org/copyleft/gpl.html
+ */
+@font-face {
+  font-family: 'Cantarell-Regular';
+  src: url('cantarell-regular.eot');
+  src: local('Cantarell Regular'), local('Cantarell-Regular'), url('cantarell-regular.ttf') format('truetype');
+}
+
+/*
+ * Font:    Vollkorn
+ * Author:  FRiTZe
+ * license: http://creativecommons.org/licenses/by/2.0/
+ */
+@font-face {
+  font-family: 'Vollkorn';
+  src: url('vollkorn.eot');
+  src: local('Vollkorn'), url('vollkorn.otf') format('opentype');
+}
+
+/*
+ * Font:    AurulentSansMono-Regular
+ * Author:  Stephen G. Hartke
+ * license: http://scripts.sil.org/OFL
+ */
+@font-face {
+  font-family: 'AurulentSansMono-Regular';
+  src: url('aurulentsansmono-regular.eot');
+  src: local('AurulentSansMono-Regular'), url('aurulentsansmono-regular.otf') format('opentype');
+}
