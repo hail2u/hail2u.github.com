@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Better Smart Keywords</title>
+    <style type="text/css">
+      * {
+        font-family: "Lucida Grande", "Segoe UI", "Meiryo UI", sans-serif;
+      }
+
+      #wrapper {
+        margin-top: -240px;
+        padding-right: 24px;
+        border-right: 3px solid #ccc;
+        display: table;
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        height: 480px;
+        text-align: right;
+        overflow-y: auto;
+      }
+
+      #colophon {
+        display: table-cell;
+        vertical-align: middle;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 24px;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+        line-height: 1.5;
+        list-style: none;
+      }
+
+      li {
+        margin: 6px 0 0 0;
+        padding: 0;
+        color: #999;
+        font-size: 12px;
+      }
+
+      li code {
+        color: #000;
+        font-family: "Menlo", "Consolas", monospace;
+      }
+
+      form {
+        margin: -36px auto auto 24px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 42px;
+      }
+
+      #q {
+        margin: 0;
+        padding: 3px;
+        border: 3px solid #ccc;
+        width: 80%;
+        height: 30px;
+        font-size: 24px;
+        -moz-border-radius: 9px;
+      }
+
+      #q:focus {
+        border-color: #369;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="colophon">
+        <h1>Better Smart Keywords</h1>
+      </div>
+    </div>
+    <form method="GET" action="http://www.google.com/search">
+      <p><input type="text" name="q" size="32" value="hail2u.net" id="q"></p>
+    </form>
+    <script type="text/javascript">
+      var re = /^\?(.*) (.*?)$/;
+      var keywords = {
+        "g": {
+          "url":   "http://www.google.com/search?q=",
+          "title": "Google"
+        },
+        "a": {
+          "url":   "http://www.amazon.co.jp/gp/search?index=blended&amp;tag=hail2unet-22&amp;__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&amp;field-keywords=",
+          "title": "Amazon.co.jp"
+        },
+        "w": {
+          "url":   "http://ja.wikipedia.org/wiki/Special:Search?search=",
+          "title": "Wikipedia (日本語版)"
+        },
+        "perldoc": {
+          "url":   "http://perldoc.perl.org/search.html?q=",
+          "title": "perldoc"
+        },
+        "mdc": {
+          "url":   "http://www.google.com/search?q=site:developer.mozilla.org+",
+          "title": "Mozilla Developer Center"
+        },
+        "cpan": {
+          "url":   "http://search.cpan.org/search?mode=all&query=",
+          "title": "CPAN"
+        },
+        "addon": {
+          "url":   "https://addons.mozilla.org/firefox/search/?q=",
+          "title": "Mozilla Add-ons"
+        },
+        "us": {
+          "url":   "http://userscripts.org/scripts/search?q=",
+          "title": "Userscripts.org"
+        },
+        "vim": {
+          "url":   "http://www.google.com/search?q=site%3Avim.org+",
+          "title": "Vim online"
+        }
+      };
+
+      if (decodeURIComponent(location.search).match(re)) {
+        redirect(RegExp.$1, RegExp.$2);
+      } else {
+        var ul = document.createElement("ul");
+
+        for (var k in keywords) {
+          var code = document.createElement("code");
+          code.appendChild(document.createTextNode(k));
+          var li = document.createElement("li");
+          li.appendChild(document.createTextNode(keywords[k].title + ": "));
+          li.appendChild(code);
+          ul.appendChild(li);
+        }
+
+        document.getElementById("colophon").appendChild(ul);
+
+        document.forms[0].addEventListener("submit", function (evt) {
+          var s = "?" + document.getElementById("q").value;
+          var k = "g";
+
+          if (s.match(re)) {
+            s = RegExp.$1;
+            k = RegExp.$2;
+          }
+
+          redirect(s, k);
+          evt.preventDefault();
+          evt.stopPropagation();
+        }, false);
+
+        with (document.getElementById("q")) {
+          select();
+          focus();
+        }
+      }
+
+      function redirect (q, k) {
+        if (!keywords[k]) {
+          k = "g";
+        }
+
+        location.href = keywords[k].url + encodeURIComponent(q);
+      }
+    </script>
+  </body>
+</html>
