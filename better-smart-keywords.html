@@ -146,6 +146,8 @@
           if (s.match(re)) {
             s = RegExp.$1;
             k = RegExp.$2;
+          } else {
+            s = s.replace(/^\?/, "");
           }
 
           redirect(s, k);
