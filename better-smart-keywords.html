@@ -17,6 +17,7 @@
         top: 50%;
         right: 50%;
         height: 480px;
+        max-height: 80%;
         text-align: right;
         overflow-y: auto;
       }
@@ -48,6 +49,7 @@
       li code {
         color: #000;
         font-family: "Menlo", "Consolas", monospace;
+        font-weight: bold;
       }
 
       form {
@@ -95,7 +97,7 @@
         },
         "w": {
           "url":   "http://ja.wikipedia.org/wiki/Special:Search?search=",
-          "title": "Wikipedia (日本語版)"
+          "title": "Wikipedia (ja)"
         },
         "perldoc": {
           "url":   "http://perldoc.perl.org/search.html?q=",
@@ -140,7 +142,7 @@
         document.getElementById("colophon").appendChild(ul);
 
         document.forms[0].addEventListener("submit", function (evt) {
-          var s = "?" + document.getElementById("q").value;
+          var s = "?" + document.getElementById("q").value.replace(/\s/, "+");
           var k = "g";
 
           if (s.match(re)) {
@@ -162,11 +164,14 @@
       }
 
       function redirect (q, k) {
+        q = encodeURIComponent(q).replace(/%2B/i, "+");
+
         if (!keywords[k]) {
+          q = q + "+" + k;
           k = "g";
         }
 
-        location.href = keywords[k].url + encodeURIComponent(q);
+        location.href = keywords[k].url + q;
       }
     </script>
   </body>
