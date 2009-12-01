@@ -177,7 +177,7 @@
         wrapper.style.marginTop = "-" + (wrapper.clientHeight / 2) + "px";
 
         document.forms[0].addEventListener("submit", function (evt) {
-          var q = "?" + document.getElementById("q").value.replace(/\s/, "+");
+          var q = "?" + document.getElementById("q").value.replace(/\s/g, "+");
           var k = "ifl";
 
           if (q.match(re)) {
@@ -199,7 +199,7 @@
       }
 
       function redirect (q, k) {
-        q = encodeURIComponent(q).replace(/%2B/i, "+");
+        q = encodeURIComponent(q).replace(/%2B/ig, "+");
 
         if (!keywords[k]) {
           q = q + "+" + k;
