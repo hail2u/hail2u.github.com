@@ -10,30 +10,31 @@
 
       #wrapper {
         margin-top: -240px;
-        padding-right: 24px;
-        border-right: 3px solid #ccc;
         display: table;
         position: absolute;
         top: 50%;
-        right: 50%;
+        left: 0;
+        width: 100%;
         height: 480px;
         max-height: 80%;
-        text-align: right;
         overflow-y: auto;
       }
 
       #colophon {
+        border-right: 3px solid #ccc;
         display: table-cell;
+        width: 50%;
         vertical-align: middle;
+        text-align: right;
       }
 
       h1 {
-        margin: 0;
+        margin: 0 24px 0 0;
         font-size: 24px;
       }
 
       ul {
-        margin: 0;
+        margin: 0 24px 0 0;
         padding: 0;
         line-height: 1.5;
         list-style: none;
@@ -53,18 +54,15 @@
       }
 
       form {
-        margin: -36px auto auto 24px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        height: 42px;
+        display: table-cell;
+        width: 50%;
+        vertical-align: middle;
       }
 
       #q {
-        margin: 0;
+        margin: 0 0 0 24px;
         padding: 3px;
         border: 3px solid #ccc;
-        width: 80%;
         height: 30px;
         font-size: 24px;
         -moz-border-radius: 9px;
@@ -80,12 +78,11 @@
       <div id="colophon">
         <h1>Better Smart Keywords</h1>
       </div>
-    </div>
     <form method="GET" action="http://www.google.com/search">
-      <p><input type="text" name="q" size="32" value="hail2u.net" id="q"></p>
+      <p><input type="text" name="q" size="32" value="&lt;search word(s)&gt; &lt;keyword&gt;" id="q"></p>
     </form>
+    </div>
     <script type="text/javascript">
-      var re = /^\?(.*)\+(.*?)$/;
       var keywords = {
         "g": {
           "url":   "http://www.google.com/search?q=",
@@ -124,6 +121,8 @@
           "title": "Vim online"
         }
       };
+
+      var re = /^\?(.*)\+(.*?)$/;
 
       if (decodeURIComponent(location.search).match(re)) {
         redirect(RegExp.$1, RegExp.$2);
