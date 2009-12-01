@@ -9,18 +9,15 @@
       }
 
       #wrapper {
-        margin-top: -240px;
         display: table;
         position: absolute;
         top: 50%;
         left: 0;
         width: 100%;
-        height: 480px;
-        max-height: 80%;
-        overflow-y: auto;
       }
 
       #colophon {
+        padding: 12px 0;
         border-right: 3px solid #ccc;
         display: table-cell;
         width: 50%;
@@ -29,7 +26,7 @@
       }
 
       h1 {
-        margin: 0 24px 0 0;
+        margin: 0 24px 12px 0;
         font-size: 24px;
       }
 
@@ -96,13 +93,13 @@
           "url":   "http://ja.wikipedia.org/wiki/Special:Search?search=",
           "title": "Wikipedia (ja)"
         },
-        "dic": {
-          "url":   "http://dic.yahoo.co.jp/search?stype=0&ei=UTF-8&dtype=2&p=",
-          "title": "Yahoo! JAPAN Dictionary"
-        },
         "we": {
           "url":   "http://en.wikipedia.org/wiki/Special:Search?search=",
           "title": "Wikipedia (en)"
+        },
+        "dic": {
+          "url":   "http://dic.yahoo.co.jp/search?stype=0&ei=UTF-8&dtype=2&p=",
+          "title": "Yahoo! JAPAN Dictionary"
         },
         "perldoc": {
           "url":   "http://perldoc.perl.org/search.html?q=",
@@ -176,6 +173,9 @@
 
         document.getElementById("colophon").appendChild(ul);
 
+        var wrapper = document.getElementById("wrapper");
+        wrapper.style.marginTop = "-" + (wrapper.clientHeight / 2) + "px";
+
         document.forms[0].addEventListener("submit", function (evt) {
           var q = "?" + document.getElementById("q").value.replace(/\s/, "+");
           var k = "ifl";
@@ -206,6 +206,7 @@
           k = "ifl";
         }
 
+        // alert(keywords[k].url + q);
         location.href = keywords[k].url + q;
       }
     </script>
