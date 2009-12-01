@@ -177,17 +177,17 @@
         document.getElementById("colophon").appendChild(ul);
 
         document.forms[0].addEventListener("submit", function (evt) {
-          var s = "?" + document.getElementById("q").value.replace(/\s/, "+");
+          var q = "?" + document.getElementById("q").value.replace(/\s/, "+");
           var k = "g";
 
-          if (s.match(re)) {
-            s = RegExp.$1;
+          if (q.match(re)) {
+            q = RegExp.$1;
             k = RegExp.$2;
           } else {
-            s = s.replace(/^\?/, "");
+            q = q.replace(/^\?/, "");
           }
 
-          redirect(s, k);
+          redirect(q, k);
           evt.preventDefault();
           evt.stopPropagation();
         }, false);
