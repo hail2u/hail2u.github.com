@@ -178,7 +178,7 @@
 
         document.forms[0].addEventListener("submit", function (evt) {
           var q = "?" + document.getElementById("q").value.replace(/\s/, "+");
-          var k = "g";
+          var k = "ifl";
 
           if (q.match(re)) {
             q = RegExp.$1;
@@ -203,7 +203,7 @@
 
         if (!keywords[k]) {
           q = q + "+" + k;
-          k = "g";
+          k = "ifl";
         }
 
         location.href = keywords[k].url + q;
