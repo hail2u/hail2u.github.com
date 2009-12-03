@@ -157,8 +157,14 @@
 
       var re = /^\?(.*)\+(.*?)$/;
 
-      if (decodeURIComponent(location.search).match(re)) {
-        redirect(RegExp.$1, RegExp.$2);
+      if (location.search) {
+        var q = decodeURIComponent(location.search);
+
+        if (q.match(re)) {
+          redirect(RegExp.$1, RegExp.$2);
+        } else {
+          redirect(q.replace(/^\?/, ""), "ifl");
+        }
       } else {
         var ul = document.createElement("ul");
 
