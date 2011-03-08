@@ -4,6 +4,17 @@
     <meta charset="utf-8">
     <title>Google Web Fonts Preview</title>
     <link rel="stylesheet" href="./natural.css">
+    <style>
+      body style {
+        margin: 30px 0;
+        padding: 15px;
+        display: block;
+        line-height: 1.25;
+        background-color: #f7f7f7;
+        font-family: "Menlo", "Consolas", "DejaVu Sans Mono", monospace;
+        white-space: pre-wrap;
+        word-wrap: break-word; }
+    </style>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script src="./lib/jquery.query-yql.min.js"></script>
     <script>
@@ -24,13 +35,12 @@
           $("#preview").click(function () {
             var t = $("#result").empty();
             var sampleText = $("#sample-text").val();
-            var fontSize   = $("#font-size").val();
 
             for (var i = 0, l = families.length; i < l; i++) {
               var fontFamily = families[i]
               $("<p/>", {
                 class: "preview",
-                style: "font-family:'" + fontFamily + "';font-size:" + fontSize + "px"
+                style: "font-family:'" + fontFamily + "'"
               }).append($("<a/>", {
                 href: "http://www.google.com/webfonts/family?family=" + fontFamily.replace(/ /g, "+")
               }).append(fontFamily)).append(": " + sampleText).appendTo(t);
@@ -46,12 +56,23 @@
     <h1>Google Web Fonts Preview</h1>
 
     <p>
-      <input type="button" value="Preview" disabled="disabled" id="preview">
       <input type="text" size="48" value="Lorem ipsum dolor sit amet." id="sample-text">
-      in
-      <input type="text" size="3" value="24" id="font-size">
-      px.
+      <input type="button" value="Preview" disabled="disabled" id="preview">
     </p>
+
+    <style contenteditable>/* You can edit preview style directly. */
+.preview {
+  color: inherit;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  font-size: 24px;
+  text-decoration: none;
+  letter-spacing: 0;
+  word-spacing: 0;
+  text-transform: none;
+  text-shadow: none;
+}</style>
 
     <div id="result">
       <p>Edit text and font-size, then press &quot;Preview&quot;</p>
