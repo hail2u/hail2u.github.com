@@ -21,20 +21,22 @@
               href: "http://fonts.googleapis.com/css?family=" + family.replace(/ /g, "+") + ":regular,bold"
             }));
           }
-        });
 
-        $("#preview").click(function () {
-          var t = $("#result").empty();
-          var sampleText = $("#sample-text").val();
-          var fontSize   = $("#font-size").val();
+          $("#preview").click(function () {
+            var t = $("#result").empty();
+            var sampleText = $("#sample-text").val();
+            var fontSize   = $("#font-size").val();
 
-          for (var i = 0, l = families.length; i < l; i++) {
-            var family = families[i];
-            $("<p/>", {
-              class: "preview",
-              style: "font-family:" + family + ";font-size:" + fontSize + "px"
-            }).append(family + ": " + sampleText).appendTo(t);
-          }
+            for (var i = 0, l = families.length; i < l; i++) {
+              var family = families[i];
+              $("<p/>", {
+                class: "preview",
+                style: "font-family:" + family + ";font-size:" + fontSize + "px"
+              }).append(family + ": " + sampleText).appendTo(t);
+            }
+          }).attr({
+            disabled: ""
+          });
         });
       });
     </script>
@@ -45,7 +47,7 @@
     <p>
       <input type="text" size="32" value="Lorem ipsum dolor sit amet." id="sample-text">
       <input type="text" size="3" value="24" id="font-size">px
-      <input type="button" value="Preview" id="preview">
+      <input type="button" value="Preview" disabled="disabled" id="preview">
     </p>
 
     <div id="result">
