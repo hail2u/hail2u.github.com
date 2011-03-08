@@ -15,10 +15,9 @@
           families = d.query.results.option;
 
           for (var i = 0, l = families.length; i < l; i++) {
-            var family = families[i];
             $("head").append($("<link/>").attr({
               rel:  "stylesheet",
-              href: "http://fonts.googleapis.com/css?family=" + family.replace(/ /g, "+") + ":regular,bold"
+              href: "http://fonts.googleapis.com/css?family=" + families[i].replace(/ /g, "+") + ":regular,bold"
             }));
           }
 
@@ -28,11 +27,13 @@
             var fontSize   = $("#font-size").val();
 
             for (var i = 0, l = families.length; i < l; i++) {
-              var family = families[i];
+              var fontFamily = families[i]
               $("<p/>", {
                 class: "preview",
-                style: "font-family:" + family + ";font-size:" + fontSize + "px"
-              }).append(family + ": " + sampleText).appendTo(t);
+                style: "font-family:'" + fontFamily + "';font-size:" + fontSize + "px"
+              }).append($("<a/>", {
+                href: "http://www.google.com/webfonts/family?family=" + fontFamily.replace(/ /g, "+")
+              }).append(fontFamily)).append(": " + sampleText).appendTo(t);
             }
           }).attr({
             disabled: ""
@@ -45,13 +46,17 @@
     <h1>Google Web Fonts Preview</h1>
 
     <p>
-      <input type="text" size="32" value="Lorem ipsum dolor sit amet." id="sample-text">
-      <input type="text" size="3" value="24" id="font-size">px
       <input type="button" value="Preview" disabled="disabled" id="preview">
+      <input type="text" size="48" value="Lorem ipsum dolor sit amet." id="sample-text">
+      in
+      <input type="text" size="3" value="24" id="font-size">
+      px.
     </p>
 
     <div id="result">
       <p>Edit text and font-size, then press &quot;Preview&quot;</p>
     </div>
+
+    <p>All Fonts are provided by <a href="http://www.google.com/webfonts">Google Web Fonts</a>.</p>
   </body>
 </html>
