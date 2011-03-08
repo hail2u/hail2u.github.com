@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Google Web Fonts Preview</title>
+    <link rel="stylesheet" href="./natural.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="./lib/jquery.query-yql.min.js"></script>
+    <script>
+      var statement = "select * from html where url='http://www.google.com/webfonts/preview' and xpath='//select[@id=\"font-family\"]/option'";
+      var families;
+
+      $(function () {
+        $.queryYQL(statement, function (d) {
+          families = d.query.results.option;
+
+          for (var i = 0, l = families.length; i < l; i++) {
+            var family = families[i];
+            $("head").append($("<link/>").attr({
+              rel:  "stylesheet",
+              href: "http://fonts.googleapis.com/css?family=" + family.replace(/ /g, "+") + ":regular,bold"
+            }));
+          }
+        });
+
+        $("#preview").click(function () {
+          var t = $("#result").empty();
+          var sampleText = $("#sample-text").val();
+          var fontSize   = $("#font-size").val();
+
+          for (var i = 0, l = families.length; i < l; i++) {
+            var family = families[i];
+            $("<p/>", {
+              class: "preview",
+              style: "font-family:" + family + ";font-size:" + fontSize + "px"
+            }).append(family + ": " + sampleText).appendTo(t);
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Google Web Fonts Preview</h1>
+
+    <p>
+      <input type="text" size="32" value="Lorem ipsum dolor sit amet." id="sample-text">
+      <input type="text" size="3" value="24" id="font-size">px
+      <input type="button" value="Preview" id="preview">
+    </p>
+
+    <div id="result">
+      <p>Edit text and font-size, then press &quot;Preview&quot;</p>
+    </div>
+  </body>
+</html>
