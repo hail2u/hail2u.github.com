@@ -18,17 +18,25 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script src="./lib/jquery.query-yql.min.js"></script>
     <script>
-      var statement = "select * from html where url='http://www.google.com/webfonts/preview' and xpath='//select[@id=\"font-family\"]/option'";
-      var families;
+      var statement = "select * from html where url='http://www.google.com/webfonts/preview' and xpath='//script'";
 
       $(function () {
         $.queryYQL(statement, function (d) {
-          families = d.query.results.option;
+          var scripts = d.query.results.script;
 
-          for (var i = 0, l = families.length; i < l; i++) {
+          for (var i = 0, l = scripts.length; i < l; i++) {
+            var c = scripts[i].content;
+
+            if (c && c.indexOf("var fonts") >= 0) {
+              eval(c.replace(/[\r\n]/g, "").split(";")[0]);
+              break;
+            }
+          }
+
+          for (var font in fonts) {
             $("head").append($("<link/>").attr({
               rel:  "stylesheet",
-              href: "http://fonts.googleapis.com/css?family=" + families[i].replace(/ /g, "+") + ":regular,bold"
+              href: fonts[font].url
             }));
           }
 
@@ -36,8 +44,9 @@
             var t = $("#result").empty();
             var sampleText = $("#sample-text").val();
 
-            for (var i = 0, l = families.length; i < l; i++) {
-              var fontFamily = families[i]
+            for (var font in fonts) {
+              var f = fonts[font];
+              var fontFamily = f.familyUrl;
               $("<p/>", {
                 class: "preview",
                 style: "font-family:'" + fontFamily + "'"
