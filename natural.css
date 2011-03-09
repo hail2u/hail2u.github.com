@@ -58,7 +58,7 @@ strong {
   font-weight: bold; }
 
 code, samp, var {
-  font-family: "Menlo", "Consolas", "DejaVu Sans Mono", monospace; }
+  font-family: "Menlo", "DejaVu Sans Mono", "Andale Mono", monospace; }
 
 abbr, acronym {
   border-bottom: 1px dotted black;
@@ -114,7 +114,7 @@ pre {
   padding: 15px;
   line-height: 1.25;
   background-color: #f7f7f7;
-  font-family: "Menlo", "Consolas", "DejaVu Sans Mono", monospace;
+  font-family: "Menlo", "DejaVu Sans Mono", "Andale Mono", monospace;
   white-space: pre-wrap;
   word-wrap: break-word; }
 
