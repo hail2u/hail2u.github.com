@@ -28,7 +28,7 @@
             var c = scripts[i].content;
 
             if (c && c.indexOf("var fonts") >= 0) {
-              eval(c.replace(/[\r\n]/g, "").split(";")[0]);
+              eval(c.replace(/[\r\n]/g, " ").split(";")[0]);
               break;
             }
           }
