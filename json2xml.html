@@ -1,128 +1,103 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>JSON2XML</title>
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/fonts/fonts-min.css">
-<style type="text/css">
-body, input {
-  font-family: Verdana, sans-serif;
-}
+  <head>
+    <meta charset="UTF-8">
+    <title>JSON2XML</title>
+    <link rel="stylesheet" href="./natural.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="./lib/jquery.query-yql.min.js"></script>
+    <script>
+      function loadJSON (url) {
+        $("#result").empty().append("<p/>").addClass("status").append(url + " をロードしています…");
+        location.hash = "#" + url;
+        var statement = "select * from json where url='" + url + "'";
 
-p, ul {
-  line-height: 1.75;
-}
+        $.queryYQL(statement, function (d) {
+          if (d && d.query.results) {
+            $("#result").empty().append("<p/>").addClass("status").append("XML に変換しています…");
+            var xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" + "<root>\n" + JSONtoXML(d.query.results.json) + "</root>\n";
+            $("#result").empty().append($("<p/>").append($("<a/>").attr({
+href: "data:application/xml," + encodeURIComponent(xml)
+}).append("ブラウザで XML を開く")));
+            /* location.href = "data:application/xml," + encodeURIComponent(xml); */
+            $("#result").append($("<pre/>").text(xml));
+          } else {
+            $("#result").empty().append("<p/>").addClass("error").append(url + " がロードできませんでした。");
+          }
+        });
+      }
 
-pre {
-  font-family: "Consolas", monospace;
-  line-height: 1.5;
-}
-</style>
-<script type="text/javascript" src="http://www.google.com/jsapi"></script>
-<script type="text/javascript">
-google.load("jquery", "1.3.2");
-</script>
-<script type="text/javascript">
-/**
- * Copyright (c) 2009 Kyo Nagashima <kyo@hail2u.net>
- * This code licensed under MIT license:
- * http://opensource.org/licenses/mit-license.php
- */
+      function JSONtoXML (obj, depth) {
+        var result = "", indent = "";
 
-function loadJSON (url) {
-  $("#result").empty().append("<p/>").addClass("status").append(url + " をロードしています･･･");
+        for (var i = 0; i < depth; i++) {
+          indent += "  ";
+        }
 
-  location.hash = "#" + url;
+        for (var key in obj) {
+          var name = key;
+          if ($.isArray(obj)) name = "array";
 
-  $.getJSON("http://pipes.yahoo.com/pipes/pipe.run?_callback=?", {
-    _id:     "332d9216d8910ba39e6c2577fd321a6a",
-    _render: "json",
-    u:       url
-  }, function (data) {
-    var res = data.value.items;
+          if (typeof(obj[key]) === "object") {
+            result += indent + "<" + name + ">\n";
+            depth++;
+            result += JSONtoXML(obj[key], depth);
+            depth--;
+            result += indent + "</" + name + ">\n";
+          } else {
+            result += indent + "<" + name + ">" + encodeEntities(obj[key]) + "</" + name + ">\n";
+          }
+        }
 
-    if (!data || !res || res === "") {
-      $("#result").empty().append("<p/>").addClass("error").append(url + " がロードできませんでした。");
-    } else {
-      $("#result").empty().append("<p/>").addClass("status").append("XML に変換しています･･･");
+        return result;
+      }
 
-      var xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" + "<root>\n" + JSONtoXML(res, 0) + "</root>\n";
-      $("#result").empty().append($("<p/>").append($("<a/>").attr({
-        href: "data:application/xml," + encodeURIComponent(xml)
-      }).append("ブラウザで XML を開く")));
-      /* location.href = "data:application/xml," + encodeURIComponent(xml); */
-      $("#result").append($("<pre/>").text(xml));
-    }
-  });
-}
+      function encodeEntities (s) {
+        return s.replace(/&amp;/g, "&").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;"); // '"
+      }
 
-function JSONtoXML (obj, depth) {
-  var result = "", indent = "";
+      $(function () {
+        $("#json2xml").submit(function () {
+          loadJSON($("#url").val());
+          return false;
+        });
 
-  for (var i = 0; i < depth; i++) {
-    indent += "  ";
-  }
+        if (location.hash.match(/^#(http:\/\/.+)$/)) {
+          var url = encodeEntities(RegExp.$1);
+          $("#url").val(url);
+          loadJSON(url);
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <h1>JSON2XML</h1>
 
-  for (var key in obj) {
-    var name = key;
-    if ($.isArray(obj)) name = "array";
+    <form action="./json2xml.html" id="json2xml">
+      <p>
+        <label for="url">JSON URL:</label>
+        <input type="text" size="60" value="http://b.hatena.ne.jp/entry/json/http://hail2u.net/" id="url">
+        <input type="submit" value="Convert">
+      </p>
+    </form>
 
-    if (typeof(obj[key]) === "object") {
-      result += indent + "<" + name + ">\n";
-      depth++;
-      result += JSONtoXML(obj[key], depth);
-      depth--;
-      result += indent + "</" + name + ">\n";
-    } else {
-      result += indent + "<" + name + ">" + encodeEntities(obj[key]) + "</" + name + ">\n";
-    }
-  }
+    <div id="result"><p>Ready.</p></div>
 
-  return result;
-}
+    <h2>覚え書き他</h2>
 
-function encodeEntities (s) {
-  return s.replace(/&amp;/g, "&").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;"); // '"
-}
-
-$(function () {
-  $("#json2xml").submit(function () {
-    loadJSON($("#url").val());
-    return false;
-  });
-
-  if (location.hash.match(/^#(http:\/\/.+)$/)) {
-    var url = encodeEntities(RegExp.$1);
-    $("#url").val(url);
-    loadJSON(url);
-  }
-});
-</script>
-</head>
-<body>
-<h1>JSON2XML</h1>
-<form action="./json2xml.html" id="json2xml">
-  <p>
-    <label for="url">URL:</label>
-    <input type="text" size="60" value="http://feeds.delicious.com/v2/json/popular" id="url">
-    <input type="submit" value="Convert">
-  </p>
-</form>
-<div id="result"><p>Ready.</p></div>
-<h2>覚え書き他</h2>
-<ul>
-<li>JSONをXML(らしき何か)に変換し、dataスキームを使ってそのデータをhrefに指定したa要素を作成する</li>
-<li>リンクを開くと変換結果がブラウザに表示される</li>
-<li>改行やインデントがなく読みづらいJSONデータをFirefoxの折りたたみできるXML表示機能を使って読むことができる</li>
-<li>location.hashにURLを指定できる</li>
-<li>Firefox 3で確認</li>
-<li>ローカルのJSONデータに対しては別にちゃんと作る必要がある</li>
-<li>JSONバリデーター的には機能しない</li>
-<li>リンクをクリックして開くのではなく、即結果表示にリダイレクトさせることも可能だが使いづらい感じ</li>
-<li>UTF-8以外の文字コードのことは忘れると良い</li>
-<li>いきなり配列ではじまるJSON対策にrootというでっち上げ要素ではさんでいる</li>
-<li>JSONデータに配列が含まれる場合はitemというでっち上げ要素を並べる</li>
-<li>dataスキームのネタは<a href="http://piro.sakura.ne.jp/latest/blosxom.cgi/webtech/javascript/2005-10-05_download.htm">Latest topics &gt; JavaScriptでテキストファイルを生成してダウンロードさせる - outsider reflex</a>から</li>
-</ul>
-</body>
+    <ul>
+      <li>JSONをXML(らしき何か)に変換し、dataスキームを使ってそのデータをhrefに指定したa要素を作成する</li>
+      <li>リンクを開くと変換結果がブラウザに表示される</li>
+      <li>改行やインデントがなく読みづらいJSONデータをFirefoxの折りたたみできるXML表示機能を使って読むことができる</li>
+      <li>location.hashにURLを指定できる</li>
+      <li>Firefox 3で確認</li>
+      <li>ローカルのJSONデータに対しては別にちゃんと作る必要がある</li>
+      <li>JSONバリデーター的には機能しない</li>
+      <li>リンクをクリックして開くのではなく、即結果表示にリダイレクトさせることも可能だが使いづらい感じ</li>
+      <li>UTF-8以外の文字コードのことは忘れると良い</li>
+      <li>いきなり配列ではじまるJSON対策にrootというでっち上げ要素ではさんでいる</li>
+      <li>JSONデータに配列が含まれる場合はitemというでっち上げ要素を並べる</li>
+      <li>dataスキームのネタは<a href="http://piro.sakura.ne.jp/latest/blosxom.cgi/webtech/javascript/2005-10-05_download.htm">Latest topics &gt; JavaScriptでテキストファイルを生成してダウンロードさせる - outsider reflex</a>から</li>
+    </ul>
+  </body>
 </html>
