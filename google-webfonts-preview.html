@@ -49,7 +49,7 @@
               var fontFamily = f.familyUrl;
               $("<p/>", {
                 class: "preview",
-                style: "font-family:'" + fontFamily + "'"
+                style: "font-family:'" + fontFamily + "',sans-serif"
               }).append($("<a/>", {
                 href: "http://www.google.com/webfonts/family?family=" + fontFamily.replace(/ /g, "+")
               }).append(fontFamily)).append(": " + sampleText).appendTo(t);
