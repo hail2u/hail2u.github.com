@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="1.0">
+  <head>
+    <title>Feeds provided by hail2u.net</title>
+  </head>
+  <body>
+    <outline xmlUrl="http://feeds2.feedburner.com/4gamer-hardware" text="4Gamer.net - ハードウェア" title="4Gamer.net - ハードウェア" type="rss"/>
+    <outline xmlUrl="http://feeds2.feedburner.com/alertbox" text="Alertbox日本語版" title="Alertbox日本語版" type="rss"/>
+    <outline xmlUrl="http://feeds2.feedburner.com/buffalo-new-drivers" text="BUFFALO - 新着ドライバー" title="BUFFALO - 新着ドライバー" type="rss"/>
+    <outline xmlUrl="http://feeds2.feedburner.com/chugoku-carp-game" text="中国新聞 - カープ情報 - 試合関連" title="中国新聞 - カープ情報 - 試合関連" type="rss"/>
+    <outline xmlUrl="http://feeds2.feedburner.com/chugoku-carp-misc" text="中国新聞 - カープ情報 - 話題" title="中国新聞 - カープ情報 - 話題" type="rss"/>
+    <outline xmlUrl="http://feeds2.feedburner.com/cnn-fringe" text="CNN.co.jp : こぼれ話" title="CNN.co.jp : こぼれ話" type="rss"/>
+    <outline xmlUrl="http://feeds2.feedburner.com/hermitage-akihabara-pr" text="エルミタージュ秋葉原 - PressRelease" title="エルミタージュ秋葉原 - PressRelease" type="rss"/>
+    <outline xmlUrl="http://feeds2.feedburner.com/versionupinfo" text="OnlineSoft VersionUp.info" title="OnlineSoft VersionUp.info" type="rss"/>
+  </body>
+</opml>
