@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="ja"> 
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Firefox Add-ons</title>
+
+    <link rel="stylesheet" media="screen" href="natural.css">
+
+  </head>
+
+  <body>
+    <div id="header">
+      <h1>Firefox Add-ons</h1>
+    </div>
+
+    <div id="contents">
+      <div class="section">
+        <h2>Index</h2>
+
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li>Extensions
+            <ul>
+              <li><a href="#bookmark-all">Bookmark All</a></li>
+              <li><a href="#context-style-switcher">Context Style Switcher</a></li>
+              <li><a href="#open-profile-folder">Open Profile Folder</a></li>
+              <li><a href="#places-in-tab">Places in Tab</a></li>
+              <li><a href="#reload-tab-on-dblclick">Reload Tab On Double-Click</a></li>
+            </ul>
+          </li>
+          <li><a href="#resources">参考資料</a></li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2 id="about">About</h2>
+
+        <p>単機能なFirefoxアドオンをいくつか作っています。</p>
+
+        <p>現在は以下のような点を念頭に入れて作成しています。</p>
+
+        <ul>
+          <li>欲しいと思ったら作る</li>
+          <li>オモシロイと思ったら作る</li>
+          <li>設定する必要があまり無いモノを作る</li>
+        </ul>
+
+        <p>以下のFirefox Extensionへの感想や要望、バグ・リポート等は<a href="http://hail2u.wufoo.com/forms/feedback/">フィードバック・フォーム</a>でお報せください。</p>
+      </div>
+
+      <div class="section">
+        <h2 id="bookmark-all">Bookmark All</h2>
+
+        <p>Bookmark all opening tabs quickly without any dialog.</p>
+
+        <p>現在開いている全てのタブを、一発でまとめてブックマークします。フォルダを指定するパス(階層)やフォルダ名は自由に指定できるので</p>
+
+        <p>Firefoxの機能の一つである「すべてのタブをブックマーク」で、毎回フォルダ名を指定するのがわずらわしいので作りました。</p>
+
+        <div class="section">
+          <h3>Install</h3>
+
+          <p class="install"><a href="https://addons.mozilla.org/firefox/addon/542">Bookmark Allをインストール</a> (Add-ons for Firefoxに移動します)</p>
+        </div>
+
+        <div class="section">
+          <h3>Usage</h3>
+
+          <p>「ツール」メニューにある「Bookmark All」というメニュー項目から実行するか、<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>D</kbd>を同時に押してください。</p>
+
+          <p>ツールバーボタンも用意してあるので、ツールバーのカスタマイズから追加すればボタン一発で実行できます。</p>
+        </div>
+
+        <div class="section">
+          <h3>Settings</h3>
+
+          <dl>
+            <dt>フォルダを作成するパス</dt>
+
+            <dd>フォルダを作成するパスをスラッシュを区切り文字として指定します。値を指定しない場合は最上層に作成されます。</dd>
+            <dt>フォルダ名の頭に付ける文字列</dt>
+
+            <dd>フォルダ名の頭に付ける固定の文字列を指定します。後ろに日付けと時刻が<em>必ず</em>付きます。</dd>
+          </dl>
+        </div>
+
+        <div class="section">
+          <h3>History</h3>
+
+          <p><a href="https://addons.mozilla.org/firefox/addons/versions/542">古いバージョンのインストール</a></p>
+
+          <dl>
+            <dt>2006/05/04 1.3.1</dt>
+
+            <dd>
+              <ul>
+                <li>フォルダを作成するパスが既に存在する時にルートにフォルダが作成してしまうバグを修正</li>
+              </ul>
+            </dd>
+
+            <dt>2006/05/04 1.3</dt>
+
+            <dd>
+              <ul>
+                <li>メニュー項目の位置を「ツール」→「Web検索」の次に変更</li>
+                <li>フォルダを作成するパスの設置を追加</li>
+                <li>Firefox 3.5に対応</li>
+              </ul>
+            </dd>
+
+            <dt>2006/04/17 1.2.4</dt>
+
+            <dd>
+              <ul>
+                <li>メニュー項目を「ブックマーク」メニューから「ツール」メニューに移動</li>
+                <li>ツールバーボタンを追加</li>
+                <li>日本語ロケールを追加</li>
+                <li>XPIパッケージの構成を変更</li>
+                <li>Firefox 3に対応</li>
+              </ul>
+            </dd>
+
+            <dt>2006/09/27 1.2.3</dt>
+
+            <dd>
+              <ul>
+                <li>Firefox 2.0.0.xに対応させた</li>
+              </ul>
+            </dd>
+
+            <dt>2006/07/27 1.2.2</dt>
+
+            <dd>
+              <ul>
+                <li>Firefox 1.5.0.xに対応させた</li>
+              </ul>
+            </dd>
+
+            <dt>2005/12/04 1.2.1</dt>
+
+            <dd>
+              <ul>
+                <li>Firefox 1.5に対応させた</li>
+              </ul>
+            </dd>
+
+            <dt>2005/10/11 1.2</dt>
+
+            <dd>
+              <ul>
+                <li>Firefox 1.5 Beta xに対応させた</li>
+                <li>「ツール」メニューに追加していたメニュー項目を削除した</li>
+              </ul>
+            </dd>
+
+            <dt>2005/09/10 1.1.1</dt>
+
+            <dd>
+              <ul>
+                <li>Firefox 1.5 Beta 1に対応させた</li>
+                <li>ショートカットキーがバッティングするようになったのに対策した</li>
+              </ul>
+            </dd>
+
+            <dt>2004/12/09 1.1</dt>
+
+            <dd>
+              <ul>
+                <li>フォルダ名のPrefixを独自に設定できるようにした</li>
+              </ul>
+            </dd>
+
+            <dt>2004/12/09 1.0</dt>
+
+            <dd>
+              <ul>
+                <li>Initial release</li>
+              </ul>
+            </dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="context-style-switcher">Context Style Switcher</h2>
+
+        <p>Change Page Style via context menu or toolbar button.</p>
+
+        <p>コンテント・エリア上でのコンテキスト・メニューに、スタイルシートの切り替えメニューを追加するFirefoxアドオンです。</p>
+
+        <p>いつのまにかメイン・メニューからしかスタイル切り替えができなくなっていたので、手軽に切り替えられるように作りました。</p>
+
+        <div class="section">
+        <h3>Install</h3>
+
+          <p class="install"><a href="https://addons.mozilla.org/firefox/addon/544">Context Style Switcherをインストール</a> (Add-ons for Firefoxに移動します)</p>
+        </div>
+
+        <div class="section">
+          <h3>Usage</h3>
+
+          <p>コンテント・エリア上で右クリックしてください。すると「スタイルシート(Y)」というメニュー項目が追加されているので、そこから任意のStyleを選択するだけです。</p>
+        </div>
+
+        <div class="section">
+          <h3>Settings</h3>
+
+          <p>設定項目はありません。</p>
+        </div>
+
+        <div class="section">
+          <h3>History</h3>
+
+          <p><a href="https://addons.mozilla.org/firefox/addons/versions/544">古いバージョンのインストール</a></p>
+
+          <dl>
+            <dt>2009/11/28 1.1.2a</dt>
+
+            <dd>
+              <ul>
+                <li><code>menu</code>要素からも<code>insertbefore</code>プロパティを削除した</li>
+              </ul>
+            </dd>
+
+            <dt>2009/11/19 1.1.2</dt>
+
+            <dd>
+              <ul>
+                <li><code>menuseparator</code>要素から<code>insertbefore</code>プロパティを削除した</li>
+                <li>MPLライセンスをoverlay.xulに追加した</li>
+              </ul>
+            </dd>
+
+            <dt>2009/05/05 1.1.1</dt>
+
+            <dd>
+              <ul>
+                <li>ツールバー・ボタンのスタイルを変更</li>
+                <li>maxVersionを3.5.*に更新</li>
+                <li>日本語ロケールの追加</li>
+                <li>ツールバーボタンの追加</li>
+                <li>XPIパッケージの構成の変更</li>
+              </ul>
+            </dd>
+
+            <dt>2009/03/19 1.0.7</dt>
+
+            <dd>
+              <ul>
+                <li>Firefox 3に対応</li>
+              </ul>
+            </dd>
+
+            <dt>2006/11/08 1.0.6</dt>
+
+            <dd>
+              <ul>
+                <li>Gecko 1.9において削除される予定のメソッドからDOM標準メソッドへ変更</li>
+              </ul>
+            </dd>
+
+            <dt>2006/09/27 1.0.5</dt>
+
+            <dd>
+              <ul>
+                <li>Firefox 2に対応</li>
+              </ul>
+            </dd>
+
+            <dt>2006/07/27 1.0.4</dt>
+
+            <dd>
+              <ul>
+                <li>Firefox 1.5に対応</li>
+              </ul>
+            </dd>
+
+            <dt>2005/12/04 1.0.3</dt>
+
+            <dd>
+              <ul>
+                <li>Firefox 1.5に対応</li>
+              </ul>
+            </dd>
+
+            <dt>2005/10/11 1.0.2</dt>
+
+            <dd>
+              <ul>
+                <li>Firefox 1.5 Beta xに対応</li>
+              </ul>
+            </dd>
+
+            <dt>2005/09/10 1.0.1</dt>
+
+            <dd>
+              <ul>
+                <li>Firefox 1.5 Beta 1に対応</li>
+              </ul>
+            </dd>
+
+            <dt>2004/12/09 1.0</dt>
+
+            <dd>
+              <ul>
+                <li>Initial release</li>
+              </ul>
+            </dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="open-profile-folder">Open Profile Folder</h2>
+
+        <p>Open current profile folder from &quot;Tools&quot; menu or toolbar button.</p>
+
+        <p>現在のプロファイルのフォルダを開くFirefoxアドオンです。</p>
+
+        <p>ヒマだったので作りました。</p>
+
+        <div class="section">
+          <h3>Install</h3>
+
+          <p class="install"><a href="https://addons.mozilla.org/firefox/addon/545">Open Profile Folderをインストール</a> (Add-ons for Firefoxに移動します)</p>
+        </div>
+
+        <div class="section">
+          <h3>Usage</h3>
+
+          <p>「ツール」メニューにある「プロファイル・フォルダを開く...」というメニュー項目から実行してください。</p>
+        </div>
+
+        <div class="section">
+          <h3>Settings</h3>
+
+          <dl>
+            <dt>以下に指定したアプリケーションをフォルダを開くの使う</dt>
+
+            <dd>好みのアプリケーションでフォルダを開く機能を有効にするか無効にするかを指定します。オフにするとシステムのデフォルトのファイラーで開かれます(Linuxではうまく動きません)。</dd>
+
+            <dt>アプリケーションのパス</dt>
+
+            <dd>フォルダを開くアプリケーションのパスを<em>フルパス</em>で指定します。</dd>
+
+            <dt>起動時の引数</dt>
+
+            <dd>フォルダを開くアプリケーションにプロファイル・フォルダのパスと同時に渡す引数を指定します。プロファイル・フォルダのパスは引数の最後に加えられます。</dd>
+          </dl>
+        </div>
+
+        <div class="section">
+          <h3>History</h3>
+
+          <p><a href="https://addons.mozilla.org/firefox/addons/versions/545">古いバージョンのインストール</a></p>
+
+          <dl>
+            <dt>2009/09/30 1.3.2</dt>
+
+            <dd>
+              <ul>
+                <li>既にプロファイルをフォルダを開いていた場合、もう一回開こうとすると失敗するバグを修正</li>
+              </ul>
+            </dd>
+
+            <dt>2009/05/12 1.3.1</dt>
+
+            <dd>
+              <ul>
+                <li>アプリケーションの選択にファイル・ピッカー(ファイルを開くダイアログ)を使用するように変更</li>
+              </ul>
+            </dd>
+
+            <dt>2009/05/05 1.3</dt>
+
+            <dd>
+              <ul>
+                <li>指定したアプリケーションでフォルダを開く設定を追加</li>
+                <li>Firefox 3.5に対応</li>
+                <li>メニュー項目の位置を「ツール」→「オプション」の次へ移動</li>
+              </ul>
+            </dd>
+
+            <dt>2009/04/25 1.2</dt>
+
+            <dd>
+              <ul>
+                <li>ツールバーボタンを追加</li>
+                <li>日本語ロケールを追加</li>
+                <li>XPIパッケージの構成を変更</li>
+              </ul>
+            </dd>
+
+            <dt>2009/03/19 1.1.6</dt>
+
+            <dd>
+              <ul>
+                <li>Firefox 3に対応</li>
+              </ul>
+            </dd>
+
+            <dt>2006/09/27 1.1.5</dt>
+
+            <dd>
+              <ul>
+                <li>Firefox 2に対応</li>
+              </ul>
+            </dd>
+
+            <dt>2006/07/27 1.1.4</dt>
+
+            <dd>
+              <ul>
+                <li>Firefox 1.5に対応</li>
+              </ul>
+            </dd>
+
+            <dt>2005/12/04 1.1.3</dt>
+
+            <dd>
+              <ul>
+                <li>Firefox 1.5に対応</li>
+              </ul>
+            </dd>
+
+            <dt>2005/10/11 1.1.2</dt>
+
+            <dd>
+              <ul>
+                <li>Firefox 1.5 Beta xに対応</li>
+              </ul>
+            </dd>
+
+            <dt>2005/09/10 1.1.1</dt>
+
+            <dd>
+              <ul>
+                <li>Firefox 1.5 Beta 1に対応</li>
+              </ul>
+            </dd>
+
+            <dt>2004/12/09 1.1</dt>
+
+            <dd>
+              <ul>
+                <li>ユーザーの環境の設定にしたがってフォルダを開くように変更</li>
+              </ul>
+            </dd>
+
+            <dt>2004/12/09 1.0</dt>
+
+            <dd>
+              <ul>
+                <li>Initial release</li>
+              </ul>
+            </dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="places-in-tab">Places in Tab</h2>
+
+        <p>Display your bookmarks or pages you've viewed recently in tab instead of window like Safari.</p>
+
+        <p>通常はウィンドウで開いてしまう「履歴とブックマークの管理」をSafariのようにタブで開くFirefox Extensionです。</p>
+
+        <div class="section">
+          <h3>Install</h3>
+
+          <p class="install"><a href="https://addons.mozilla.org/firefox/addon/14575">Places in Tabをインストール</a> (Add-ons for Firefoxに移動します)</p>
+        </div>
+
+        <div class="section">
+          <h3>Usage</h3>
+
+          <p>「ブックマーク」メニューにある「ブックマークの管理をタブに表示」というメニュー項目または「履歴」メニューにある「すべての履歴をタブに表示」というメニュー項目から実行するか、<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>B</kbd>または<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>H</kbd>を同時に押してください。</p>
+
+          <p>メニュー項目やツールバーボタンをホイールクリックすると新しいタブで開きます。</p>
+        </div>
+
+        <div class="section">
+          <h3>Settings</h3>
+
+          <dl>
+            <dt>デフォルトのメニュー項目を隠す</dt>
+
+            <dd>チェックを入れると「履歴」メニューや「ブックマーク」メニューに元々ある、ウィンドウで「履歴とブックマークの管理」を開くメニュー項目を非表示にします。</dd>
+          </dl>
+        </div>
+
+        <div class="section">
+          <h3>History</h3>
+
+          <p><a href="https://addons.mozilla.org/firefox/addons/versions/14575">古いバージョンのインストール</a></p>
+
+          <dl>
+            <dt>2009/11/21 1.0.2</dt>
+
+            <dd>
+              <ul>
+                <li>グローバル名前空間の汚染を修正した</li>
+              </ul>
+            </dd>
+
+            <dt>2009/10/22 1.0.1</dt>
+
+            <dd>
+              <ul>
+                <li>時々ダイアログを閉じることができなかったバグを修正</li>
+                <li>すべてのブラウザ・ウィンドウに設定を反映するように変更</li>
+              </ul>
+            </dd>
+
+            <dt>2009/10/20 1.0</dt>
+
+            <dd>
+              <ul>
+                <li>ツールバーボタンを追加</li>
+              </ul>
+            </dd>
+
+            <dt>2009/10/04 0.4</dt>
+
+            <dd>
+              <ul>
+                <li>ブックマーク等をドラッグ&amp;ドロップする際にchromeエラーがで出ていたバグを修正</li>
+                <li>タブで開いた履歴とブックマークの管理の「管理」メニューから「閉じる」を削除</li>
+                <li>デフォルトのメニューを隠すオプションを追加</li>
+              </ul>
+            </dd>
+
+            <dt>2009/09/28 0.1</dt>
+
+            <dd>
+              <ul>
+                <li>Initial beta release</li>
+              </ul>
+            </dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="reload-tab-on-dblclick">Reload Tab On Double-Click</h2>
+
+        <p>Reload tab when double-clicking on tab.</p>
+
+        <p>タブ上でダブルクリックすると、そのタブで表示しているページをリロードするFirefox Extensionです。</p>
+
+        <p>ヒマだったので作りました。</p>
+
+        <div class="section">
+          <h3>Install</h3>
+
+          <p class="install"><a href="https://addons.mozilla.org/firefox/addon/546">Reload Tab On Double-Clickをインストール</a> (Add-ons for Firefoxに移動します)</p>
+        </div>
+
+        <div class="section">
+          <h3>Usage</h3>
+
+          <p>タブ上で左ダブル・クリックしてください。それだけです。<kbd>Shift</kbd>を押しながら左ダブル・クリックした場合はキャッシュを無視してリロードします。</p>
+        </div>
+
+        <div class="section">
+          <h3>Settings</h3>
+
+          <p>設定項目はありません。</p>
+        </div>
+
+        <div class="section">
+          <h3>History</h3>
+
+          <p><a href="https://addons.mozilla.org/firefox/addons/versions/546">古いバージョンのインストール</a></p>
+
+          <dl>
+            <dt>2009/07/16 1.1</dt>
+
+            <dd>
+              <ul>
+                <li>XPathを使ってより正確にダブルクリックされたノードをチェックするように修正(Thanks to Piro)</li>
+              </ul>
+            </dd>
+
+            <dt>2009/04/25 1.1</dt>
+
+            <dd>
+              <ul>
+                <li>XPIパッケージの構成を変更</li>
+                <li>一から書き直し</li>
+              </ul>
+            </dd>
+
+            <dt>2009/03/19 1.0.7</dt>
+
+            <dd>
+              <ul>
+                <li>Firefox 3に対応</li>
+              </ul>
+            </dd>
+
+            <dt>2006/09/27 1.0.6</dt>
+
+            <dd>
+              <ul>
+                <li>Firefox 2に対応</li>
+              </ul>
+            </dd>
+
+            <dt>2006/07/27 1.0.5</dt>
+
+            <dd>
+              <ul>
+                <li>Firefox 1.5に対応</li>
+              </ul>
+            </dd>
+
+            <dt>2005/12/04 1.0.4</dt>
+
+            <dd>
+              <ul>
+                <li>Firefox 1.5に対応</li>
+              </ul>
+            </dd>
+
+            <dt>2005/10/11 1.0.3</dt>
+
+            <dd>
+              <ul>
+                <li>Firefox 1.5 Beta xに対応</li>
+              </ul>
+            </dd>
+
+            <dt>2005/09/10 1.0.2</dt>
+
+            <dd>
+              <ul>
+                <li>Firefox 1.5 Beta 1に対応</li>
+              </ul>
+            </dd>
+
+            <dt>2004/12/10 1.0.1</dt>
+
+            <dd>
+              <ul>
+                <li>タブではないところで左ダブル・クリックしてもアクティブなタブがリロードされてしまうのを修正</li>
+              </ul>
+            </dd>
+
+            <dt>2004/12/09 1.0</dt>
+
+            <dd>
+              <ul>
+                <li>Initial release</li>
+              </ul>
+            </dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="resources">参考資料</h2>
+
+        <ul>
+          <li><a href="https://developer.mozilla.org/Ja">Mozilla Developer Center</a></li>
+          <li><a href="https://developer.mozilla.org/ja/Extensions">拡張機能 - MDC</a></li>
+          <li><a href="https://developer.mozilla.org/ja/XUL_Tutorial">XUL チュートリアル - MDC</a></li>
+          <li><a href="https://developer.mozilla.org/ja/Code_snippets">Code snippets - MDC</a></li>
+          <li><a href="http://mxr.mozilla.org/">Mozilla Cross-Reference</a></li>
+          <li><a href="http://extensions.roachfiend.com/howto.php">How to write Firefox extensions</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
