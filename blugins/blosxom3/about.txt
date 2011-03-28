@@ -1,0 +1,5 @@
+These plugins:
+* are written by UTF-8 without BOM.
+* work with Blosxom 3.0+3i (or later, I hope).
+* have a documentation by English, if works under any environment.
+* makes no warranty.
