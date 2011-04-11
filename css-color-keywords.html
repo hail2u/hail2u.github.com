@@ -248,7 +248,7 @@
             var c = $(this).css("background-color");
             var b = $("body");
 
-            if (calcurateBrightness(c) > 127.5) {
+            if (calculateBrightness(c) > 127.5) {
               b.removeClass("dark");
               b.addClass("light");
             } else {
@@ -269,7 +269,7 @@
           var sample = $(this);
           var bgColor = sample.css("background-color");
 
-          if (calcurateBrightness(bgColor) > 127.5) {
+          if (calculateBrightness(bgColor) > 127.5) {
             sample.addClass("light");
           } else {
             sample.addClass("dark");
