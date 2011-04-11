@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>CSS Color Keywords</title>
+
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz">
+    <style>
+      body {
+        font-family: "Georgia", serif;
+      }
+
+      .light {
+        color: rgb(0, 0, 0);
+        text-shadow: 0 0 32px rgba(0, 0, 0, 0.5);
+      }
+
+      .dark {
+        color: rgb(255, 255, 255);
+        text-shadow: 0 0 32px rgba(255, 255, 255, 0.5);
+      }
+
+      h1 {
+        margin: 32px auto;
+        width: 960px;
+        font-family: "Yanone Kaffeesatz", sans-serif;
+        font-size: 96px;
+        text-align: center;
+        -webkit-transform: rotate(-3deg);
+      }
+
+      #samples {
+        margin: 32px auto;
+        width: 1008px;
+        zoom: 1;
+      }
+    
+      #samples:before, #samples:after {
+        display: block;
+        height: 0;
+        visibility: hidden;
+        content: "\0020";
+      }
+
+      #samples:after {
+        clear: both;
+      }
+
+      #samples .color-sample {
+        margin: 8px;
+        padding: 0;
+        float: left;
+        width: 312px;
+        height: 172px;
+        line-height: 172px;
+        font-family: "Yanone Kaffeesatz", sans-serif;
+        font-size: 32px;
+        text-align: center;
+        text-decoration: none;
+        text-transform: capitalize;
+        cursor: pointer;
+      }
+
+      .dark .color-sample {
+        box-shadow: 0 0 16px 0 rgba(255, 255, 255, 0.5);
+      }
+
+      .light .color-sample {
+        box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.5);
+      }
+
+      #samples .dark {
+        border: 4px solid rgb(255, 255, 255);
+      }
+
+      #samples .light {
+        border: 4px solid rgb(0, 0, 0);
+      }
+
+      address {
+        margin: 32px auto;
+        width: 1008px;
+        font-style: normal;
+        text-align: center;
+      }
+    </style>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script>
+      var colors = [
+        "AliceBlue",
+        "AntiqueWhite",
+        "Aqua",
+        "Aquamarine",
+        "Azure",
+        "Beige",
+        "Bisque",
+        "Black",
+        "BlanchedAlmond",
+        "Blue",
+        "BlueViolet",
+        "Brown",
+        "BurlyWood",
+        "CadetBlue",
+        "Chartreuse",
+        "Chocolate",
+        "Coral",
+        "CornflowerBlue",
+        "Cornsilk",
+        "Crimson",
+        "Cyan",
+        "DarkBlue",
+        "DarkCyan",
+        "DarkGoldenrod",
+        "DarkGray",
+        "DarkGreen",
+        "DarkKhaki",
+        "DarkMagenta",
+        "DarkOliveGreen",
+        "DarkOrange",
+        "DarkOrchid",
+        "DarkRed",
+        "DarkSalmon",
+        "DarkSeaGreen",
+        "DarkSlateBlue",
+        "DarkSlateGray",
+        "DarkTurquoise",
+        "DarkViolet",
+        "DeepPink",
+        "DeepSkyBlue",
+        "DimGray",
+        "DodgerBlue",
+        "FireBrick",
+        "FloralWhite",
+        "ForestGreen",
+        "Fuchsia",
+        "Gainsboro",
+        "GhostWhite",
+        "Gold",
+        "Goldenrod",
+        "Gray",
+        "Green",
+        "GreenYellow",
+        "Honeydew",
+        "HotPink",
+        "IndianRed",
+        "Indigo",
+        "Ivory",
+        "Khaki",
+        "Lavender",
+        "LavenderBlush",
+        "LawnGreen",
+        "LemonChiffon",
+        "LightBlue",
+        "LightCoral",
+        "LightCyan",
+        "LightGoldenrodYellow",
+        "LightGreen",
+        "LightGray",
+        "LightPink",
+        "LightSalmon",
+        "LightSeaGreen",
+        "LightSkyBlue",
+        "LightSlateGray",
+        "LightSteelBlue",
+        "LightYellow",
+        "Lime",
+        "LimeGreen",
+        "Linen",
+        "Magenta",
+        "Maroon",
+        "MediumAquamarine",
+        "MediumBlue",
+        "MediumOrchid",
+        "MediumPurple",
+        "MediumSeaGreen",
+        "MediumSlateBlue",
+        "MediumSpringGreen",
+        "MediumTurquoise",
+        "MediumVioletRed",
+        "MidnightBlue",
+        "MintCream",
+        "MistyRose",
+        "Moccasin",
+        "NavajoWhite",
+        "Navy",
+        "OldLace",
+        "Olive",
+        "OliveDrab",
+        "Orange",
+        "OrangeRed",
+        "Orchid",
+        "PaleGoldenrod",
+        "PaleGreen",
+        "PaleTurquoise",
+        "PaleVioletRed",
+        "PapayaWhip",
+        "PeachPuff",
+        "Peru",
+        "Pink",
+        "Plum",
+        "PowderBlue",
+        "Purple",
+        "Red",
+        "RosyBrown",
+        "RoyalBlue",
+        "SaddleBrown",
+        "Salmon",
+        "SandyBrown",
+        "SeaGreen",
+        "Seashell",
+        "Sienna",
+        "Silver",
+        "SkyBlue",
+        "SlateBlue",
+        "SlateGray",
+        "Snow",
+        "SpringGreen",
+        "SteelBlue",
+        "Tan",
+        "Teal",
+        "Thistle",
+        "Tomato",
+        "Turquoise",
+        "Violet",
+        "Wheat",
+        "White",
+        "WhiteSmoke",
+        "Yellow",
+        "YellowGreen"
+      ];
+
+      $(function () {
+        var t = $("#samples").empty();
+        var l = colors.length;
+        var r = Math.floor(Math.random() * l) + 1;
+
+        for (var i = 0; i < l; i++) {
+          var color = colors[i];
+          var sample = $("<div/>", {
+            style: "background-color: " + colors[i]
+          }).addClass("color-sample").append(color).click(function () {
+            var c = $(this).css("background-color");
+            var b = $("body");
+
+            if (calcurateBrightness(c) > 127.5) {
+              b.removeClass("dark");
+              b.addClass("light");
+            } else {
+              b.removeClass("light");
+              b.addClass("dark");
+            }
+
+            b.css("background-color", c); 
+          });
+          sample.appendTo(t);
+
+          if (i === r) {
+            sample.click();
+          }
+        }
+
+        $("#samples .color-sample").each(function () {
+          var sample = $(this);
+          var bgColor = getComputedStyle(this, null).getPropertyValue("background-color");
+
+          if (calcurateBrightness(bgColor) > 127.5) {
+            sample.addClass("light");
+          } else {
+            sample.addClass("dark");
+          }
+        });
+      });
+
+      function calcurateBrightness (color) {
+        var c = color.match(/rgb\((\d{1,3}), (\d{1,3}), (\d{1,3})\)/);
+        var b = ((c[1] * 299) + (c[2] * 587) + (c[3] * 114)) / 1000;
+
+        return b;
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>CSS Color Keywords</h1>
+    </header>
+
+    <div id="samples">It's time to use CSS color keywords.</div>
+
+    <footer>
+      <address>&copy; 2011 Kyo Nagashima</address>
+    </footer>
+  </body>
+</html>
