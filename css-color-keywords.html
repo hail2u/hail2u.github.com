@@ -16,18 +16,18 @@
       .light {
         color: rgb(0, 0, 0);
         background-image: url("./floral-dark.png");
-        text-shadow: 0 0 32px rgba(0, 0, 0, 0.5);
+        text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
       }
 
       .dark {
         color: rgb(255, 255, 255);
         background-image: url("./floral-light.png");
-        text-shadow: 0 0 32px rgba(255, 255, 255, 0.5);
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
       }
 
       h1 {
-        margin: 50px auto;
-        width: 810px;
+        margin: 32px auto;
+        width: 792px;
         font-family: "Yanone Kaffeesatz", sans-serif;
         font-size: 96px;
         text-align: center;
@@ -39,8 +39,8 @@
       }
 
       #samples {
-        margin: 50px auto;
-        width: 810px;
+        margin: 32px auto;
+        width: 792px;
         zoom: 1;
       }
     
@@ -56,13 +56,14 @@
       }
 
       #samples .color-sample {
-        margin: 5px;
+        margin: 4px;
         padding: 0;
         float: left;
         width: 250px;
-        height: 250px;
-        line-height: 250px;
+        height: 138px;
+        line-height: 138px;
         background-image: url("./different.png");
+        background-position: center center;
         font-family: "Yanone Kaffeesatz", sans-serif;
         font-size: 32px;
         text-align: center;
@@ -80,16 +81,16 @@
       }
 
       #samples .dark {
-        border: 5px solid rgb(255, 255, 255);
+        border: 3px solid rgb(255, 255, 255);
       }
 
       #samples .light {
-        border: 5px solid rgb(0, 0, 0);
+        border: 3px solid rgb(0, 0, 0);
       }
 
       address {
-        margin: 50px auto;
-        width: 810px;
+        margin: 32px auto;
+        width: 792px;
         font-style: normal;
         text-align: center;
       }
@@ -241,6 +242,7 @@
       ];
 
       $(function () {
+        colors = shuffle(colors);
         var t = $("#samples").empty();
         var l = colors.length;
         var r = Math.floor(Math.random() * l) + 1;
@@ -281,6 +283,20 @@
           }
         });
       });
+
+      function shuffle (list) {
+        var i = list.length;
+
+        while (--i) {
+          var j = Math.floor(Math.random() * (i + 1));
+          if (i == j) continue;
+          var k = list[i];
+          list[i] = list[j];
+          list[j] = k;
+        }
+
+        return list;
+      }
 
       function calculateBrightness (color) {
         var c = [];
