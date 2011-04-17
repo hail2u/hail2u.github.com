@@ -217,7 +217,7 @@
         var color = colors[Math.floor(Math.random() * colors.length) + 1];
         $("#color-values header h1").text(color.name);
         $("#color-values p").text(color.rgb);
-        var b = $("body").css("background-color", color.rgb); 
+        var b = $("body").css("background-color", color.rgb);
 
         if (calculateBrightness(color.rgb) > 127.5) {
           b.addClass("light");
