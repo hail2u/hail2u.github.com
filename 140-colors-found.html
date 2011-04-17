@@ -5,7 +5,8 @@
 
     <title>140 Colors Found</title>
 
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Vollkorn">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Vollkorn:regular">
     <style>
       html {
         width: 100%;
@@ -13,8 +14,6 @@
       }
 
       body {
-        margin: 0;
-        padding: 0;
         display: table;
         width: 100%;
         height: 100%;
@@ -37,7 +36,6 @@
       }
 
       body > header > h1 {
-        margin: 0;
         position: absolute;
         top: 1em;
         left: 1em;
@@ -54,21 +52,19 @@
 
       #color-values header h1 {
         margin: 0 0 24px 0;
+        font-weight: normal;
         font-size: 96px;
       }
 
       #color-values p {
-        margin: 0;
         font-size: 48px;
       }
 
       body > footer > address {
-        margin: 0;
         position: absolute;
         right: 1em;
         bottom: 1em;
         font-size: 18px;
-        font-style: normal;
       }
     </style>
 
@@ -231,14 +227,7 @@
       });
 
       function calculateBrightness (color) {
-        var c = [];
-
-        if (color.match(/^#/)) {
-          c = color.match(/#(.{2})(.{2})(.{2})/);
-          color = "rgb(" + parseInt(c[1], 16) + ", " + parseInt(c[2], 16) + ", " + parseInt(c[3], 16) + ")";
-        }
-
-        c = color.match(/rgb\((\d{1,3}), (\d{1,3}), (\d{1,3})\)/);
+        var c = color.match(/rgb\((\d{1,3}), (\d{1,3}), (\d{1,3})\)/);
         var b = ((c[1] * 299) + (c[2] * 587) + (c[3] * 114)) / 1000;
 
         return b;
