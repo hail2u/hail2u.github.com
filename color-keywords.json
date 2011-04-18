@@ -1,0 +1,702 @@
+var colorKeywords = {
+  "AliceBlue": {
+    "hex": "#f0f8ff",
+    "rgb": "rgb(240, 248, 255)",
+    "hsl": "hsl(208, 100.0%, 97.06%)"
+  },
+  "AntiqueWhite": {
+    "hex": "#faebd7",
+    "rgb": "rgb(250, 235, 215)",
+    "hsl": "hsl(34, 77.78%, 91.18%)"
+  },
+  "Aqua": {
+    "hex": "#00ffff",
+    "rgb": "rgb(0, 255, 255)",
+    "hsl": "hsl(180, 100.0%, 50.00%)"
+  },
+  "Aquamarine": {
+    "hex": "#7fffd4",
+    "rgb": "rgb(127, 255, 212)",
+    "hsl": "hsl(160, 100.0%, 74.90%)"
+  },
+  "Azure": {
+    "hex": "#f0ffff",
+    "rgb": "rgb(240, 255, 255)",
+    "hsl": "hsl(180, 100.0%, 97.06%)"
+  },
+  "Beige": {
+    "hex": "#f5f5dc",
+    "rgb": "rgb(245, 245, 220)",
+    "hsl": "hsl(60, 55.56%, 91.18%)"
+  },
+  "Bisque": {
+    "hex": "#ffe4c4",
+    "rgb": "rgb(255, 228, 196)",
+    "hsl": "hsl(33, 100.0%, 88.43%)"
+  },
+  "Black": {
+    "hex": "#000000",
+    "rgb": "rgb(0, 0, 0)",
+    "hsl": "hsl(0, 0.000%, 0.000%)"
+  },
+  "BlanchedAlmond": {
+    "hex": "#ffebcd",
+    "rgb": "rgb(255, 235, 205)",
+    "hsl": "hsl(36, 100.0%, 90.20%)"
+  },
+  "Blue": {
+    "hex": "#0000ff",
+    "rgb": "rgb(0, 0, 255)",
+    "hsl": "hsl(240, 100.0%, 50.00%)"
+  },
+  "BlueViolet": {
+    "hex": "#8a2be2",
+    "rgb": "rgb(138, 43, 226)",
+    "hsl": "hsl(271, 75.93%, 52.75%)"
+  },
+  "Brown": {
+    "hex": "#a52a2a",
+    "rgb": "rgb(165, 42, 42)",
+    "hsl": "hsl(0, 59.42%, 40.59%)"
+  },
+  "BurlyWood": {
+    "hex": "#deb887",
+    "rgb": "rgb(222, 184, 135)",
+    "hsl": "hsl(34, 56.86%, 70.00%)"
+  },
+  "CadetBlue": {
+    "hex": "#5f9ea0",
+    "rgb": "rgb(95, 158, 160)",
+    "hsl": "hsl(182, 25.49%, 50.00%)"
+  },
+  "Chartreuse": {
+    "hex": "#7fff00",
+    "rgb": "rgb(127, 255, 0)",
+    "hsl": "hsl(90, 100.0%, 50.00%)"
+  },
+  "Chocolate": {
+    "hex": "#d2691e",
+    "rgb": "rgb(210, 105, 30)",
+    "hsl": "hsl(25, 75.00%, 47.06%)"
+  },
+  "Coral": {
+    "hex": "#ff7f50",
+    "rgb": "rgb(255, 127, 80)",
+    "hsl": "hsl(16, 100.0%, 65.69%)"
+  },
+  "CornflowerBlue": {
+    "hex": "#6495ed",
+    "rgb": "rgb(100, 149, 237)",
+    "hsl": "hsl(219, 79.19%, 66.08%)"
+  },
+  "Cornsilk": {
+    "hex": "#fff8dc",
+    "rgb": "rgb(255, 248, 220)",
+    "hsl": "hsl(48, 100.0%, 93.14%)"
+  },
+  "Crimson": {
+    "hex": "#dc143c",
+    "rgb": "rgb(220, 20, 60)",
+    "hsl": "hsl(348, 83.33%, 47.06%)"
+  },
+  "Cyan": {
+    "hex": "#00ffff",
+    "rgb": "rgb(0, 255, 255)",
+    "hsl": "hsl(180, 100.0%, 50.00%)"
+  },
+  "DarkBlue": {
+    "hex": "#00008b",
+    "rgb": "rgb(0, 0, 139)",
+    "hsl": "hsl(240, 100.0%, 27.25%)"
+  },
+  "DarkCyan": {
+    "hex": "#008b8b",
+    "rgb": "rgb(0, 139, 139)",
+    "hsl": "hsl(180, 100.0%, 27.25%)"
+  },
+  "DarkGoldenrod": {
+    "hex": "#b8860b",
+    "rgb": "rgb(184, 134, 11)",
+    "hsl": "hsl(43, 88.72%, 38.24%)"
+  },
+  "DarkGray": {
+    "hex": "#a9a9a9",
+    "rgb": "rgb(169, 169, 169)",
+    "hsl": "hsl(0, 0.000%, 66.27%)"
+  },
+  "DarkGreen": {
+    "hex": "#006400",
+    "rgb": "rgb(0, 100, 0)",
+    "hsl": "hsl(120, 100.0%, 19.61%)"
+  },
+  "DarkKhaki": {
+    "hex": "#bdb76b",
+    "rgb": "rgb(189, 183, 107)",
+    "hsl": "hsl(56, 38.32%, 58.04%)"
+  },
+  "DarkMagenta": {
+    "hex": "#8b008b",
+    "rgb": "rgb(139, 0, 139)",
+    "hsl": "hsl(300, 100.0%, 27.25%)"
+  },
+  "DarkOliveGreen": {
+    "hex": "#556b2f",
+    "rgb": "rgb(85, 107, 47)",
+    "hsl": "hsl(82, 38.96%, 30.20%)"
+  },
+  "DarkOrange": {
+    "hex": "#ff8c00",
+    "rgb": "rgb(255, 140, 0)",
+    "hsl": "hsl(33, 100.0%, 50.00%)"
+  },
+  "DarkOrchid": {
+    "hex": "#9932cc",
+    "rgb": "rgb(153, 50, 204)",
+    "hsl": "hsl(280, 60.63%, 49.80%)"
+  },
+  "DarkRed": {
+    "hex": "#8b0000",
+    "rgb": "rgb(139, 0, 0)",
+    "hsl": "hsl(0, 100.0%, 27.25%)"
+  },
+  "DarkSalmon": {
+    "hex": "#e9967a",
+    "rgb": "rgb(233, 150, 122)",
+    "hsl": "hsl(15, 71.61%, 69.61%)"
+  },
+  "DarkSeaGreen": {
+    "hex": "#8fbc8f",
+    "rgb": "rgb(143, 188, 143)",
+    "hsl": "hsl(120, 25.14%, 64.90%)"
+  },
+  "DarkSlateBlue": {
+    "hex": "#483d8b",
+    "rgb": "rgb(72, 61, 139)",
+    "hsl": "hsl(248, 39.00%, 39.22%)"
+  },
+  "DarkSlateGray": {
+    "hex": "#2f4f4f",
+    "rgb": "rgb(47, 79, 79)",
+    "hsl": "hsl(180, 25.40%, 24.71%)"
+  },
+  "DarkTurquoise": {
+    "hex": "#00ced1",
+    "rgb": "rgb(0, 206, 209)",
+    "hsl": "hsl(181, 100.0%, 40.98%)"
+  },
+  "DarkViolet": {
+    "hex": "#9400d3",
+    "rgb": "rgb(148, 0, 211)",
+    "hsl": "hsl(282, 100.0%, 41.37%)"
+  },
+  "DeepPink": {
+    "hex": "#ff1493",
+    "rgb": "rgb(255, 20, 147)",
+    "hsl": "hsl(328, 100.0%, 53.92%)"
+  },
+  "DeepSkyBlue": {
+    "hex": "#00bfff",
+    "rgb": "rgb(0, 191, 255)",
+    "hsl": "hsl(195, 100.0%, 50.00%)"
+  },
+  "DimGray": {
+    "hex": "#696969",
+    "rgb": "rgb(105, 105, 105)",
+    "hsl": "hsl(0, 0.000%, 41.18%)"
+  },
+  "DodgerBlue": {
+    "hex": "#1e90ff",
+    "rgb": "rgb(30, 144, 255)",
+    "hsl": "hsl(210, 100.0%, 55.88%)"
+  },
+  "FireBrick": {
+    "hex": "#b22222",
+    "rgb": "rgb(178, 34, 34)",
+    "hsl": "hsl(0, 67.92%, 41.57%)"
+  },
+  "FloralWhite": {
+    "hex": "#fffaf0",
+    "rgb": "rgb(255, 250, 240)",
+    "hsl": "hsl(40, 100.0%, 97.06%)"
+  },
+  "ForestGreen": {
+    "hex": "#228b22",
+    "rgb": "rgb(34, 139, 34)",
+    "hsl": "hsl(120, 60.69%, 33.92%)"
+  },
+  "Fuchsia": {
+    "hex": "#ff00ff",
+    "rgb": "rgb(255, 0, 255)",
+    "hsl": "hsl(300, 100.0%, 50.00%)"
+  },
+  "Gainsboro": {
+    "hex": "#dcdcdc",
+    "rgb": "rgb(220, 220, 220)",
+    "hsl": "hsl(0, 0.000%, 86.27%)"
+  },
+  "GhostWhite": {
+    "hex": "#f8f8ff",
+    "rgb": "rgb(248, 248, 255)",
+    "hsl": "hsl(240, 100.0%, 98.63%)"
+  },
+  "Gold": {
+    "hex": "#ffd700",
+    "rgb": "rgb(255, 215, 0)",
+    "hsl": "hsl(51, 100.0%, 50.00%)"
+  },
+  "Goldenrod": {
+    "hex": "#daa520",
+    "rgb": "rgb(218, 165, 32)",
+    "hsl": "hsl(43, 74.40%, 49.02%)"
+  },
+  "Gray": {
+    "hex": "#808080",
+    "rgb": "rgb(128, 128, 128)",
+    "hsl": "hsl(0, 0.000%, 50.20%)"
+  },
+  "Green": {
+    "hex": "#008000",
+    "rgb": "rgb(0, 128, 0)",
+    "hsl": "hsl(120, 100.0%, 25.10%)"
+  },
+  "GreenYellow": {
+    "hex": "#adff2f",
+    "rgb": "rgb(173, 255, 47)",
+    "hsl": "hsl(84, 100.0%, 59.22%)"
+  },
+  "Honeydew": {
+    "hex": "#f0fff0",
+    "rgb": "rgb(240, 255, 240)",
+    "hsl": "hsl(120, 100.0%, 97.06%)"
+  },
+  "HotPink": {
+    "hex": "#ff69b4",
+    "rgb": "rgb(255, 105, 180)",
+    "hsl": "hsl(330, 100.0%, 70.59%)"
+  },
+  "IndianRed": {
+    "hex": "#cd5c5c",
+    "rgb": "rgb(205, 92, 92)",
+    "hsl": "hsl(0, 53.05%, 58.24%)"
+  },
+  "Indigo": {
+    "hex": "#4b0082",
+    "rgb": "rgb(75, 0, 130)",
+    "hsl": "hsl(275, 100.0%, 25.49%)"
+  },
+  "Ivory": {
+    "hex": "#fffff0",
+    "rgb": "rgb(255, 255, 240)",
+    "hsl": "hsl(60, 100.0%, 97.06%)"
+  },
+  "Khaki": {
+    "hex": "#f0e68c",
+    "rgb": "rgb(240, 230, 140)",
+    "hsl": "hsl(54, 76.92%, 74.51%)"
+  },
+  "Lavender": {
+    "hex": "#e6e6fa",
+    "rgb": "rgb(230, 230, 250)",
+    "hsl": "hsl(240, 66.67%, 94.12%)"
+  },
+  "LavenderBlush": {
+    "hex": "#fff0f5",
+    "rgb": "rgb(255, 240, 245)",
+    "hsl": "hsl(340, 100.0%, 97.06%)"
+  },
+  "LawnGreen": {
+    "hex": "#7cfc00",
+    "rgb": "rgb(124, 252, 0)",
+    "hsl": "hsl(90, 100.0%, 49.41%)"
+  },
+  "LemonChiffon": {
+    "hex": "#fffacd",
+    "rgb": "rgb(255, 250, 205)",
+    "hsl": "hsl(54, 100.0%, 90.20%)"
+  },
+  "LightBlue": {
+    "hex": "#add8e6",
+    "rgb": "rgb(173, 216, 230)",
+    "hsl": "hsl(195, 53.27%, 79.02%)"
+  },
+  "LightCoral": {
+    "hex": "#f08080",
+    "rgb": "rgb(240, 128, 128)",
+    "hsl": "hsl(0, 78.87%, 72.16%)"
+  },
+  "LightCyan": {
+    "hex": "#e0ffff",
+    "rgb": "rgb(224, 255, 255)",
+    "hsl": "hsl(180, 100.0%, 93.92%)"
+  },
+  "LightGoldenrodYellow": {
+    "hex": "#fafad2",
+    "rgb": "rgb(250, 250, 210)",
+    "hsl": "hsl(60, 80.00%, 90.20%)"
+  },
+  "LightGreen": {
+    "hex": "#90ee90",
+    "rgb": "rgb(144, 238, 144)",
+    "hsl": "hsl(120, 73.44%, 74.90%)"
+  },
+  "LightGray": {
+    "hex": "#d3d3d3",
+    "rgb": "rgb(211, 211, 211)",
+    "hsl": "hsl(0, 0.000%, 82.75%)"
+  },
+  "LightPink": {
+    "hex": "#ffb6c1",
+    "rgb": "rgb(255, 182, 193)",
+    "hsl": "hsl(351, 100.0%, 85.69%)"
+  },
+  "LightSalmon": {
+    "hex": "#ffa07a",
+    "rgb": "rgb(255, 160, 122)",
+    "hsl": "hsl(17, 100.0%, 73.92%)"
+  },
+  "LightSeaGreen": {
+    "hex": "#20b2aa",
+    "rgb": "rgb(32, 178, 170)",
+    "hsl": "hsl(177, 69.52%, 41.18%)"
+  },
+  "LightSkyBlue": {
+    "hex": "#87cefa",
+    "rgb": "rgb(135, 206, 250)",
+    "hsl": "hsl(203, 92.00%, 75.49%)"
+  },
+  "LightSlateGray": {
+    "hex": "#778899",
+    "rgb": "rgb(119, 136, 153)",
+    "hsl": "hsl(210, 14.29%, 53.33%)"
+  },
+  "LightSteelBlue": {
+    "hex": "#b0c4de",
+    "rgb": "rgb(176, 196, 222)",
+    "hsl": "hsl(214, 41.07%, 78.04%)"
+  },
+  "LightYellow": {
+    "hex": "#ffffe0",
+    "rgb": "rgb(255, 255, 224)",
+    "hsl": "hsl(60, 100.0%, 93.92%)"
+  },
+  "Lime": {
+    "hex": "#00ff00",
+    "rgb": "rgb(0, 255, 0)",
+    "hsl": "hsl(120, 100.0%, 50.00%)"
+  },
+  "LimeGreen": {
+    "hex": "#32cd32",
+    "rgb": "rgb(50, 205, 50)",
+    "hsl": "hsl(120, 60.78%, 50.00%)"
+  },
+  "Linen": {
+    "hex": "#faf0e6",
+    "rgb": "rgb(250, 240, 230)",
+    "hsl": "hsl(30, 66.67%, 94.12%)"
+  },
+  "Magenta": {
+    "hex": "#ff00ff",
+    "rgb": "rgb(255, 0, 255)",
+    "hsl": "hsl(300, 100.0%, 50.00%)"
+  },
+  "Maroon": {
+    "hex": "#800000",
+    "rgb": "rgb(128, 0, 0)",
+    "hsl": "hsl(0, 100.0%, 25.10%)"
+  },
+  "MediumAquamarine": {
+    "hex": "#66cdaa",
+    "rgb": "rgb(102, 205, 170)",
+    "hsl": "hsl(160, 50.74%, 60.20%)"
+  },
+  "MediumBlue": {
+    "hex": "#0000cd",
+    "rgb": "rgb(0, 0, 205)",
+    "hsl": "hsl(240, 100.0%, 40.20%)"
+  },
+  "MediumOrchid": {
+    "hex": "#ba55d3",
+    "rgb": "rgb(186, 85, 211)",
+    "hsl": "hsl(288, 58.88%, 58.04%)"
+  },
+  "MediumPurple": {
+    "hex": "#9370db",
+    "rgb": "rgb(147, 112, 219)",
+    "hsl": "hsl(260, 59.78%, 64.90%)"
+  },
+  "MediumSeaGreen": {
+    "hex": "#3cb371",
+    "rgb": "rgb(60, 179, 113)",
+    "hsl": "hsl(147, 49.79%, 46.86%)"
+  },
+  "MediumSlateBlue": {
+    "hex": "#7b68ee",
+    "rgb": "rgb(123, 104, 238)",
+    "hsl": "hsl(249, 79.76%, 67.06%)"
+  },
+  "MediumSpringGreen": {
+    "hex": "#00fa9a",
+    "rgb": "rgb(0, 250, 154)",
+    "hsl": "hsl(157, 100.0%, 49.02%)"
+  },
+  "MediumTurquoise": {
+    "hex": "#48d1cc",
+    "rgb": "rgb(72, 209, 204)",
+    "hsl": "hsl(178, 59.83%, 55.10%)"
+  },
+  "MediumVioletRed": {
+    "hex": "#c71585",
+    "rgb": "rgb(199, 21, 133)",
+    "hsl": "hsl(322, 80.91%, 43.14%)"
+  },
+  "MidnightBlue": {
+    "hex": "#191970",
+    "rgb": "rgb(25, 25, 112)",
+    "hsl": "hsl(240, 63.50%, 26.86%)"
+  },
+  "MintCream": {
+    "hex": "#f5fffa",
+    "rgb": "rgb(245, 255, 250)",
+    "hsl": "hsl(150, 100.0%, 98.04%)"
+  },
+  "MistyRose": {
+    "hex": "#ffe4e1",
+    "rgb": "rgb(255, 228, 225)",
+    "hsl": "hsl(6, 100.0%, 94.12%)"
+  },
+  "Moccasin": {
+    "hex": "#ffe4b5",
+    "rgb": "rgb(255, 228, 181)",
+    "hsl": "hsl(38, 100.0%, 85.49%)"
+  },
+  "NavajoWhite": {
+    "hex": "#ffdead",
+    "rgb": "rgb(255, 222, 173)",
+    "hsl": "hsl(36, 100.0%, 83.92%)"
+  },
+  "Navy": {
+    "hex": "#000080",
+    "rgb": "rgb(0, 0, 128)",
+    "hsl": "hsl(240, 100.0%, 25.10%)"
+  },
+  "OldLace": {
+    "hex": "#fdf5e6",
+    "rgb": "rgb(253, 245, 230)",
+    "hsl": "hsl(39, 85.19%, 94.71%)"
+  },
+  "Olive": {
+    "hex": "#808000",
+    "rgb": "rgb(128, 128, 0)",
+    "hsl": "hsl(60, 100.0%, 25.10%)"
+  },
+  "OliveDrab": {
+    "hex": "#6b8e23",
+    "rgb": "rgb(107, 142, 35)",
+    "hsl": "hsl(80, 60.45%, 34.71%)"
+  },
+  "Orange": {
+    "hex": "#ffa500",
+    "rgb": "rgb(255, 165, 0)",
+    "hsl": "hsl(39, 100.0%, 50.00%)"
+  },
+  "OrangeRed": {
+    "hex": "#ff4500",
+    "rgb": "rgb(255, 69, 0)",
+    "hsl": "hsl(16, 100.0%, 50.00%)"
+  },
+  "Orchid": {
+    "hex": "#da70d6",
+    "rgb": "rgb(218, 112, 214)",
+    "hsl": "hsl(302, 58.89%, 64.71%)"
+  },
+  "PaleGoldenrod": {
+    "hex": "#eee8aa",
+    "rgb": "rgb(238, 232, 170)",
+    "hsl": "hsl(55, 66.67%, 80.00%)"
+  },
+  "PaleGreen": {
+    "hex": "#98fb98",
+    "rgb": "rgb(152, 251, 152)",
+    "hsl": "hsl(120, 92.52%, 79.02%)"
+  },
+  "PaleTurquoise": {
+    "hex": "#afeeee",
+    "rgb": "rgb(175, 238, 238)",
+    "hsl": "hsl(180, 64.95%, 80.98%)"
+  },
+  "PaleVioletRed": {
+    "hex": "#db7093",
+    "rgb": "rgb(219, 112, 147)",
+    "hsl": "hsl(340, 59.78%, 64.90%)"
+  },
+  "PapayaWhip": {
+    "hex": "#ffefd5",
+    "rgb": "rgb(255, 239, 213)",
+    "hsl": "hsl(37, 100.0%, 91.76%)"
+  },
+  "PeachPuff": {
+    "hex": "#ffdab9",
+    "rgb": "rgb(255, 218, 185)",
+    "hsl": "hsl(28, 100.0%, 86.27%)"
+  },
+  "Peru": {
+    "hex": "#cd853f",
+    "rgb": "rgb(205, 133, 63)",
+    "hsl": "hsl(30, 58.68%, 52.55%)"
+  },
+  "Pink": {
+    "hex": "#ffc0cb",
+    "rgb": "rgb(255, 192, 203)",
+    "hsl": "hsl(350, 100.0%, 87.65%)"
+  },
+  "Plum": {
+    "hex": "#dda0dd",
+    "rgb": "rgb(221, 160, 221)",
+    "hsl": "hsl(300, 47.29%, 74.71%)"
+  },
+  "PowderBlue": {
+    "hex": "#b0e0e6",
+    "rgb": "rgb(176, 224, 230)",
+    "hsl": "hsl(187, 51.92%, 79.61%)"
+  },
+  "Purple": {
+    "hex": "#800080",
+    "rgb": "rgb(128, 0, 128)",
+    "hsl": "hsl(300, 100.0%, 25.10%)"
+  },
+  "Red": {
+    "hex": "#ff0000",
+    "rgb": "rgb(255, 0, 0)",
+    "hsl": "hsl(0, 100.0%, 50.00%)"
+  },
+  "RosyBrown": {
+    "hex": "#bc8f8f",
+    "rgb": "rgb(188, 143, 143)",
+    "hsl": "hsl(0, 25.14%, 64.90%)"
+  },
+  "RoyalBlue": {
+    "hex": "#4169e1",
+    "rgb": "rgb(65, 105, 225)",
+    "hsl": "hsl(225, 72.73%, 56.86%)"
+  },
+  "SaddleBrown": {
+    "hex": "#8b4513",
+    "rgb": "rgb(139, 69, 19)",
+    "hsl": "hsl(25, 75.95%, 30.98%)"
+  },
+  "Salmon": {
+    "hex": "#fa8072",
+    "rgb": "rgb(250, 128, 114)",
+    "hsl": "hsl(6, 93.15%, 71.37%)"
+  },
+  "SandyBrown": {
+    "hex": "#f4a460",
+    "rgb": "rgb(244, 164, 96)",
+    "hsl": "hsl(28, 87.06%, 66.67%)"
+  },
+  "SeaGreen": {
+    "hex": "#2e8b57",
+    "rgb": "rgb(46, 139, 87)",
+    "hsl": "hsl(146, 50.27%, 36.27%)"
+  },
+  "Seashell": {
+    "hex": "#fff5ee",
+    "rgb": "rgb(255, 245, 238)",
+    "hsl": "hsl(25, 100.0%, 96.67%)"
+  },
+  "Sienna": {
+    "hex": "#a0522d",
+    "rgb": "rgb(160, 82, 45)",
+    "hsl": "hsl(19, 56.10%, 40.20%)"
+  },
+  "Silver": {
+    "hex": "#c0c0c0",
+    "rgb": "rgb(192, 192, 192)",
+    "hsl": "hsl(0, 0.000%, 75.29%)"
+  },
+  "SkyBlue": {
+    "hex": "#87ceeb",
+    "rgb": "rgb(135, 206, 235)",
+    "hsl": "hsl(197, 71.43%, 72.55%)"
+  },
+  "SlateBlue": {
+    "hex": "#6a5acd",
+    "rgb": "rgb(106, 90, 205)",
+    "hsl": "hsl(248, 53.49%, 57.84%)"
+  },
+  "SlateGray": {
+    "hex": "#708090",
+    "rgb": "rgb(112, 128, 144)",
+    "hsl": "hsl(210, 12.60%, 50.20%)"
+  },
+  "Snow": {
+    "hex": "#fffafa",
+    "rgb": "rgb(255, 250, 250)",
+    "hsl": "hsl(0, 100.0%, 99.02%)"
+  },
+  "SpringGreen": {
+    "hex": "#00ff7f",
+    "rgb": "rgb(0, 255, 127)",
+    "hsl": "hsl(150, 100.0%, 50.00%)"
+  },
+  "SteelBlue": {
+    "hex": "#4682b4",
+    "rgb": "rgb(70, 130, 180)",
+    "hsl": "hsl(207, 44.00%, 49.02%)"
+  },
+  "Tan": {
+    "hex": "#d2b48c",
+    "rgb": "rgb(210, 180, 140)",
+    "hsl": "hsl(34, 43.75%, 68.63%)"
+  },
+  "Teal": {
+    "hex": "#008080",
+    "rgb": "rgb(0, 128, 128)",
+    "hsl": "hsl(180, 100.0%, 25.10%)"
+  },
+  "Thistle": {
+    "hex": "#d8bfd8",
+    "rgb": "rgb(216, 191, 216)",
+    "hsl": "hsl(300, 24.27%, 79.80%)"
+  },
+  "Tomato": {
+    "hex": "#ff6347",
+    "rgb": "rgb(255, 99, 71)",
+    "hsl": "hsl(9, 100.0%, 63.92%)"
+  },
+  "Turquoise": {
+    "hex": "#40e0d0",
+    "rgb": "rgb(64, 224, 208)",
+    "hsl": "hsl(174, 72.07%, 56.47%)"
+  },
+  "Violet": {
+    "hex": "#ee82ee",
+    "rgb": "rgb(238, 130, 238)",
+    "hsl": "hsl(300, 76.06%, 72.16%)"
+  },
+  "Wheat": {
+    "hex": "#f5deb3",
+    "rgb": "rgb(245, 222, 179)",
+    "hsl": "hsl(39, 76.74%, 83.14%)"
+  },
+  "White": {
+    "hex": "#ffffff",
+    "rgb": "rgb(255, 255, 255)",
+    "hsl": "hsl(0, 0.000%, 100.0%)"
+  },
+  "WhiteSmoke": {
+    "hex": "#f5f5f5",
+    "rgb": "rgb(245, 245, 245)",
+    "hsl": "hsl(0, 0.000%, 96.08%)"
+  },
+  "Yellow": {
+    "hex": "#ffff00",
+    "rgb": "rgb(255, 255, 0)",
+    "hsl": "hsl(60, 100.0%, 50.00%)"
+  },
+  "YellowGreen": {
+    "hex": "#9acd32",
+    "rgb": "rgb(154, 205, 50)",
+    "hsl": "hsl(80, 60.78%, 50.00%)"
+  }
+};
