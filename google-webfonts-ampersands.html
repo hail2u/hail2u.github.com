@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>&amp;</title>
+
+    <link rel="stylesheet" href="./natural.css">
+    <style>
+      body {
+        font-family: "Palatino", "DejaVu Serif", "Times New Roman", serif;
+      }
+
+      header, footer {
+        text-align: center;
+      }
+
+      #result {
+        margin: 32px auto;
+        width: 816px;
+        zoom: 1;
+      }
+    
+      #result:before, #result:after {
+        display: block;
+        height: 0;
+        visibility: hidden;
+        content: "\0020";
+      }
+
+      #result:after {
+        clear: both;
+      }
+
+      #result .preview {
+        float: left;
+        width: 25%;
+        text-align: center;
+      }
+
+      #result .preview a {
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+      }
+
+      #result .preview .ampersand {
+        font-size: 96px;
+        text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+      }
+    </style>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="./lib/jquery.query-yql.min.js"></script>
+    <script>
+      var statement = "select * from html where url='http://www.google.com/webfonts/preview' and xpath='//script'";
+
+      $(function () {
+        $.queryYQL(statement, function (d) {
+          var scripts = d.query.results.script;
+
+          for (var i = 0, l = scripts.length; i < l; i++) {
+            var c = scripts[i].content;
+
+            if (c && c.indexOf("var fonts") >= 0) {
+              $.globalEval(c.replace(/[\r\n]/g, " ").split(";")[0]);
+              break;
+            }
+          }
+
+          var t = $("#result").empty();
+
+          for (var font in fonts) {
+            var f = fonts[font];
+            $("head").append($("<link/>").attr({
+              rel:  "stylesheet",
+              href: f.url
+            }));
+            var fontFamily = f.familyUrl;
+            var preview = $("<div/>", {
+              style: "font-family:'" + fontFamily + "',sans-serif"
+            }).addClass("preview");
+            var anchor = $("<a/>", {
+              href: "http://www.google.com/webfonts/family?family=" + fontFamily.replace(/ /g, "+")
+            });
+            anchor.append($("<p/>").addClass("ampersand").append("&"));
+            anchor.append($("<p/>").addClass("fontFamily").append(fontFamily));
+            preview.append(anchor).appendTo(t);
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>&amp;</h1>
+    </header>
+
+    <section id="result">
+      <p>Preview Google Web Fonts by &quot;&amp;&quot;</p>
+    </section>
+
+    <footer>
+      <p>This is a pure JavaScript alternative for <a href="http://opensourceampersands.com/">Open Source Ampersands</a>.</p>
+      <p>All Fonts are provided by <a href="http://www.google.com/webfonts">Google Web Fonts</a>.</p>
+    </footer>
+  </body>
+</html>
