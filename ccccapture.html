@@ -11,18 +11,14 @@
       }
 
       body {
-        color: #fff;
-        background-color: #000;
+        color: #000;
+        background-color: #eee;
         font-family: "Baskerville", "Times New Roman", serif;
       }
 
       header, #list, footer {
-        margin-left: 8px;
-        padding: 0 8px;
-        border-top: 1px solid #333;
-        border-bottom: 1px solid #333;
-        width: 288px;
-        background-color: #333;
+        margin: 0 16px;
+        width: 448px;
       }
 
       header h1 {
@@ -31,13 +27,23 @@
       }
 
       #list figure {
-        margin: 8px 0;
-        width: 100%;
+        margin: 16px 0;
+        padding: 7px;
+        border: 1px solid #ddd;
+        border-radius: 2px;
+        background-color: #fff;
+        box-shadow: 0 0 16px rgba(204, 204, 204, 0.5);
       }
 
       #list figure img {
         width: 100%;
         vertical-align: bottom;
+      }
+
+      #list figure figcaption {
+        margin: 8px 0 0 0;
+        line-height: 1;
+        color: #999;
       }
 
       footer address p {
@@ -50,7 +56,9 @@
     <script>
       $(function () {
         var statement = "select * from html where url='https://gist.github.com/929065/' and xpath='//span[@class=\"code\"]'";
-        var t = $("#list").empty().append($("<p/>").append("Loading ..."));
+        var t = $("#list");
+        var r = t.html();
+        t.empty().append($("<p/>").append("Loading ..."));
 
         $.queryYQL(statement, function (data) {
           if (data.query.results) {
@@ -58,17 +66,21 @@
 
             $.each(data.query.results.span.reverse(), function () {
               var url = "https://gist.github.com/raw/929065/" + this.content.replace(/[ \t\r\n]/g, "");
+              var id  = this.a.href.replace(/^#/, "")
+              var dt  = id.replace(/^file_(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})\.png$/, "$1-$2-$3 $4:$5:$6");
 
               if (url.match(/\.png$/)) {
                 $("<figure/>", {
-                  id: this.a.href.replace(/^#/, "")
+                  id: id
                 }).append($("<a/>", {
                   href: url
                 }).append($("<img/>", {
                   src: url
-                }))).appendTo(t);
+                }))).append($("<figcaption/>").append(dt)).appendTo(t);
               }
             });
+
+            t.append(r);
           } else {
             t.empty().append($("<p/>").append("Oops, failed to fetch data."));
           }
@@ -81,7 +93,12 @@
       <h1>CCCCAPTURE!</h1>
     </header>
 
-    <section id="list"></section>
+    <section id="list">
+      <figure>
+        <img src="./ccccature.png" alt="CCCAPTURE!">
+        <figcaption>2011-04-20 00:00:00</figcaption>
+      </figure>
+    </section>
 
     <footer>
       <address>
