@@ -55,8 +55,8 @@
     <script src="https://github.com/hail2u/jquery.query-yql/raw/master/jquery.query-yql.min.js"></script>
     <script>
       $(function () {
-        return;
-        var statement = "select * from html where url='https://gist.github.com/929065/' and xpath='//span[@class=\"code\"]'";
+        var statement = "select * from csv where url='https://gist.github.com/raw/929065/filelist.csv' and columns='filename'";
+
         var t = $("#list");
         var r = t.html();
         t.empty().append($("<p/>").append("Loading ..."));
@@ -65,9 +65,9 @@
           if (data.query.results) {
             t.empty();
 
-            $.each(data.query.results.span.reverse(), function () {
-              var url = "https://gist.github.com/raw/929065/" + this.content.replace(/[ \t\r\n]/g, "");
-              var id  = this.a.href.replace(/^#/, "")
+            $.each(data.query.results.row.reverse(), function () {
+              var url = "https://gist.github.com/raw/929065/" + this.filename;
+              var id  = "file_" + this.filename;
               var dt  = id.replace(/^file_(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})\.png$/, "$1-$2-$3 $4:$5:$6");
 
               if (url.match(/\.png$/)) {
@@ -99,8 +99,6 @@
         <img src="./ccccature.png" alt="CCCAPTURE!">
         <figcaption>2011-04-20 03:13:41</figcaption>
       </figure>
-
-      <p>Looking for an alternative way to list up captured images.</p>
     </section>
 
     <footer>
