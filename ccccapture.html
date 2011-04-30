@@ -11,33 +11,58 @@
       }
 
       body {
+        margin-top: 32px;
         color: #000;
         background-color: #eee;
         font-family: "Baskerville", "Times New Roman", serif;
       }
 
       header, #list, footer {
-        margin: 0 16px;
-        width: 448px;
+        margin: 0 0 0 16px;
+        zoom: 1;
       }
 
       header h1 {
-        margin: 32px 0 16px 0;
+        margin: 0 16px 16px 0;
         font-size: 32px;
       }
 
+      #list:before, #list:after {
+        display: block;
+        height: 0;
+        visibility: hidden;
+        content: "\0020";
+      }
+
+      #list:after {
+        clear: both;
+      }
+
       #list figure {
-        margin: 16px 0;
+        margin: 0 16px 16px 0;
         padding: 7px;
         border: 1px solid #ddd;
         border-radius: 2px;
-        background-color: #fff;
         box-shadow: 0 0 16px rgba(204, 204, 204, 0.5);
+        float: left;
+        background-color: #fff;
       }
 
-      #list figure img {
+      #list figure:hover {
+        border-color: #999;
+      }
+
+      #list figure a {
+        display: block;
+        width: 432px;
+        max-height: 243px;
+        line-height: 243px;
+        overflow: hidden;
+      }
+
+      #list figure a img {
         width: 100%;
-        vertical-align: bottom;
+        vertical-align: middle;
       }
 
       #list figure figcaption {
@@ -46,8 +71,9 @@
         color: #999;
       }
 
-      footer address p {
-        margin: 16px 0;
+      #list p, footer address p {
+        margin: 0 16px 16px 0;
+        clear: both;
       }
     </style>
 
