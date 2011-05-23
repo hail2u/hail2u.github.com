@@ -53,9 +53,7 @@
                 href: "http://www.google.com/webfonts/family?family=" + fontFamily.replace(/ /g, "+")
               }).append(fontFamily)).append(": " + sampleText).appendTo(t);
             }
-          }).attr({
-            disabled: ""
-          });
+          }).prop("disabled", false);
         });
       });
     </script>
