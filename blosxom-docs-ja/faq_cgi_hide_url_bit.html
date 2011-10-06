@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta name="keywords" content="blosxom,日本語,翻訳">
+<title>blosxomサイトの日本語訳::FAQ - URLから/cgi-bin/blosxom.cgiをどうやったら隠せますか?</title>
+
+<LINK REV="MADE" HREF=" "> 
+<LINK rel="INDEX" href="index.html">
+<link rel="stylesheet" href="style/blosxom.css" type="text/css">
+</head>
+
+<body>
+<div id="header"><span class="en">blosxom</span>::日本語訳</div>
+<table id="frame" cellspacing="0" cellpadding="0" summary="フレーム">
+<tbody>
+<tr>
+<td id="menu">
+<h4>翻訳について</h4>
+<ul class="mid">
+<li><a href="index.html" title="お読みください">お読みください</a></li>
+</ul>
+<h4 class="en">blosxom</h4>
+<ul class="mid">
+<li><a href="about.html" title="Blosxomについて"><span class="en">Blosxom</span>について</a></li>
+<li><a href="features.html" title="Blosxomの機能">機能</a></li>
+<li><a href="colophon.html" title="奥付">奥付</a></li>
+<li><a href="http://www.raelity.org/archives/computers/internet/weblogs/blosxom/" title="ニュース">ニュース（英語）</a></li>
+<li><a href="http://groups.yahoo.com/group/blosxom/" title="メーリングリスト">メーリングリスト（英語）</a></li>
+<li><a href="http://s1.amazon.com/exec/varzea/pay/T3ENE5Z31EQZ0O" title="寄贈">寄贈（英語）</a></li>
+</ul>
+<h4>ユーザ向けドキュメント</h4>
+<ul class="mid">
+<li><a href="doc_users_overview.html" title="Blosxomの概要">概要</a></li>
+<li><a href="doc_users_install_dynamic.html" title="Blosxomのインストール">インストール</a></li>
+<li><a href="doc_users_configure.html" title="Blosxomの設定">環境設定</a></li>
+<li><a href="doc_users_blog.html" title="ウェブログ">ウェブログ</a></li>
+<li><a href="doc_users_view.html" title="ウェブログの閲覧">閲覧</a></li>
+<li><a href="doc_users_flavour.html" title="フレーバー">フレーバー</a></li>
+<li><a href="doc_users_syndicate.html" title="シンジケート">シンジケート</a></li>
+<li><a href="doc_users_plugins.html" title="プラグイン">プラグイン</a></li>
+<li><a href="plugin_registry.html" title="プラグイン登録ページ">プラグイン登録ページ</a></li>
+<li><a href="doc_users_configure_static.html" title="静的表示の設定">静的表示の設定</a></li>
+<li><a href="faq.html" title="良くある質問"><span class="en">faq</span></a></li>
+<li>使用例*</li>
+</ul>
+<h4>開発者向けドキュメント</h4>
+<ul class="mid">
+<li><a href="doc_dev_overview.html" title="概要：開発者向け">概要</a></li>
+<li><a href="doc_dev_plugins.html" title="プラグイン：開発者向け">プラグイン</a></li>
+<li><a href="doc_dev_plugin_register.html" title="開発者向け：プラグイン登録">プラグインの登録</a></li>
+</ul>
+<h4>ダウンロード</h4>
+<ul class="mid">
+<li><a href="downloads.html#macosx" title="Macintosh"><span class="en">mac</span></a></li>
+<li><span class="en">windows</span>*</li>
+<li><a href="downloads.html" title="全ての人へ">全ての人へ</a></li>
+<li><a href="license.html" title="ライセンス">ライセンス</a></li>
+<li>共同制作*</li>
+</ul>
+<p>*公式サイトで未執筆</p>
+</td>
+<td id="contents"><h1><a name="top" class="bl"><span class="en">FAQ</span></a></h1><h2><span class="en">URL</span>から<span class="en">/cgi-bin/blosxom.cgi</span>をどうやったか隠せますか？</h2>
+<p><span class="en">URL</span>に<span class="en">/cgi-bin/blosxom.cgi</span>を見せたくない場合、幾つかの方法があります...</p>
+<ul>
+<li>
+<p><span class="en">cgi-bin</span>ディレクトリでは無いディレクトリで<span class="en">CGI</span>スクリプトを実行する事が可能であれば、<strong class="se">weblog</strong>や<strong class="se">blog</strong>または貴方の好きなディレクトリに<strong class="se">blosxom.cgi</strong>を置いて下さい。こうすることで、<strong class="se">/weblog/blosxom.cgi</strong>のような形でアクセスできるようになります。ディレクトリは貴方が選んだ場所になります。</p>
+<p><span class="en">index.cgi</span>に名前を変えることで<span class="en">CGI</span>を隠す事ができるかもしれません。この場合は<strong class="se">/weblog</strong>のような形のサブディレクトリでウェブログに移動できます。これはウェブサーバーが<strong class="se">index.html</strong>と同様に<strong class="se">index.cgi</strong>が<span class="en">DirectoryIndex</span>ディレクティブに設定されている場合に動作します。動作する場合には名前を変更した<strong class="se">index.cgi</strong>（以前は<strong class="se">blosxom.cgi</strong>だったもの）内で<span class="en">$url</span>を変更することを忘れないで下さい。例：</p>
+<pre class="en">
+# What's my preferred base URL for this blog (leave blank for automatic)?
+my $url = &quot;http://www.example/weblog&quot;;
+</pre>
+</li>
+
+<li>
+<p>ウェブサーバーの環境ファイルを操作できる（<span class="en">Apache</span>では<strong class="se">httpd.conf</strong>）、またはローカルの<span class="en">sysadmin</span>にアクセスできる、または<span class="en">ISP</span>が変更の余地を与えている場合には、スクリプトに対して特定の<span class="en">URL</span>のエイリアスを作成するのが最も簡単な方法に思えます。例えば、<span class="en">Mac OS X</span>では以下を<span class="en">/etc/httpd/httpd.conf</span>に追加します。</p>
+<pre class="en">
+ScriptAlias / /Library/WebServer/CGI-Executables/blosxom.cgi
+</pre>
+</li>
+
+<li>
+<p>ウェブサーバーの環境ファイルを操作できない、または<span class="en">sysadmin/ISP</span>が変更の余地を与えていない場合、<span class="en">mod_rewite</span>が使えるのであれば望む事ができます。これは大変強力な<span class="en">Apache</span>のモジュールで<span class="en">URL</span>の変更をしたり等、多くの事ができるものです。</p>
+
+<ol>
+<li>
+<p><strong class="se">cgi-bin</strong>ディレクトリに<strong class="se">blosxom.cgi</strong>スクリプトを置きます --このディレクトリはスクリプトの実行が許可されている場所です。</p>
+</li>
+<li>
+<p>貴方のドキュメントディレクトリ--ウェブアクセス可能な全ての<span class="en">HTML</span>ファイルが置かれている場所に<strong class="se">.htaccess</strong>と言う名前の通常のテキストファイルを作成します。<strong class="se">.htaccess</strong>ファイルは以下のような感じになります：</p>
+<pre class="en">
+RewriteEngine on
+RewriteRule ^weblog/?(.*)$ /cgi-bin/blosxom.cgi/$1
+</pre>
+<p>ここで<span class="be">weblog</span>は貴方のウェブログを置く場所で（この場合、<strong class="se">/weblog</strong>）、<span class="be">cgi-bin</span>はブラウザが呼び出すスクリプトがある場所です。</p>
+</li>
+<li>
+<p>貴方の全ての記事、フレーバーファイル、スタイルシート等は<span class="en">Blosxom</span>の<a href="doc_users_install_dynamic.html" class="en">$datadir</a>に置くようにします</p>
+<p><span class="en">/weblog</span>のような&quot;サブディレクトリ&quot;の形では無くて <span class="en">/</span> で提供するようにする他の方法があります。これはむしろ賢く、現実味がある方法で、存在しないファイルやディレクトリを指定するとエラー<span class="en">404</span>が返ります。<span class="en">;-)</span>。単純に<span class="en">.htaccess</span>と一緒に<span class="en">Blosxom</span>をドキュメントディレクトリに置けば良いです：</p>
+<pre class="en">
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ blosxom.cgi/$1 [L,QSA]
+</pre>
+<p>ブラウザで存在しない<strong class="se">/something</strong>ディレクトリにアクセスすると、<span class="en">Blosxom</span>は中に入ってきます。<br>
+これで、<strong class="se">/weblog</strong>で始まる<span class="en">URL</span>は<span class="en">rewite</span>エンジンにとらえられ、<strong class="se">blosxom.cgi</strong>に渡されます。<strong class="se">/weblog</strong>（そして追加の<strong class="se">/</strong>）の後は<span class="en">path_info</span>に従って<span class="en">CGI</span>に渡されます。<br>
+<strong class="se">/weblog</strong>で始まらないどのような<span class="en">URL</span>もあるべき形でサーブされます。そのためスタイルシート、他の<span class="en">HTML</span>ファイル、画像等は<strong class="se">/whatever/ther/url</strong>と言う形でアクセスできます。</p>
+</li>
+</ol>
+</li>
+</ul><div id="author">
+<p><span class="en">Author: Rael Dornfest<br>
+Category: /faq/cgi<br>
+Date: 2003-07-26</span></p>
+</div><p class="nextLink"><a href="#top">[ページの先頭へ戻る]</a></p></td>
+</tr>
+</tbody>
+</table>
+<div id="footer"> </div>
+</body>
+</html>

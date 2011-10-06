@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta name="keywords" content="blosxom,日本語,翻訳">
+<title>blosxomサイトの日本語訳::FAQ - IISのPATH_INFOの問題にも関わらずBlsoxomを動作させるにはどうすれば良いのですか？</title>
+
+<LINK REV="MADE" HREF=" "> 
+<LINK rel="INDEX" href="index.html">
+<link rel="stylesheet" href="style/blosxom.css" type="text/css">
+</head>
+
+<body>
+<div id="header"><span class="en">blosxom</span>::日本語訳</div>
+<table id="frame" cellspacing="0" cellpadding="0" summary="フレーム">
+<tbody>
+<tr>
+<td id="menu">
+<h4>翻訳について</h4>
+<ul class="mid">
+<li><a href="index.html" title="お読みください">お読みください</a></li>
+</ul>
+<h4 class="en">blosxom</h4>
+<ul class="mid">
+<li><a href="about.html" title="Blosxomについて"><span class="en">Blosxom</span>について</a></li>
+<li><a href="features.html" title="Blosxomの機能">機能</a></li>
+<li><a href="colophon.html" title="奥付">奥付</a></li>
+<li><a href="http://www.raelity.org/archives/computers/internet/weblogs/blosxom/" title="ニュース">ニュース（英語）</a></li>
+<li><a href="http://groups.yahoo.com/group/blosxom/" title="メーリングリスト">メーリングリスト（英語）</a></li>
+<li><a href="http://s1.amazon.com/exec/varzea/pay/T3ENE5Z31EQZ0O" title="寄贈">寄贈（英語）</a></li>
+</ul>
+<h4>ユーザ向けドキュメント</h4>
+<ul class="mid">
+<li><a href="doc_users_overview.html" title="Blosxomの概要">概要</a></li>
+<li><a href="doc_users_install_dynamic.html" title="Blosxomのインストール">インストール</a></li>
+<li><a href="doc_users_configure.html" title="Blosxomの設定">環境設定</a></li>
+<li><a href="doc_users_blog.html" title="ウェブログ">ウェブログ</a></li>
+<li><a href="doc_users_view.html" title="ウェブログの閲覧">閲覧</a></li>
+<li><a href="doc_users_flavour.html" title="フレーバー">フレーバー</a></li>
+<li><a href="doc_users_syndicate.html" title="シンジケート">シンジケート</a></li>
+<li><a href="doc_users_plugins.html" title="プラグイン">プラグイン</a></li>
+<li><a href="plugin_registry.html" title="プラグイン登録ページ">プラグイン登録ページ</a></li>
+<li><a href="doc_users_configure_static.html" title="静的表示の設定">静的表示の設定</a></li>
+<li><a href="faq.html" title="良くある質問"><span class="en">faq</span></a></li>
+<li>使用例*</li>
+</ul>
+<h4>開発者向けドキュメント</h4>
+<ul class="mid">
+<li><a href="doc_dev_overview.html" title="概要：開発者向け">概要</a></li>
+<li><a href="doc_dev_plugins.html" title="プラグイン：開発者向け">プラグイン</a></li>
+<li><a href="doc_dev_plugin_register.html" title="開発者向け：プラグイン登録">プラグインの登録</a></li>
+</ul>
+<h4>ダウンロード</h4>
+<ul class="mid">
+<li><a href="downloads.html#macosx" title="Macintosh"><span class="en">mac</span></a></li>
+<li><span class="en">windows</span>*</li>
+<li><a href="downloads.html" title="全ての人へ">全ての人へ</a></li>
+<li><a href="license.html" title="ライセンス">ライセンス</a></li>
+<li>共同制作*</li>
+</ul>
+<p>*公式サイトで未執筆</p>
+</td>
+<td id="contents"><h1><a name="top" class="bl"><span class="en">FAQ</span></a></h1><h2><span class="en">IIS</span>の<span class="en">PATH_INFO</span>の問題にも関わらず<span class="en">Blosxom</span>を動作させるにはどうすれば良いのですか？</h2>
+<p><span class="en">IIS</span>が<span class="en">PATH_INFO</span>を理解し、そして<span class="en">Blosxom</span>（そして<span class="en">PATH_INFO</span>を使う他のスクリプト）が正確に動作するようにする方法は幾つかあります。</p><p><span class="en">PerlMonks</span>は<span class="en">IIS</span>の<span class="en">&quot;ScriptMaps&quot; property (http://msdn.microsoft.com/library/default.asp?url=/library/en-us/iisref/html/psdk/asp/apro9tkj.asp)</span>を使った<span class="en">&quot;Fix ActiveState Script Maps (IIS)&quot; (http://perlmonks.thepen.com/102907.html)</span>を提供しています。</p><p><span class="en">Blosxom</span>ユーザである<span class="en">Allie Rogers (http://radio.weblogs.com/0106608/)</span>は<span class="en">IIS</span>の設定に関して以下の方法を提案しています。この設定の結果は上記の<span class="en">PerlMonks</span>のスクリプトと似ています。しかしながら、<span class="en">PerlMonks</span>のスクリプトは<span class="en">Blosxom CGI</span>スクリプトを含むフォルダに対して&quot;<span class="en">execute</span>（実行）&quot;許可を与えると言う点で優れた解決策です。実行許可を無効にすることで若干安全なウェブサーバを提供する事になり、<span class="en">&quot;Code Red&quot;</span>のような脅威から守ることになります。</p><p><span class="en">IIS</span>の設定をするのにどちらの方法を貴方が使うかには関係なく、<span class="en">ActiveState Perl</span>の<span class="en">ISAP</span>ランタイム（<span class="en">PerllS.dll</span>）は<span class="en">PATH_INFO</span>を正確に扱う事がでいないので、常に標準の<span class="en">Perl</span>インタプリタ（<span class="en">Perl.exe</span>）を使わなくてはなりません。</p>
+<h3><span class="en">Allie</span>の手順：</h3><p><span class="en">ActiveState</span>の標準の<span class="en">Perl</span>、そして<span class="en">Windows2000</span>で<span class="en">IIS 5</span>を使っていると仮定すると、<span class="en">&quot;Application Configuration&quot;</span>プロパティダイアログの<span class="en">&quot;App Mappings&quot;</span>の<span class="en">&quot;Application Mappings&quot;</span>を修正する必要があります。このダイアログにアクセスするには<span class="en">IIS</span>の管理コンソールを開き（<span class="en">Windows2000 Pro</span>とサーバのバージョンによって変わりますので<span class="en">IIS</span>のドキュメントを参照して下さい）。</p><p>管理コンソールから左のツリーを下って行き、<span class="en">&quot;blosxom.cgi&quot;</span>スクリプトがある仮想ディレクトリを見つけます。この仮想ディレクトリを右クリックし、<span class="en">&quot;Properties&quot;</span>を選択します。<span class="en">&quot;Configuration..&quot;</span>ボタンをクリックすると<span class="en">&quot;Application Configuration&quot;</span>プロパティダイアログが開きます。<span class="en">&quot;App Mappings&quot;</span>タブ上のリストは全ての<span class="en">&quot;Application Mappings&quot;</span>を表示しています。標準では、<span class="en">ActiveState</span>は<span class="en">&quot;.pl&quot;</span>拡張子に対するマッピングをインストールします。これを修正して<span class="en">&quot;.cgi&quot;</span>拡張子を追加します。ここで注意したいのは、<span class="en">&quot;Check that file exists&quot;</span>にチェックが入って<strong>いない</strong>ことを確認する事です。上記の<span class="en">&quot;.cgi&quot;</span>ファイルの設定は以下のような感じになります：</p><pre class="en">
+Executable: C:\perl\bin\Perl.exe &quot;%s&quot; %s
+Extension: .cgi
+Verbs (Limit to): GET, HEAD, POST
+Script engine: NOT CHECKED
+Check that file exists: NOT CHECKED
+</pre>
+<p>これは<span class="en">Windows XP</span>の<span class="en">IIS 6</span>と同様に<span class="en">NT4</span>の<span class="en">IIS 4</span>でもうまく行きます。</p><p>より多くの情報は<span class="en">http://www.jmarshall.com/tools/cgiproxy/faq.html#q6</span>と同様に<span class="en">Microsoft</span>のナレッジベース<span class="en">Q184320</span>と <span class="en">Q252352</span>で見つかります。</p>
+<div id="author">
+<p class="en">Author: Rael Dornfest<br>
+Category: /faq/operating_system/windows/iis<br>
+Date: 2003-07-26</p>
+</div><p class="nextLink"><a href="#top">[ページの先頭へ戻る]</a></p></td>
+</tr>
+</tbody>
+</table>
+<div id="footer"> </div>
+</body>
+</html>
