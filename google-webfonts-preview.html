@@ -18,25 +18,17 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script src="./lib/jquery.query-yql.min.js"></script>
     <script>
-      var statement = "select * from html where url='http://www.google.com/webfonts/preview' and xpath='//script'";
+      var statement = "select * from json where url='https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyApMgI8vW2EfAFAeVa4hDvaLoaW9A3WY94&subsets=latin&sort=alpha'";
 
       $(function () {
         $.queryYQL(statement, function (d) {
-          var scripts = d.query.results.script;
+          var fonts = d.query.results.json.items;
 
-          for (var i = 0, l = scripts.length; i < l; i++) {
-            var c = scripts[i].content;
-
-            if (c && c.indexOf("var fonts") >= 0) {
-              $.globalEval(c.replace(/[\r\n]/g, " ").split(";")[0]);
-              break;
-            }
-          }
-
-          for (var font in fonts) {
+          for (var i = 0, l = fonts.length; i < l; i++) {
+            var url = "http://fonts.googleapis.com/css?family=" + fonts[i].family.replace(/ /g, "+"); 
             $("head").append($("<link/>").attr({
               rel:  "stylesheet",
-              href: fonts[font].url
+              href: url
             }));
           }
 
@@ -44,14 +36,13 @@
             var t = $("#result").empty();
             var sampleText = $("#sample-text").val();
 
-            for (var font in fonts) {
-              var f = fonts[font];
-              var fontFamily = f.familyUrl;
+            for (var i = 0, l = fonts.length; i < l; i++) {
+              var f = fonts[i].family;
               $("<p/>", {
-                style: "font-family:'" + fontFamily + "',sans-serif"
+                style: "font-family:'" + f + "',sans-serif"
               }).addClass("preview").append($("<a/>", {
-                href: "http://www.google.com/webfonts/family?family=" + fontFamily.replace(/ /g, "+")
-              }).append(fontFamily)).append(": " + sampleText).appendTo(t);
+                href: "http://www.google.com/webfonts/family?family=" + f.replace(/ /g, "+")
+              }).append(f)).append(": " + sampleText).appendTo(t);
             }
           }).prop("disabled", false);
         });
