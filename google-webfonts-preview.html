@@ -25,7 +25,9 @@
           var fonts = d.query.results.json.items;
 
           for (var i = 0, l = fonts.length; i < l; i++) {
-            var url = "http://fonts.googleapis.com/css?family=" + fonts[i].family.replace(/ /g, "+"); 
+            var f = fonts[i];
+            var v = $.isArray(f.variants) ? f.variants[0] : f.variants;
+            var url = "http://fonts.googleapis.com/css?family=" + f.family.replace(/ /g, "+") + ":" + v; 
             $("head").append($("<link/>").attr({
               rel:  "stylesheet",
               href: url
