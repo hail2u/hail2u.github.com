@@ -26,7 +26,7 @@
 
           for (var i = 0, l = fonts.length; i < l; i++) {
             var f = fonts[i];
-            var v = $.isArray(f.variants) ? f.variants[0] : f.variants;
+            var v = $.isArray(f.variants) ? f.variants.join(",") : f.variants;
             var url = "http://fonts.googleapis.com/css?family=" + f.family.replace(/ /g, "+") + ":" + v; 
             $("head").append($("<link/>").attr({
               rel:  "stylesheet",
