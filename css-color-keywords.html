@@ -5,37 +5,31 @@
 
     <title>CSS Color Keywords</title>
 
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz">
     <style>
       body {
         margin: 0;
         padding: 0;
-        font-family: "Georgia", serif;
+        font-family: "Palatino Linotype", serif;
+        font-style: italic;
+        font-size: 24px;
       }
 
       .light {
         color: rgb(0, 0, 0);
-        background-image: url("./floral-dark.png");
         text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
       }
 
       .dark {
         color: rgb(255, 255, 255);
-        background-image: url("./floral-light.png");
         text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
       }
 
       h1 {
         margin: 32px auto;
         width: 816px;
-        font-family: "Yanone Kaffeesatz", sans-serif;
-        font-size: 96px;
+        font-size: 72px;
+        font-weight: normal;
         text-align: center;
-        -webkit-transform: rotate(-3deg);
-        -moz-transform: rotate(-3deg);
-        -o-transform: rotate(-3deg);
-        -ms-transform: rotate(-3deg);
-        transform: rotate(-3deg);
       }
 
       #samples {
@@ -55,24 +49,20 @@
         clear: both;
       }
 
-      #samples .color-sample {
+      .color-sample {
         margin: 8px;
         padding: 0;
         float: left;
         width: 250px;
         height: 138px;
         line-height: 138px;
-        background-image: url("./different.png");
-        background-position: center center;
-        font-family: "Yanone Kaffeesatz", sans-serif;
-        font-size: 32px;
         text-align: center;
         text-decoration: none;
         text-transform: capitalize;
         cursor: pointer;
       }
 
-      #samples .color-sample:last-child {
+      .color-sample:last-child {
         margin-left: 280px;
       }
 
@@ -84,11 +74,11 @@
         box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.5);
       }
 
-      #samples .dark {
+      div.dark {
         border: 3px solid rgb(255, 255, 255);
       }
 
-      #samples .light {
+      div.light {
         border: 3px solid rgb(0, 0, 0);
       }
 
@@ -96,14 +86,8 @@
         margin: -184px auto 32px auto;
         width: 256px;
         line-height: 144px;
-        font-style: normal;
-        font-weight: bold;
+        font-size: 16px;
         text-align: center;
-        -webkit-transform: rotate(-3deg);
-        -moz-transform: rotate(-3deg);
-        -o-transform: rotate(-3deg);
-        -ms-transform: rotate(-3deg);
-        transform: rotate(-3deg);
       }
     </style>
 

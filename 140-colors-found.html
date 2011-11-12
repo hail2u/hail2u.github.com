@@ -19,7 +19,6 @@
         height: 100%;
         color: rgb(128, 128, 128);
         background-color: rgb(128, 128, 128);
-        background-image: url("./different.png");
         font: 100%/1 "Vollkorn", "Georgia", serif;
         -webkit-transition-duration: 3s;
         -moz-transition-duration: 3s;
@@ -59,7 +58,7 @@
       }
 
       #color-values p {
-        font-size: 48px;
+        font-size: 24px;
       }
 
       body > footer > address {
@@ -73,18 +72,19 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script src="./color-keywords.json"></script>
     <script>
-      var keywords = [];
+      var keywords = [],
+        s;
 
-      for (var s in colorKeywords) {
+      for (s in colorKeywords) {
         keywords.push(s);
       }
 
       $(function () {
-        var keyword = keywords[Math.floor(Math.random() * keywords.length)];
+        var keyword = keywords[Math.floor(Math.random() * keywords.length)],
+          color = colorKeywords[keyword],
+          b = $("body").css("background-color", color.rgb);
         $("#color-values header h1").text(keyword);
-        var color = colorKeywords[keyword];
         $("#color-values p").text(color.rgb);
-        var b = $("body").css("background-color", color.rgb);
 
         if (calculateBrightness(color.rgb) > 127.5) {
           b.addClass("light");
@@ -94,8 +94,8 @@
       });
 
       function calculateBrightness (color) {
-        var c = color.match(/rgb\((\d{1,3}), (\d{1,3}), (\d{1,3})\)/);
-        var b = ((c[1] * 299) + (c[2] * 587) + (c[3] * 114)) / 1000;
+        var c = color.match(/rgb\((\d{1,3}), (\d{1,3}), (\d{1,3})\)/),
+          b = ((c[1] * 299) + (c[2] * 587) + (c[3] * 114)) / 1000;
 
         return b;
       }
@@ -111,7 +111,7 @@
         <h1>Color Keyword</h1>
       </header>
 
-      <p>rgb(R, G, B) || #RRGGBB</p>
+      <p>#RRGGBB / rgb(r, g, b) / hsl(h, s, l)</p>
     </section>
 
     <footer>
