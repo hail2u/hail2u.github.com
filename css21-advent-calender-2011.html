@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>CSS 2.1 Advent Calender '11</title>
+
+    <link rel="stylesheet" href="./natural.css">
+    <style>
+      body {
+        margin: 4em 1em;
+        counter-reset: day;
+        text-align: center;
+      }  
+
+      header {
+        margin: 0 auto;
+        max-width: 736px;
+        line-height: 1;
+      }
+
+      header h1 {
+        margin-bottom: 0;
+        font-family: "Palatino", "Palatino Linotype", serif;
+        font-style: italic;
+      }
+
+      header h1 .version,
+      header h1 .year {
+        color: crimson;
+      }
+
+      header h2 {
+        margin-top: 1em;
+        font-weight: normal;
+        font-size: 1em;
+      }
+
+      .day {
+        margin: 6em auto;
+        position: absolute;
+        bottom: 1000%;
+        max-width: 736px;
+      }
+
+      .day h2::before {
+        counter-increment: day;
+        content: "Day " counter(day) ": ";
+        color: crimson;
+      }
+
+      #preview {
+        margin: 6em auto;
+        display: none;
+        max-width: 736px;
+      }
+
+      footer {
+        margin: 0 auto;
+        max-width: 736px;
+        line-height: 1;
+      }
+
+      footer address {
+        font-family: "Palatino", "Palatino Linotype", serif;
+      }
+    </style>
+
+    <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  </head>
+  <body>
+    <header>
+      <hgroup>
+        <h1>CSS <span class="version">2.1</span> Advent Calender <span class="year">'11</span></h1>
+        <h2>基礎以上ベスト・プラクティス未満。</h2>
+      </hgroup>
+    </header>
+
+    <section class="day" id="d1">
+      <h2>CSSハックのことは忘れる</h2>
+
+      <p>CSSハックの多くは便利で強力なものだが、それに頼るのは危険だ。まずは普通にCSSを書くことに注力するべきだろう。その上で条件付きコメントや<a href="http://www.modernizr.com/">Modernizr</a>を使うかCSSハックをあえて使うか決めると良い。</p>
+    </section>
+
+    <section class="day" id="d2">
+      <h2>色の書き方は統一する</h2>
+
+      <p>キーワードによる色の指定や<code>#rrggbb</code>、<code>rgb()</code>といくつかの方法で色を指定することができるが、<code>#rrggbb</code>の桁を合わせることも含めていずれかに統一した方が可読性とメンテナンス性が上がるだろう。</p>
+    </section>
+
+    <section class="day" id="d3">
+      <h2><code>%</code>は長さの単位ではない</h2>
+
+      <p><code>border-width</code>などで使用できない理由はそれだ。他にも使用することができないプロパティがいくつかある。また<code>%</code>はコンテキストによって基準になる単位が大きく変わるので、使用には注意を払う必要がある。</p>
+    </section>
+
+    <section class="day" id="d4">
+      <h2>UTF-8で書く</h2>
+
+      <p>HTTPヘッダーの<code>Content-Type</code>フィールドやCSSファイル内での<code>@charset</code>、<code>link</code>要素の<code>charset</code>属性(HTML5にはない)など様々な方法でCSSの文字コードを示す方法はある。しかし文字コード絡みのブラウザのバグが過去にいくつも報告されており、それを考慮するとUTF-8で(なるべくならASCII文字だけで)書くのが無難だろう。</p>
+    </section>
+
+    <section class="day" id="d5">
+      <h2>クラス・IDセレクタで要素名までは書かない</h2>
+
+      <p>そのほとんど全ては不必要なはずだ。どうしても必要というのならそれはHTMLの設計がおかしい可能性が高い。</p>
+    </section>
+
+    <section class="day" id="d6">
+      <h2>擬似クラスと擬似要素</h2>
+
+      <p>対象となる要素に仮想的にクラスを割り振るのが擬似クラスなので、<code>p:first-child</code>は親要素に対してある<code>p</code>要素が最初の子だった場合に対象になる(<code>p</code>要素の最初の子<em>ではない</em>)。対象となる要素の子(CSS3では子とは限らない)に仮想的な要素を作り出すのが擬似要素だ。そのため<code>p:fist-letter</code>は<em>全ての<code>p</code>要素の最初の一文字</em>が対象になる。</p>
+    </section>
+
+    <section class="day" id="d7">
+      <h2><code>@import</code>は最初に書く</h2>
+
+      <p>何かしらのルールが出てきた時点でそれ以降にある<code>@import</code>は無効になる。下手に書くとブラウザが効率よく並列ダウンロードしてくれないという問題はあるものの<code>@import</code>を使う機会はたまにあるので忘れないようにするべきだ。</p>
+    </section>
+
+    <section class="day" id="d8">
+      <h2>カスケーディングを意識しすぎない</h2>
+
+      <p>IDセレクタが強いとか後に書いたセレクタの方が強い程度の知識で終わっている人が大半だろう。そして多くの人が考えるよりもカスケーディングの奥は深いので、あまり意識せずに簡明なセレクタを心がけてCSSを書くのが基本にして奥義に通じるのではないかと考える。</p>
+    </section>
+
+    <section class="day" id="d9">
+      <h2><code>!important</code>は必要ない</h2>
+
+      <p>普通にCSSを書く上で<code>!important</code>が必要になることはまずない。セレクタの書き方と順序により必要になることがあるが、多くの場合はセレクタの書き方の工夫のみで使用を回避できる。うまく使うと威力を発揮するがその分取り扱いが難しいので使用を避けた方が無難だろう。</p>
+    </section>
+
+    <section class="day" id="d10">
+      <h2>同じプロパティは必ず並べる</h2>
+
+      <p><code>rgba()</code>に対応していないブラウザへのフォールバックに使用したり、同じプロパティを複数書かざるをえないことはままある。並べて書いてあれば、その値を比べることによってどうして複数必要なのかといった理由が明瞭になるだろう。</p>
+    </section>
+
+    <section class="day" id="d11">
+      <h2>短縮プロパティは使わない</h2>
+
+      <p>編集時に限って…の話だが、短縮プロパティはそもそも順序を間違えることがありうるし(<code>font</code>で<code>font-weight</code>をどこに書くかとかパッとわかる人は少ない)、<code>margin-right</code>などと書いてあった方が誰が読んでも把握できるだろう。最終的にそれらのプロパティをまとめたり空白を詰めて圧縮してくれたりするツール(<a href="http://www.cleancss.com/">CleanCSS</a>など)に通すことによって最適化されたCSSファイルに変換すれば良い。</p>
+    </section>
+
+    <section class="day" id="d12">
+      <h2>プロパティを書く順序に一貫性をもたせる</h2>
+
+      <p>可読性とメンテナンス性のために一貫性を持たせることの重要性は高い。様々な並べ方があると思うが、プロパティの入れ替わりがあることを考慮すると、アルファベット順に並べるというのがコンセンサスを得やすいだろう。</p>
+    </section>
+
+    <section class="day" id="d13">
+      <h2><code>border</code>のレンダリングに過度の期待をしない</h2>
+
+      <p><code>border</code>のレンダリングはブラウザによってかなり違う。その違いは微妙なものとも言えるのだが、<code>border</code>プロパティ自体の主張が強いので受けるイメージに大きくずれができる。<code>solid</code>と<code>double</code>は比較的差がないので比較的安全と言えるだろう。</p>
+    </section>
+
+    <section class="day" id="d14">
+      <h2><code>position: absolute</code>の基準を理解する</h2>
+
+      <p><a href="http://www.w3.org/TR/CSS2/visuren.html#comp-abspos">仕様に書いてある通り</a>、直近のポジション指定されている親が基準になる。つまり親に<code>relative</code>等が<code>position</code>の値として指定された要素があればそれが、なければ通常<code>body</code>要素が基準になる。</p>
+    </section>
+
+    <section class="day" id="d15">
+      <h2><code>right: 100%</code>と<code>left: -100px</code>を使い分ける</h2>
+
+      <p>どちらもマイナスの位置に配置するテクニックである。内容物が可変な場合は<code>%</code>配置の方が向いていることが多く、メンテナンス性も高い。逆に固定サイズの場合は負の長さを使った方が確実なので、場合によって使い分けるのが良いだろう。</p>
+    </section>
+
+    <section class="day" id="d16">
+      <h2><code>vertical-align</code>のことは忘れる</h2>
+
+      <p><a href="http://www.w3.org/TR/CSS2/visuren.html#line-box">行ボックス</a>という概念の理解が必要だが、非常に込み入った概念で正確に把握している人は数えるほどしかいない。多くの場合は代替手段があるのであまりこだわらない方が無難だろう。</p>
+    </section>
+
+    <section class="day" id="d17">
+      <h2><code>:before</code>と<code>:after</code>擬似要素と置換要素</h2>
+
+      <p>ブラウザによって挙動が違うので使用は避けるべきだろう。<a href="http://www.w3.org/TR/CSS2/conform.html#replaced-element">置換要素</a>とは<code>img</code>や<code>textarea</code>要素などがそれにあたり、それらに対しては<code>content</code>プロパティで何かを流し込むことができないことがあるということだ。</p>
+    </section>
+
+    <section class="day" id="d18">
+      <h2><code>list-style-type</code>のデフォルト値を知る</h2>
+
+      <p>デフォルトではいわゆるブレットと呼ばれる黒丸で、ネストすると下の階層では違うマークが使用される。そのため安易に<code>ul</code>要素等で<code>none</code>などを指定してリセットしてしまうとこのデフォルトの挙動に戻すことができなくなる(難しくなる)。</p>
+    </section>
+
+    <section class="day" id="d19">
+      <h2><code>background-image</code>と<code>background-color</code>はセットで指定する</h2>
+
+      <p>最近は画像非表示で…などという人はまずいないがそもそもそういうためのものではない。画像は読み込みに失敗することがあるので、それに対してのフォールバックとして背景色の指定は絶対に必要であるだろう。</p>
+    </section>
+
+    <section class="day" id="d20">
+      <h2><code>background-position</code>と<code>top</code>他の座標指定の仕組みは違う</h2>
+
+      <p>X座標とY座標を指定すると、その位置と背景画像におけるそのX座標とY座標の位置を合わせるようにして配置される。<code>position</code>系の座標指定のように指定した位置と背景画像の左上を合わせるわけではない。この仕様のお陰で<code>50% 50%</code>で背景画像の中央揃えが簡単にできるようになっている。</p>
+    </section>
+
+    <section class="day" id="d21">
+      <h2>代替フォントは形状よりも文字幅や<code>x-height</code>の近いものを選ぶ</h2>
+
+      <p>プライマリのフォントと同じ見た目ではなく<em>読感</em>を提供することが重要なので、形状よりも文字幅を合わせて一行の文字数に差が出ないようにすることや<code>x-height</code>が近いものを選んで文字の識別しやすさを揃えることを重視した方が良い。</p>
+    </section>
+
+    <section class="day" id="d22">
+      <h2>総称ファミリを忘れない</h2>
+
+      <p>総称ファミリは文法的には必須ではない。しかし書かなかった場合にフォールバックされるフォントはブラウザの実装に強く依存し、場合によってはユーザーが設定すらしていないよくわからないフォントで表示されてしまうことになる。総称ファミリを指定しておけばユーザーが設定したフォントになるという実装が多いので、ユーザーに優しいCSSと言えるだろう。</p>
+    </section>
+
+    <section class="day" id="d23">
+      <h2><code>font-style: italic</code>は斜体になるとは限らない</h2>
+
+      <p>通常斜体のないフォントにそれを指定した場合、ブラウザ側が無理やり斜めにした形で表示される。しかし、限られたケースではあるが斜体が無いにもかかわらず、ブラウザからは斜体があるように見えるフォント(例えばメイリオ)があることは覚えておきたい。</p>
+    </section>
+
+    <section class="day" id="d24">
+      <h2><code>text-transform</code>による影響を知る</h2>
+
+      <p>文字の大文字化やキャピタライズを行うプロパティだが、その実装にはブラウザ間で違いがある。<code>capitalize</code>でハイフンに続く大文字になるブラウザとそうでないブラウザがあるし、<code>uppercase</code>にしたテキストをコピーすると大文字になったテキストがクリップボードに入るブラウザとそうでないブラウザがある。</p>
+    </section>
+
+    <section class="day" id="d25">
+      <h2><code>cursor</code>は理由がなければ使わない</h2>
+
+      <p>ほとんど全てのケースでユーザーを混乱させる原因になる。クリックすると<code>a</code>要素のようにページの遷移が起こる要素に<code>pointer</code>とするなど妥当な理由があればその限りではない。</p>
+    </section>
+
+    <section id="preview">
+      <p>一日に付き一つCSS 2.1の基礎知識というには専門的だけどベスト・プラクティス程覚えて役に立つものではない話が簡単な説明付きで表示されます。</p>
+      <p>お楽しみに！</p>
+    </section>
+
+    <footer>
+      <address>Written by <a href="http://hail2u.net/about/">Kyo Nagashima</a></address>
+      <p><a href="http://b.hatena.ne.jp/entry/http://hail2u.github.com/css21-advent-calender-2011.html" class="hatena-bookmark-button" data-hatena-bookmark-title="CSS 2.1 Advent Calender '11" data-hatena-bookmark-layout="standard">はてなブックマーク</a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://hail2u.github.com/css21-advent-calender-2011.html" data-count="horizontal" data-via="hell2u">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+        <iframe src="http://www.facebook.com/plugins/like.php?locale=en_US&amp;href=http%3A%2F%2Fhail2u.github.com%2Fcss21-advent-calender-2011.html&amp;send=false&amp;layout=button_count&amp;width=90&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=20" style="border:none; overflow:hidden; width:90px; height:20px;"></iframe></p>
+    </footer>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script>
+// var d = new Date(2010/1/1),
+// var d = new Date(2011/12/27),
+// var d = new Date(2011/12/13),
+var d = new Date(),
+  YYYY = d.getFullYear(),
+  MM = d.getMonth() + 1,
+  dd = d.getDate();
+
+if (YYYY !== 2011 || (MM === 12 && dd > 25)) {
+  $(".day").css({
+    "position": "static",
+    "bottom":   "auto"
+  });
+} else if (MM === 12) {
+  $("#d" + dd).css({
+    "position": "static",
+    "bottom":   "auto"
+  });
+} else {
+  $("#preview").show();
+}
+    </script>
+  </body>
+</html>
