@@ -8,13 +8,33 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Vollkorn:400italic">
     <link rel="stylesheet" href="./natural.css">
     <style>
+      html {
+        display: table;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
       body {
+        padding: 16px;
+        display: table-cell;
+        vertical-align: middle;
         font-family: "Vollkorn", serif;
         font-style: italic;
+        background-image: url("./subtle-light.png");
+        background-repeat: no-repeat;
+        background-position: -96px 50%;
+        -moz-transition-duration: 3s;
+        -webkit-transition-duration: 3s;
+        -o-transition-duration: 3s;
+        -ms-transition-duration: 3s;
+        transition-duration: 3s;
       }
 
       h1 {
-        margin-bottom: 0;
+        margin: 0;
         line-height: 1;
       }
 
@@ -30,22 +50,27 @@
       }
 
       input {
+        border: 1px solid silver;
         font: inherit;
         max-width: 280px;
       }
 
       input[type="submit"] {
+        padding: 6px 16px 3px;
         border: none;
-        padding: 0;
-        color: inherit;
-        background-color: inherit;
-        text-decoration: underline;
+        color: white;
+        background-color: black;
         cursor: pointer;
       }
 
-      @media screen and (max-width: 480px) {
+      a {
+        color: inherit;
+      }
+
+      @media screen and (min-width: 768px) {
         body {
-          margin-left: 16px;
+          padding-left: 256px;
+          background-position: 144px 50%;
         }
       }
     </style>
@@ -53,27 +78,29 @@
     <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   </head>
   <body>
-    <header>
-      <hgroup>
-        <h1>Soul Color</h1>
-        <h2>Color of Your Soul</h2>
-      </hgroup>
-    </header>
+    <div class="wrapper">
+      <header>
+        <hgroup>
+          <h1>Soul Color</h1>
+          <h2>Color of Your Soul</h2>
+        </hgroup>
+      </header>
 
-    <form>
-      <dl>
-        <dt><label for="name_first">Your First Name:</label></dt>
-        <dd><input type="text" size="48" required pattern="[a-zA-Z]+" placeholder="Type your first name in alphabet" id="name_first"></dd>
-        <dt><label for="name_family">Your Family Name:</label></dt>
-        <dd><input type="text" size="48" required pattern="[a-zA-Z]+" placeholder="Type your family name in alphabet" id="name_family"></dd>
-      </dl>
+      <form>
+        <dl>
+          <dt><label for="name_first">Your First Name:</label></dt>
+          <dd><input type="text" size="48" required pattern="[a-zA-Z]+" placeholder="Type your first name in alphabet" id="name_first"></dd>
+          <dt><label for="name_family">Your Family Name:</label></dt>
+          <dd><input type="text" size="48" required pattern="[a-zA-Z]+" placeholder="Type your family name in alphabet" id="name_family"></dd>
+        </dl>
 
-      <p><input type="submit" value="Get Your Soul Color!"></p>
-    </form>
+        <p><input type="submit" value="Get Your Soul Color!"></p>
+      </form>
 
-    <footer>
-      <address>by <a href="http://hail2u.net/about/">Kyo Nagashima</a></address>
-    </footer>
+      <footer>
+        <address>by <a href="http://hail2u.net/about/">Kyo Nagashima</a></address>
+      </footer>
+    </div>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script>
