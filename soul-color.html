@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Soul Color &mdash; Color of Your Soul</title>
+
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Vollkorn:400italic">
+    <link rel="stylesheet" href="./natural.css">
+    <style>
+      body {
+        font-family: "Vollkorn", serif;
+        font-style: italic;
+      }
+
+      h1 {
+        margin-bottom: 0;
+        line-height: 1;
+      }
+
+      h2 {
+        margin-top: 0;
+        line-height: 1;
+        font-weight: normal;
+        font-size: 100%;
+      }
+
+      dl dd {
+        margin-left: 0;
+      }
+
+      input {
+        font: inherit;
+        max-width: 280px;
+      }
+
+      input[type="submit"] {
+        border: none;
+        padding: 0;
+        color: inherit;
+        background-color: inherit;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+
+      @media screen and (max-width: 480px) {
+        body {
+          margin-left: 16px;
+        }
+      }
+    </style>
+
+    <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  </head>
+  <body>
+    <header>
+      <hgroup>
+        <h1>Soul Color</h1>
+        <h2>Color of Your Soul</h2>
+      </hgroup>
+    </header>
+
+    <form>
+      <dl>
+        <dt><label for="name_first">Your First Name:</label></dt>
+        <dd><input type="text" size="48" required pattern="[a-zA-Z]+" placeholder="Type your first name in alphabet" id="name_first"></dd>
+        <dt><label for="name_family">Your Family Name:</label></dt>
+        <dd><input type="text" size="48" required pattern="[a-zA-Z]+" placeholder="Type your family name in alphabet" id="name_family"></dd>
+      </dl>
+
+      <p><input type="submit" value="Get Your Soul Color!"></p>
+    </form>
+
+    <footer>
+      <address>by <a href="http://hail2u.net/about/">Kyo Nagashima</a></address>
+    </footer>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script>
+      $(function () {
+        $("form").submit(getSoulColor);
+      });
+
+      function getSoulColor() {
+        var nameFirst = $("#name_first").val(),
+          nameFamily = $("#name_family").val(),
+          r = nameToNumber(nameFirst) % 16,
+          b = nameToNumber(nameFamily) % 16,
+          g = r * b % 16,
+          rgb = r.toString(16) + g.toString(16) + b.toString(16);
+
+        $("body").css("background-color", "#" + rgb);
+
+        return false;
+      }
+
+      function nameToNumber(name) {
+        var l = name.length,
+          i = 0,
+          num = 0;
+
+        for (i; i < l; i++) {
+          num += name.charCodeAt(i);
+        }
+
+        return num;
+      }
+    </script>
+  </body>
+</html>
