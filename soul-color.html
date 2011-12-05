@@ -86,12 +86,12 @@
         </hgroup>
       </header>
 
-      <form>
+      <form id="get_soul_color">
         <dl>
           <dt><label for="name_first">Your First Name:</label></dt>
-          <dd><input type="text" size="48" required pattern="[a-zA-Z]+" placeholder="Type your first name in alphabet" id="name_first"></dd>
+          <dd><input type="text" size="48" required pattern="[a-zA-Z]+" placeholder="Type your first name in alphabet" title="アルファベットで名を入力してください。" id="name_first"></dd>
           <dt><label for="name_family">Your Family Name:</label></dt>
-          <dd><input type="text" size="48" required pattern="[a-zA-Z]+" placeholder="Type your family name in alphabet" id="name_family"></dd>
+          <dd><input type="text" size="48" required pattern="[a-zA-Z]+" placeholder="Type your family name in alphabet" title="アルファベットで姓を入力してください。" id="name_family"></dd>
         </dl>
 
         <p><input type="submit" value="Get Your Soul Color!"></p>
@@ -103,35 +103,64 @@
     </div>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="https://raw.github.com/hail2u/jquery.xhashchange/master/jquery.xhashchange.js"></script>
     <script>
       $(function () {
-        $("form").submit(getSoulColor);
+        $(window).hashchange(SoulColor.hashMonitor);
+        $("#get_soul_color").submit(SoulColor.setHash);
+        $(window).trigger("hashchange");
       });
 
-      function getSoulColor() {
-        var nameFirst = $("#name_first").val(),
-          nameFamily = $("#name_family").val(),
-          r = nameToNumber(nameFirst) % 16,
-          b = nameToNumber(nameFamily) % 16,
-          g = r * b % 16,
-          rgb = r.toString(16) + g.toString(16) + b.toString(16);
+var SoulColor = {};
 
-        $("body").css("background-color", "#" + rgb);
+SoulColor.hashMonitor = function () {
+  var name = window.location.hash;
 
-        return false;
-      }
+  if (name && name.match(/^#[a-zA-Z]+\+[a-zA-Z]+$/)) {
+    var fn = name.replace(/^#/, "").split("+"),
+      r = SoulColor.nameToNumber(fn[0]) % 16,
+      b = SoulColor.nameToNumber(fn[1]) % 16,
+      g = (r * b % 16).toString(16),
+      r = r.toString(16),
+      b = b.toString(16);
 
-      function nameToNumber(name) {
-        var l = name.length,
-          i = 0,
-          num = 0;
+    $("#name_first").val(fn[0]);
+    $("#name_family").val(fn[1]);
+    $("body").css({
+      "color":            (SoulColor.calculateBrightness(r, g, b) > 125) ? "#000" : "#fff",
+      "background-color": "#" + r + g + b
+    });
+  }
+};
 
-        for (i; i < l; i++) {
-          num += name.charCodeAt(i);
-        }
+SoulColor.setHash = function () {
+  var nameFirst = $("#name_first").val(),
+    nameFamily = $("#name_family").val(),
+    currentHash = window.location.hash,
+    newHash = "#" + encodeURIComponent(nameFirst) + "+" + encodeURIComponent(nameFamily);
 
-        return num;
-      }
+  if (currentHash !== newHash) {
+    window.location.hash = newHash;
+  }
+
+  return false;
+};
+
+SoulColor.nameToNumber = function (name) {
+  var l = name.length,
+    i = 0,
+    num = 0;
+
+  for (i; i < l; i++) {
+    num += name.charCodeAt(i);
+  }
+
+  return num;
+};
+
+SoulColor.calculateBrightness = function (r, g, b) {
+  return ((parseInt(r + r, 16) * 299) + (parseInt(g + g, 16) * 587) + (parseInt(b + b, 16) * 114)) / 1000;
+};
     </script>
   </body>
 </html>
