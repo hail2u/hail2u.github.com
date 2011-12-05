@@ -111,56 +111,56 @@
         $(window).trigger("hashchange");
       });
 
-var SoulColor = {};
+      var SoulColor = {};
 
-SoulColor.hashMonitor = function () {
-  var name = window.location.hash;
+      SoulColor.hashMonitor = function () {
+        var name = window.location.hash;
 
-  if (name && name.match(/^#[a-zA-Z]+\+[a-zA-Z]+$/)) {
-    var fn = name.replace(/^#/, "").split("+"),
-      r = SoulColor.nameToNumber(fn[0]) % 16,
-      b = SoulColor.nameToNumber(fn[1]) % 16,
-      g = (r * b % 16).toString(16),
-      r = r.toString(16),
-      b = b.toString(16);
+        if (name && name.match(/^#[a-zA-Z]+\+[a-zA-Z]+$/)) {
+          var fn = name.replace(/^#/, "").split("+"),
+            r = SoulColor.nameToNumber(fn[0]) % 16,
+            b = SoulColor.nameToNumber(fn[1]) % 16,
+            g = (r * b % 16).toString(16),
+            r = r.toString(16),
+            b = b.toString(16);
 
-    $("#name_first").val(fn[0]);
-    $("#name_family").val(fn[1]);
-    $("body").css({
-      "color":            (SoulColor.calculateBrightness(r, g, b) > 125) ? "#000" : "#fff",
-      "background-color": "#" + r + g + b
-    });
-  }
-};
+          $("#name_first").val(fn[0]);
+          $("#name_family").val(fn[1]);
+          $("body").css({
+            "color":            (SoulColor.calculateBrightness(r, g, b) > 125) ? "#000" : "#fff",
+            "background-color": "#" + r + g + b
+          });
+        }
+      };
 
-SoulColor.setHash = function () {
-  var nameFirst = $("#name_first").val(),
-    nameFamily = $("#name_family").val(),
-    currentHash = window.location.hash,
-    newHash = "#" + encodeURIComponent(nameFirst) + "+" + encodeURIComponent(nameFamily);
+      SoulColor.setHash = function () {
+        var nameFirst = $("#name_first").val(),
+          nameFamily = $("#name_family").val(),
+          currentHash = window.location.hash,
+          newHash = "#" + encodeURIComponent(nameFirst) + "+" + encodeURIComponent(nameFamily);
 
-  if (currentHash !== newHash) {
-    window.location.hash = newHash;
-  }
+        if (currentHash !== newHash) {
+          window.location.hash = newHash;
+        }
 
-  return false;
-};
+        return false;
+      };
 
-SoulColor.nameToNumber = function (name) {
-  var l = name.length,
-    i = 0,
-    num = 0;
+      SoulColor.nameToNumber = function (name) {
+        var l = name.length,
+          i = 0,
+          num = 0;
 
-  for (i; i < l; i++) {
-    num += name.charCodeAt(i);
-  }
+        for (i; i < l; i++) {
+          num += name.charCodeAt(i);
+        }
 
-  return num;
-};
+        return num;
+      };
 
-SoulColor.calculateBrightness = function (r, g, b) {
-  return ((parseInt(r + r, 16) * 299) + (parseInt(g + g, 16) * 587) + (parseInt(b + b, 16) * 114)) / 1000;
-};
+      SoulColor.calculateBrightness = function (r, g, b) {
+        return ((parseInt(r + r, 16) * 299) + (parseInt(g + g, 16) * 587) + (parseInt(b + b, 16) * 114)) / 1000;
+      };
     </script>
   </body>
 </html>
