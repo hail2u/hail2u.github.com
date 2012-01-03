@@ -11,7 +11,6 @@
         margin: 0 auto;
         max-width: 736px;
         counter-reset: day;
-        text-align: center;
       }  
 
       header,
@@ -37,29 +36,22 @@
         font-size: 16px;
       }
 
-      .day,
-      #preview {
-        margin: 0 auto;
-        position: absolute;
-        bottom: 1000%;
-      }
-
       .day h2 {
         margin: 96px 0 32px 0;
+        position: relative;
         font-size: 24px;
       }
 
       .day h2::before {
         display: block;
+        position: absolute;
+        right: 100%;
+        width: 4em;
         counter-increment: day;
         content: "Day " counter(day);
         color: crimson;
         font-family: "Palatino", "Palatino Linotype", serif;
         font-style: italic;
-      }
-
-      #preview p:first-child {
-        margin: 96px 0 32px 0;
       }
 
       footer address {
@@ -228,42 +220,16 @@
       <p>ほとんど全てのケースでユーザーを混乱させる原因になる。クリックすると<code>a</code>要素のようにページの遷移が起こる要素に<code>pointer</code>とするなど妥当な理由があればその限りではない。</p>
     </section>
 
-    <section id="preview">
-      <p>一日につき一つCSS 2.1の基礎知識というには専門的ではあるもののベスト・プラクティス程覚えて役に立つものではない話が簡単な説明付きで表示されます。</p>
-      <p>お楽しみに！</p>
-    </section>
-
     <footer>
       <address>Written by <a href="http://hail2u.net/about/">Kyo Nagashima</a>, and released into <a href="http://unlicense.org/">Public Domain</a></address>
     </footer>
 
     <aside class="buttons">
-      <p><iframe src="http://www.facebook.com/plugins/like.php?locale=en_US&amp;href=http%3A%2F%2Fhail2u.github.com%2Fcss21-advent-calendar-2011.html&amp;send=false&amp;layout=button_count&amp;width=90&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=20" style="border:none; overflow:hidden; width:90px; height:20px;"></iframe>
+      <p>
+        <iframe src="http://www.facebook.com/plugins/like.php?locale=en_US&amp;href=http%3A%2F%2Fhail2u.github.com%2Fcss21-advent-calendar-2011.html&amp;send=false&amp;layout=button_count&amp;width=90&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=20" style="border:none; overflow:hidden; width:90px; height:20px;"></iframe>
         <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://hail2u.github.com/css21-advent-calendar-2011.html" data-count="horizontal" data-via="hell2u">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-        <a href="http://b.hatena.ne.jp/entry/http://hail2u.github.com/css21-advent-calendar-2011.html" class="hatena-bookmark-button" data-hatena-bookmark-title="CSS 2.1 Advent Calendar '11" data-hatena-bookmark-layout="standard">はてなブックマーク</a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script></p>
+        <a href="http://b.hatena.ne.jp/entry/http://hail2u.github.com/css21-advent-calendar-2011.html" class="hatena-bookmark-button" data-hatena-bookmark-title="CSS 2.1 Advent Calendar '11" data-hatena-bookmark-layout="standard">はてなブックマーク</a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+      </p>
     </aside>
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script>
-// var d = new Date("2010/1/1"),
-// var d = new Date("2011/12/27"),
-// var d = new Date("2011/12/13"),
-var d = new Date(),
-  YYYY = d.getFullYear(),
-  MM = d.getMonth() + 1,
-  dd = d.getDate(),
-  restore = {
-    "position": "static",
-    "bottom":   "auto"
-  };
-
-if (YYYY !== 2011 || (MM === 12 && dd > 25)) {
-  $(".day").css(restore);
-} else if (MM === 12) {
-  $("#d" + dd).css(restore);
-} else {
-  $("#preview").css(restore);
-}
-    </script>
   </body>
 </html>
