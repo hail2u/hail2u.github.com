@@ -1,5 +1,0 @@
-Options +Indexes
-IndexOptions +FoldersFirst
-IndexOptions +IgnoreCase
-IndexOptions +SuppressDescription
-IndexOptions +NameWidth=48
