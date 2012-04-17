@@ -1,4 +1,4 @@
-var colorKeywords = {
+{
   "AliceBlue": {
     "hex": "#f0f8ff",
     "rgb": "rgb(240, 248, 255)",
@@ -699,4 +699,4 @@ var colorKeywords = {
     "rgb": "rgb(154, 205, 50)",
     "hsl": "hsl(80, 60.78%, 50.00%)"
   }
-};
+}
