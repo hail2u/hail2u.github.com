@@ -70,27 +70,28 @@
     </style>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script src="./color-keywords.json"></script>
     <script>
-      var keywords = [],
-        s;
-
-      for (s in colorKeywords) {
-        keywords.push(s);
-      }
-
       $(function () {
-        var keyword = keywords[Math.floor(Math.random() * keywords.length)],
-          color = colorKeywords[keyword],
-          b = $("body").css("background-color", color.rgb);
-        $("#color-values header h1").text(keyword);
-        $("#color-values p").text(color.rgb);
+        $.getJSON("./color-keywords.json", function (colorKeywords) {
+          var keywords = [],
+            s;
 
-        if (calculateBrightness(color.rgb) > 127.5) {
-          b.addClass("light");
-        } else {
-          b.addClass("dark");
-        }
+          for (s in colorKeywords) {
+            keywords.push(s);
+          }
+
+          var keyword = keywords[Math.floor(Math.random() * keywords.length)],
+            color = colorKeywords[keyword],
+            b = $("body").css("background-color", color.rgb);
+          $("#color-values header h1").text(keyword);
+          $("#color-values p").text(color.rgb);
+
+          if (calculateBrightness(color.rgb) > 127.5) {
+            b.addClass("light");
+          } else {
+            b.addClass("dark");
+          }
+        });
       });
 
       function calculateBrightness (color) {

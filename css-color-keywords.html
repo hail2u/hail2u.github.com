@@ -92,49 +92,50 @@
     </style>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script src="./color-keywords.json"></script>
     <script>
-      var keywords = [];
-
-      for (var s in colorKeywords) {
-        keywords.push(s);
-      }
-
       $(function () {
-        keywords = shuffle(keywords);
-        var t = $("#samples").empty();
-        var l = keywords.length;
-        var r = Math.floor(Math.random() * l);
+        $.getJSON("./color-keywords.json", function (colorKeywords) {
+          var keywords = [];
 
-        for (var i = 0; i < l; i++) {
-          var keyword = keywords[i];
-          var color = colorKeywords[keyword];
-          var sample = $("<div/>", {
-            style: "background-color:" + color.rgb + ";"
-          }).addClass("color-sample").append(keyword);
-
-          if (calculateBrightness(color.rgb) > 127.5) {
-            sample.addClass("light");
-            sample.click(function () {
-              var b = $("body").css("background-color", $(this).css("background-color"));
-              b.addClass("light");
-              b.removeClass("dark");
-            });
-          } else {
-            sample.addClass("dark");
-            sample.click(function () {
-              var b = $("body").css("background-color", $(this).css("background-color"));
-              b.addClass("dark");
-              b.removeClass("light");
-            });
+          for (var s in colorKeywords) {
+            keywords.push(s);
           }
 
-          sample.appendTo(t);
+          keywords = shuffle(keywords);
+          var t = $("#samples").empty();
+          var l = keywords.length;
+          var r = Math.floor(Math.random() * l);
 
-          if (i === r) {
-            sample.click();
+          for (var i = 0; i < l; i++) {
+            var keyword = keywords[i];
+            var color = colorKeywords[keyword];
+            var sample = $("<div/>", {
+              style: "background-color:" + color.rgb + ";"
+            }).addClass("color-sample").append(keyword);
+
+            if (calculateBrightness(color.rgb) > 127.5) {
+              sample.addClass("light");
+              sample.click(function () {
+                var b = $("body").css("background-color", $(this).css("background-color"));
+                b.addClass("light");
+                b.removeClass("dark");
+              });
+            } else {
+              sample.addClass("dark");
+              sample.click(function () {
+                var b = $("body").css("background-color", $(this).css("background-color"));
+                b.addClass("dark");
+                b.removeClass("light");
+              });
+            }
+
+            sample.appendTo(t);
+
+            if (i === r) {
+              sample.click();
+            }
           }
-        }
+        });
       });
 
       function shuffle (list) {
