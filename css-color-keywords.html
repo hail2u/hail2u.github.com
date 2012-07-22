@@ -7,38 +7,33 @@
 
     <style>
       body {
-        margin: 0;
+        margin: 2em 0;
         padding: 0;
-        font-family: "Palatino Linotype", serif;
-        font-style: italic;
-        font-size: 24px;
+        font-family: "Hoefler Text", "Constantia", serif;
       }
 
       .light {
-        color: rgb(0, 0, 0);
-        text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+        color: #000;
       }
 
       .dark {
-        color: rgb(255, 255, 255);
-        text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+        color: #fff;
       }
 
       h1 {
-        margin: 32px auto;
-        width: 816px;
-        font-size: 72px;
-        font-weight: normal;
+        margin: 2em auto 0 auto;
         text-align: center;
       }
 
       #samples {
-        margin: 32px auto;
-        width: 816px;
+        margin: 2em auto 0 auto;
+        width: 65em;
+        text-align: center;
         zoom: 1;
       }
-    
-      #samples:before, #samples:after {
+
+      #samples:before,
+      #samples:after {
         display: block;
         height: 0;
         visibility: hidden;
@@ -50,43 +45,17 @@
       }
 
       .color-sample {
-        margin: 8px;
+        margin: 0.5em;
         padding: 0;
         float: left;
-        width: 250px;
-        height: 138px;
-        line-height: 138px;
-        text-align: center;
-        text-decoration: none;
-        text-transform: capitalize;
+        width: 12em;
+        height: 12em;
+        line-height: 12;
         cursor: pointer;
       }
 
-      .color-sample:last-child {
-        margin-left: 280px;
-      }
-
-      .dark .color-sample {
-        box-shadow: 0 0 16px 0 rgba(255, 255, 255, 0.5);
-      }
-
-      .light .color-sample {
-        box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.5);
-      }
-
-      div.dark {
-        border: 3px solid rgb(255, 255, 255);
-      }
-
-      div.light {
-        border: 3px solid rgb(0, 0, 0);
-      }
-
       address {
-        margin: -184px auto 32px auto;
-        width: 256px;
-        line-height: 144px;
-        font-size: 16px;
+        margin: 2em auto 0 auto;
         text-align: center;
       }
     </style>
@@ -170,9 +139,7 @@
     </div>
 
     <footer>
-      <address>
-        <p>&copy; 2011 Kyo Nagashima</p>
-      </address>
+      <address>&copy; 2011 Kyo Nagashima</address>
     </footer>
   </body>
 </html>
