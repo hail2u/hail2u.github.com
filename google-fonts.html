@@ -71,6 +71,45 @@
         font-style: normal;
       }
 
+      #help {
+        padding: 1em;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 10002;
+        cursor: help;
+      }
+
+      #help p {
+        margin: 0;
+        border: 0.125em solid;
+        border-radius: 50%;
+        display: block;
+        width: 1em;
+        height: 1em;
+        font-size: 300%;
+        opacity: 0.2;
+      }
+
+      #help p:hover {
+        opacity: 1;
+      }
+
+      #help ul {
+        margin: 0;
+        line-height: 1.4;
+        text-align: left;
+        display: none;
+      }
+
+      #help.show p {
+        display: none;
+      }
+
+      #help.show ul {
+        display: block;
+      }
+
       .to-top {
         margin-top: -100%;
         -moz-transition: all 0.6s ease-in-out;
@@ -143,7 +182,7 @@
               href: url
             }));
             var color = colors[Math.floor(Math.random() * colors.length)];
-            var preview = $('<div/>').addClass('preview').css({
+            var preview = $('<section/>').addClass('preview').css({
               'font-family': '"' + font.family + '", sans-serif',
               'z-index': i,
               'color': color.fg,
@@ -164,6 +203,10 @@
 
           $('#result').append(previews).find('.preview:last-child').show();
         });
+
+        $("#help").on('click', function () {
+          $(this).toggleClass('show');
+        });
       });
 
       function shuffle(list) {
@@ -182,14 +225,23 @@
     </script>
   </head>
   <body>
-    <div id="result">
-      <div class="preview">
+    <section id="result">
+      <section class="preview">
         <p><a href="">G.F.</a></p>
-      </div>
-    </div>
+      </section>
+    </section>
 
     <footer>
       <address>Made by <a href="http://hail2u.net/about/">Kyo Nagashima</a>. All Fonts are provided by <a href="http://www.google.com/fonts">Google Fonts</a>.</address>
     </footer>
+
+    <section id="help">
+      <p>?</p>
+
+      <ul>
+        <li><strong>Click empty area</strong>: Display next font</li>
+        <li><strong>Click font name</strong>: Go to Google Fonts specimen page</li>
+      </ul>
+    </section>
   </body>
 </html>
