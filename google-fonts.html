@@ -203,6 +203,10 @@
           $('#result').append(previews).find('.preview').on('click', function (e) {
             var self = $(this);
 
+            if (e.target.nodeName === 'A') {
+              return;
+            }
+
             if (!e.shiftKey) {
               self.prev().show();
               self.addClass(self.data('animateClass'));
