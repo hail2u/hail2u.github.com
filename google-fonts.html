@@ -192,25 +192,24 @@
               'color': color.fg,
               'background-color': color.bg,
               'display': 'none'
-            }).data({
-              'animateClass': animateClasses[i % 4]
+            }).attr({
+              'data-animate-class': animateClasses[i % 4]
             }).append($('<p/>').append($('<a/>', {
               href: 'http://www.google.com/fonts/family?family=' + fontEncoded
             }).append(font.family)));
-            preview.on('click', function (e) {
-              var self = $(this);
-
-              if (!e.shiftKey) {
-                self.prev().show();
-                self.addClass(self.data('animateClass'));
-              } else if (!self.is(':last-child')) {
-                self.next().removeClass(animateClasses.join(' '));
-              }
-            });
             previews.push(preview);
           }
 
-          $('#result').append(previews).find('.preview:last-child').show();
+          $('#result').append(previews).find('.preview').on('click', function (e) {
+            var self = $(this);
+
+            if (!e.shiftKey) {
+              self.prev().show();
+              self.addClass(self.data('animateClass'));
+            } else if (!self.is(':last-child')) {
+              self.next().removeClass(animateClasses.join(' '));
+            }
+          }).last().show();
         });
 
         $("#help").on('click', function () {
