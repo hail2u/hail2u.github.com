@@ -204,7 +204,7 @@
               'background-color': color.bg,
               'display': 'none'
             }).attr({
-              'data-animate-class': animateClasses[i % 4]
+              'data-animate-class': animateClasses[i % animateClasses.length]
             }).append($('<p/>').append($('<a/>', {
               href: 'http://www.google.com/fonts/family?family=' + fontEncoded
             }).append(font.family)));
