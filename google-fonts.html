@@ -162,7 +162,7 @@
     <script src="./jquery.query-yql.min.js"></script>
     <script>
       var statement = 'select * from json where url="https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyApMgI8vW2EfAFAeVa4hDvaLoaW9A3WY94&subsets=latin&sort=alpha"';
-      var colors = [
+      var colors = shuffle([
         {'fg': 'rgb(185, 190, 168)', 'bg': 'rgb(96, 128, 126)'},
         {'fg': 'rgb(53, 131, 179)', 'bg': 'rgb(226, 223, 208)'},
         {'fg': 'rgb(139, 194, 188)', 'bg': 'rgb(214, 225, 193)'},
@@ -179,7 +179,7 @@
         {'fg': 'rgb(104, 209, 230)', 'bg': 'rgb(204, 214, 181)'},
         {'fg': 'rgb(230, 179, 154)', 'bg': 'rgb(139, 158, 155)'},
         {'fg': 'rgb(76, 73, 56)', 'bg': 'rgb(217, 208, 163)'}
-      ];
+      ]);
       var animateClasses = ['to-top', 'to-right', 'to-bottom', 'to-left'];
 
       $(function () {
@@ -196,7 +196,7 @@
               rel:  'stylesheet',
               href: url
             }));
-            var color = colors[Math.floor(Math.random() * colors.length)];
+            var color = colors[i % colors.length];
             var preview = $('<section/>').addClass('preview').css({
               'font-family': '"' + font.family + '", sans-serif',
               'z-index': i,
