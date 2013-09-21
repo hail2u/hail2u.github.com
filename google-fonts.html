@@ -193,6 +193,14 @@
         });
 
         $.queryYQL(statement, function (d) {
+          if (!d.query.results) {
+            $('.preview p').css({
+              'font-size': '100%'
+            }).text('Oops, failed to fetch data from Google Fonts API via YQL.')
+
+            return;
+          }
+
           var fonts = shuffle(d.query.results.json.items);
           var previews = [];
 
