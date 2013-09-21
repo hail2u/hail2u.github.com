@@ -175,11 +175,23 @@
         {'fg': 'rgb(251, 251, 251)', 'bg': 'rgb(214, 209, 190)'},
         {'fg': 'rgb(104, 209, 230)', 'bg': 'rgb(204, 214, 181)'},
         {'fg': 'rgb(230, 179, 154)', 'bg': 'rgb(139, 158, 155)'},
-        {'fg': 'rgb(76, 73, 56)', 'bg': 'rgb(217, 208, 163)'}
+        {'fg': 'rgb(76, 73, 56)', 'bg': 'rgb(217, 208, 163)'},
+        {'fg': 'rgb(77, 84, 56)', 'bg': 'rgb(189, 196, 184)'},
+        {'fg': 'rgb(170, 106, 153)', 'bg': 'rgb(78, 81, 124)'},
+        {'fg': 'rgb(242, 192, 44)', 'bg': 'rgb(241, 244, 215)'},
+        {'fg': 'rgb(146, 203, 197)', 'bg': 'rgb(226, 222, 186)'},
+        {'fg': 'rgb(199, 109, 22)', 'bg': 'rgb(204, 183, 67)'},
+        {'fg': 'rgb(104, 80, 90)', 'bg': 'rgb(165, 157, 175)'},
+        {'fg': 'rgb(2, 40, 64)', 'bg': 'rgb(102, 160, 165)'},
+        {'fg': 'rgb(237, 240, 245)', 'bg': 'rgb(170, 194, 222)'}
       ]);
       var animateClasses = ['to-top', 'to-right', 'to-bottom', 'to-left'];
 
       $(function () {
+        $("#help").on('click', function () {
+          $(this).toggleClass('show');
+        });
+
         $.queryYQL(statement, function (d) {
           var fonts = shuffle(d.query.results.json.items);
           var previews = [];
@@ -191,12 +203,6 @@
             var fontURL = 'http://fonts.googleapis.com/css?family=' + fontEncoded + ':' + fontVariants;
             var fontSpecURL = 'http://www.google.com/fonts/family?family=' + fontEncoded;
             var color = colors[i % colors.length];
-            $('head').append(
-              $('<link/>').attr({
-                rel: 'stylesheet',
-                href: fontURL
-              })
-            );
             var preview = $('<section/>', {
               'class': 'preview',
               'data-animate-class': animateClasses[i % animateClasses.length]
@@ -213,6 +219,12 @@
                 }).append(font.family)
               )
             );
+            $('head').append(
+              $('<link/>').attr({
+                rel: 'stylesheet',
+                href: fontURL
+              })
+            );
             previews.push(preview);
           }
 
@@ -224,7 +236,7 @@
             }
 
             if (!e.shiftKey) {
-              self.addClass(self.data('animateClass')).prev().prev().show();
+              self.addClass(self.attr('data-animate-class')).prev().prev().show();
             } else if (!self.is(':last-child')) {
               self.next().removeClass(animateClasses.join(' ')).next().show();
             }
@@ -237,10 +249,6 @@
               self.next().hide();
             }
           }).last().show().prev().show();
-        });
-
-        $("#help").on('click', function () {
-          $(this).toggleClass('show');
         });
       });
 
