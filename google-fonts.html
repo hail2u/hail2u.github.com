@@ -183,7 +183,7 @@
       var animateClasses = ['to-top', 'to-right', 'to-bottom', 'to-left'];
 
       $(function () {
-        $.getJSON('http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20json%20where%20url%3D%22https%3A%2F%2Fwww.googleapis.com%2Fwebfonts%2Fv1%2Fwebfonts%3Fkey%3DAIzaSyApMgI8vW2EfAFAeVa4hDvaLoaW9A3WY94%26subsets%3Dlatin%26sort%3Dalpha%22&format=json&diagnostics=true&callback=', function (d) {
+        $.queryYQL(statement, function (d) {
           var fonts = shuffle(d.query.results.json.items);
           var previews = [];
 
@@ -191,23 +191,31 @@
             var font = fonts[i];
             var fontEncoded = font.family.replace(/ /g, '+');
             var fontVariants = $.isArray(font.variants) ? font.variants.join(',') : font.variants;
-            var url = 'http://fonts.googleapis.com/css?family=' + fontEncoded + ':' + fontVariants;
-            $('head').append($('<link/>').attr({
-              rel:  'stylesheet',
-              href: url
-            }));
+            var fontURL = 'http://fonts.googleapis.com/css?family=' + fontEncoded + ':' + fontVariants;
+            var fontSpecURL = 'http://www.google.com/fonts/family?family=' + fontEncoded;
             var color = colors[i % colors.length];
-            var preview = $('<section/>').addClass('preview').css({
+            $('head').append(
+              $('<link/>').attr({
+                rel: 'stylesheet',
+                href: fontURL
+              })
+            );
+            var preview = $('<section/>', {
+              'class': 'preview',
+              'data-animate-class': animateClasses[i % animateClasses.length]
+            }).css({
               'font-family': '"' + font.family + '", sans-serif',
               'z-index': i,
               'color': color.fg,
               'background-color': color.bg,
               'display': 'none'
-            }).attr({
-              'data-animate-class': animateClasses[i % animateClasses.length]
-            }).append($('<p/>').append($('<a/>', {
-              href: 'http://www.google.com/fonts/family?family=' + fontEncoded
-            }).append(font.family)));
+            }).append(
+              $('<p/>').append(
+                $('<a/>', {
+                  href: fontSpecURL
+                }).append(font.family)
+              )
+            );
             previews.push(preview);
           }
 
