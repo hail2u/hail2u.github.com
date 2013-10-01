@@ -104,6 +104,13 @@
         display: none;
       }
 
+      #help input {
+        border: none;
+        color: inherit;
+        background-color: transparent;
+        font-family: "Menlo", "Consolas", monospace;
+      }
+
       #help.show p {
         display: none;
       }
@@ -192,7 +199,11 @@
       var animateClasses = ['to-top', 'to-right', 'to-bottom', 'to-left'];
 
       $(function () {
-        $("#help").on('click', function () {
+        $("#help").on('click', function (e) {
+          if (e.target.nodeName === 'INPUT') {
+            return;
+          }
+
           $(this).toggleClass('show');
         });
 
@@ -210,6 +221,7 @@
 
           var fonts = shuffle(d.query.results.json.items);
           var previews = [];
+          var result = $('#result');
 
           for (var i = 0, l = fonts.length; i < l; i++) {
             var font = fonts[i];
@@ -243,18 +255,24 @@
             previews.push(preview);
           }
 
-          $('#result').append(previews).find('.preview').on('click', function (e) {
+          result.append(previews).find('.preview').on('click', function (e) {
             var self = $(this);
 
             if (e.target.nodeName === 'A') {
               return;
             }
 
+            var fgColor = self.prev().css('color');
+            var bgColor = self.prev().css('background-color');
+
             if (!e.shiftKey) {
               self.addClass(self.attr('data-animate-class')).prev().prev().show();
             } else if (!self.is(':last-child')) {
               self.next().removeClass(animateClasses.join(' ')).next().show();
             }
+
+            $('#fg').val(fgColor);
+            $('#bg').val(bgColor);
           }).bind('webkitTransitionEnd MSTranstionEnd transitionend', function (e) {
             var self = $(this);
 
@@ -263,7 +281,11 @@
             } else {
               self.next().hide();
             }
-          }).last().show().prev().show();
+          });
+          var last = result.find('.preview:last-child');
+          last.show().prev().show();
+          $('#fg').val(last.css('color'));
+          $('#bg').val(last.css('background-color'));
         });
       });
 
@@ -293,9 +315,11 @@
       <p>?</p>
 
       <ul>
-        <li><strong>Click empty area</strong>: Display next font</li>
-        <li><strong>Shift+Click empty area</strong>: Display previous font</li>
-        <li><strong>Click font name</strong>: Go to Google Fonts specimen page</li>
+        <li><strong>Click Empty Area</strong>: Display next font</li>
+        <li><strong>Shift+Click Empty Area</strong>: Display previous font</li>
+        <li><strong>Click Font Name</strong>: Go to Google Fonts specimen page</li>
+        <li>Foreground Color: <input type="text" value="rgb(0, 0, 0)" id="fg"></li>
+        <li>Background Color: <input type="text" value="rgb(255, 255, 255)" id="bg"></li>
       </ul>
     </section>
 
