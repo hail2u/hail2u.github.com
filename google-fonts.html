@@ -183,7 +183,7 @@
         {'fg': 'rgb(176, 179, 170)', 'bg': 'rgb(226, 229, 220)'},
         {'fg': 'rgb(129, 127, 160)', 'bg': 'rgb(159, 157, 198)'},
         {'fg': 'rgb(169, 236, 242)', 'bg': 'rgb(104, 197, 204)'},
-        {'fg': 'rgb(251, 245, 227)', 'bg': 'rgb(214, 209, 190)'},
+        {'fg': 'rgb(214, 159, 90)', 'bg': 'rgb(214, 209, 190)'},
         {'fg': 'rgb(104, 209, 230)', 'bg': 'rgb(204, 214, 181)'},
         {'fg': 'rgb(230, 179, 154)', 'bg': 'rgb(139, 158, 155)'},
         {'fg': 'rgb(76, 73, 56)', 'bg': 'rgb(217, 208, 163)'},
@@ -230,6 +230,7 @@
             var fontURL = 'http://fonts.googleapis.com/css?family=' + fontEncoded + ':' + fontVariants;
             var fontSpecURL = 'http://www.google.com/fonts/family?family=' + fontEncoded;
             var color = colors[i % colors.length];
+            var previewText = font.family;
             var preview = $('<section/>', {
               'class': 'preview',
               'data-animate-class': animateClasses[i % animateClasses.length]
@@ -243,7 +244,7 @@
               $('<p/>').append(
                 $('<a/>', {
                   href: fontSpecURL
-                }).append(font.family)
+                }).text(previewText)
               )
             );
             $('head').append(
