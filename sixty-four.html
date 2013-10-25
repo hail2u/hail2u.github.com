@@ -7,14 +7,21 @@
     <title>Sixty-Four</title>
 
     <link rel="stylesheet" href="natural.css">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
     <style>
       body {
-        font-family: "Source Sans Pro", "Helvetica Neue", "Calibri", sans-serif;
+        font-family: "Source Sans Pro", "Helvetica Neue", "Calibri", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
         font-size: 150%;
+        font-weight: 200;
+        text-rendering: optimizeLegibility;
+      }
+
+      header p {
+        margin-top: 0;
       }
 
       ul {
+        margin-top: 48px;
         padding-left: 0;
         max-width: 52em;
       }
@@ -29,12 +36,24 @@
       }
 
       a {
-        padding-left: 24px;
         color: black;
+      }
+
+      li a {
+        padding-left: 24px;
         background-repeat: no-repeat;
         background-position: left center;
         background-size: 16px 16px;
         text-decoration: none;
+      }
+
+      address {
+        margin-top: 48px;
+        font-style: normal;
+      }
+
+      address a {
+        font-weight: normal;
       }
     </style>
 
@@ -51,12 +70,11 @@
       <li><a href="http://2xup.org/">2xup.org</a></li>
       <li><a href="http://www.456bereastreet.com/">456 Berea Street</a></li>
       <li><a href="http://adactio.com/">Adactio</a></li>
-      <li><a href="http://akz.hatenablog.com/">Aki's Diary</a></li>
       <li><a href="http://www.andybudd.com/">Andy Budd::Blogography</a></li>
       <li><a href="http://annevankesteren.nl/">Anne’s Blog</a></li>
       <li><a href="http://archiva.jp/">Archiva</a></li>
       <li><a href="http://www.aworkinglibrary.com/">A Working Library</a></li>
-      <li><a href="http://blog.sakurachiro.com/">乱雑モックアップ</a></li>
+      <li><a href="http://bradfrostweb.com/">Brad Frost Web</a></li>
       <li><a href="http://cameronmoll.tumblr.com/">Cameron Moll</a></li>
       <li><a href="http://constellation.hatenablog.com/">枕を欹てて聴く</a></li>
       <li><a href="http://css.studiomohawk.com/">CSS Radar</a></li>
@@ -91,6 +109,7 @@
       <li><a href="http://www.quirksmode.org/blog/">QuirksBlog</a></li>
       <li><a href="http://r7kamura.hatenablog.com/">&#x2718;&#x2579;&#x25e1;&#x2579;&#x2718;</a></li>
       <li><a href="http://responsivenews.co.uk/">Responsive News</a></li>
+      <li><a href="http://blog.ruedap.com/">アインシュタインの電話番号</a></li>
       <li><a href="http://www.shauninman.com/blog">ShaunInman.com</a></li>
       <li><a href="http://simplebits.com/">SimpleBits</a></li>
       <li><a href="http://simpleism.net/">SimpleIsm</a></li>
@@ -114,10 +133,14 @@
       <li><a href="http://www.zeldman.com/">Jeffrey Zeldman Presents The Daily Report</a></li>
     </ul>
 
+    <footer>
+      <address>Loved by <a href="http://hail2u.net/about/">Kyo Nagashima</a>.</address>
+    </footer>
+
     <script>
-      NodeList.prototype.forEach = Array.prototype.forEach; 
-      document.querySelectorAll("a").forEach(function (e) {
-        e.style.backgroundImage = 'url("http://g.etfv.co/' + encodeURIComponent(e.href) + '")';
+      NodeList.prototype.forEach = Array.prototype.forEach;
+      document.querySelectorAll("li a").forEach(function (anchor) {
+        anchor.style.backgroundImage = 'url("http://g.etfv.co/' + encodeURIComponent(anchor.href) + '")';
       });
     </script>
   </body>
