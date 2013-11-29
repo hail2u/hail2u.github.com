@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Vim Color Scheme Advent Calendar 2013</title>
+
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Libre+Baskerville">
+    <style>
+      body {
+        margin: 0 1em 2em;
+        color: #666;
+        background-color: #fcfcfc;
+        font-family: "Libre Baskerville", serif;
+        line-height: 1;
+      }
+
+      h1 {
+        font-weight: normal;
+      }
+
+      a {
+        color: #333;
+        text-decoration: none;
+      }
+
+      header,
+      main,
+      footer {
+        margin: 0 auto;
+        max-width: 800px;
+      }
+
+      header h1 {
+        margin: 0;
+        padding: 5em 1em 1em 1em;
+        display: inline-block;
+        line-height: 1.25;
+        font-size: 87.5%;
+        color: #fff;
+        background-color: #333;
+        white-space: pre-line;
+      }
+
+      header h1 strong {
+        color: #ddd;
+        font-weight: normal;
+      }
+
+      header h1 em {
+        color: #0c6;
+        font-style: normal;
+      }
+
+      section h1 {
+        margin: 2em 0 0 0;
+        font-size: 125%;
+      }
+
+      section figure {
+        margin: 1em 0 0 0;
+      }
+
+      section figure img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      section figure::after {
+        margin-top: 1em;
+        display: block;
+        height: 0.125em;
+        background-image: linear-gradient(#ddd 0, #ddd 100%);
+        background-repeat: no-repeat;
+        background-size: 9em 100%;
+        content: "";
+      }
+
+      footer address {
+        font-style: normal;
+      }
+
+      footer address p {
+        margin: 2em 0 0 0;
+        line-height: 1.4;
+      }
+
+      @media (min-width: 27em) {
+        footer address p br {
+          display: none;
+        }
+      }
+    </style>
+
+    <script>
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>Vim
+        Color Scheme
+        Advent
+        Calendar
+        <em>2013</em></h1>
+    </header>
+
+    <main id="main"></main>
+
+    <footer>
+      <address>
+        <p>Made by <a href="http://hail2u.net/about/">Kyo Nagashima</a><br>
+          with <a href="http://www.vim.org/">Vim</a>, of course.</p>
+      </address>
+    </footer>
+
+    <script>
+      var colors = [
+        {
+          "title": "soon",
+          "url": "http://hail2u.github.io/vim-color-scheme-advent-calendar-2013.html"
+        },
+        {
+          "title": "mayansmoke",
+          "url": "https://github.com/vim-scripts/mayansmoke" 
+        },
+        {
+          "title": "mustang",
+          "url": "https://github.com/croaker/mustang-vim" 
+        },
+        {
+          "title": "vylight",
+          "url": "https://github.com/vim-scripts/vylight" 
+        },
+        {
+          "title": "ir_black",
+          "url": "https://github.com/twerth/ir_black" 
+        },
+        {
+          "title": "tango",
+          "url": "https://github.com/vim-scripts/tango.vim"
+        },
+        {
+          "title": "vitamins",
+          "url": "https://github.com/fmoralesc/vim-vitamins"
+        },
+        {
+          "title": "louver",
+          "url": "https://github.com/vim-scripts/louver.vim"
+        },
+        {
+          "title": "moria",
+          "url": "https://github.com/vim-scripts/moria"
+        },
+        {
+          "title": "ir_dark",
+          "url": "https://github.com/twerth/ir_black"
+        },
+        {
+          "title": "github",
+          "url": "https://github.com/vim-scripts/github-theme"
+        },
+        {
+          "title": "lucius",
+          "url": "https://github.com/jonathanfilip/vim-lucius"
+        },
+        {
+          "title": "solarized_l",
+          "url": "https://github.com/altercation/vim-colors-solarized"
+        },
+        {
+          "title": "tomorrow_ne",
+          "url": "https://github.com/chriskempson/tomorrow-theme" 
+        },
+        {
+          "title": "molokai",
+          "url": "https://github.com/tomasr/molokai"
+        },
+        {
+          "title": "ir_orange",
+          "url": "https://github.com/twerth/dotfiles"
+        },
+        {
+          "title": "vydark",
+          "url": "https://github.com/vyshane/vydark-vim-color"
+        },
+        {
+          "title": "mac_classic",
+          "url": "https://github.com/nelstrom/vim-mac-classic-theme"
+        },
+        {
+          "title": "guardian",
+          "url": "https://github.com/vim-scripts/guardian"
+        },
+        {
+          "title": "tomorrow",
+          "url": "https://github.com/chriskempson/tomorrow-theme"
+        },
+        {
+          "title": "solarized_d",
+          "url": "https://github.com/vim-scripts/Wombat"
+        },
+        {
+          "title": "wombat",
+          "url": "https://github.com/altercation/vim-colors-solarized"
+        },
+        {
+          "title": "twilight",
+          "url": "https://github.com/vim-scripts/twilight"
+        },
+        {
+          "title": "sonofobsidian",
+          "url": "https://github.com/hamxiaoz/sonofobsidian_hamxiaoz"
+        },
+        {
+          "title": "rdark",
+          "url": "https://github.com/vim-scripts/rdark"
+        },
+        {
+          "title": "codeschool",
+          "url": "https://github.com/29decibel/codeschool-vim-theme"
+        }
+      ],
+        main = document.getElementById('main'),
+        d = new Date(),
+        YYYY = d.getFullYear(),
+        MM = d.getMonth() + 1,
+        dd = d.getDate(),
+        i;
+
+      if (YYYY === 2013 && MM === 12 && dd < 26) {
+        main.appendChild(createPreview(colors[dd]));
+      } else if (YYYY !== 2013 || (MM === 12 && dd > 25)) {
+        for (i = 1; i < 26; i++) {
+          main.appendChild(createPreview(colors[i]));
+        }
+      } else {
+        main.appendChild(createPreview(colors[0]));
+      }
+
+      function createPreview(color) {
+        var title = color.title,
+          url = color.url,
+          img,
+          figure,
+          h1,
+          a,
+          section;
+
+        img = document.createElement('img');
+        img.src = './vcsac2013-' + title + '.png';
+
+        figure = document.createElement('figure');
+        figure.appendChild(img);
+
+        h1 = document.createElement('h1');
+        h1.appendChild(document.createTextNode(title));
+
+        a = document.createElement('a');
+        a.href = url;
+        a.appendChild(h1);
+        a.appendChild(figure);
+
+        section = document.createElement('section');
+        section.appendChild(a);
+
+        return section;
+      }
+    </script>
+  </body>
+</html>
