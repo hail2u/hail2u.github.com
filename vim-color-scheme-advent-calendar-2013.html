@@ -101,7 +101,16 @@
         <em>2013</em></h1>
     </header>
 
-    <main id="main"></main>
+    <main id="main">
+      <section>
+        <a href="http://hail2u.github.io/vim-color-scheme-advent-calendar-2013.html">
+          <h1>soon</h1>
+          <figure>
+            <img src="./vcsac2013-soon.png">
+          </figure>
+        </a>
+      </section>
+    </main>
 
     <footer>
       <address>
@@ -112,10 +121,6 @@
 
     <script>
       var colors = [
-        {
-          "title": "soon",
-          "url": "http://hail2u.github.io/vim-color-scheme-advent-calendar-2013.html"
-        },
         {
           "title": "mayansmoke",
           "url": "https://github.com/vim-scripts/mayansmoke" 
@@ -218,20 +223,21 @@
         }
       ],
         main = document.getElementById('main'),
-        d = new Date(),
+        d = new Date("2013/11/29"),
         YYYY = d.getFullYear(),
         MM = d.getMonth() + 1,
         dd = d.getDate(),
         i;
 
       if (YYYY === 2013 && MM === 12 && dd < 26) {
-        main.appendChild(createPreview(colors[dd]));
+        main.innerHTML = '';
+        main.appendChild(createPreview(colors[dd - 1]));
       } else if (YYYY !== 2013 || (MM === 12 && dd > 25)) {
-        for (i = 1; i < 26; i++) {
+        main.innerHTML = '';
+
+        for (i = 0; i < 25; i++) {
           main.appendChild(createPreview(colors[i]));
         }
-      } else {
-        main.appendChild(createPreview(colors[0]));
       }
 
       function createPreview(color) {
