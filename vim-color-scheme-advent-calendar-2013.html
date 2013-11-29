@@ -26,6 +26,7 @@
 
       header,
       main,
+      aside,
       footer {
         margin: 0 auto;
         max-width: 800px;
@@ -80,16 +81,29 @@
         content: "";
       }
 
+      aside > div {
+        margin-top: 0.5em;
+      }
+
+      .tw-share {
+        margin-top: 2em;
+      }
+
       footer address {
         font-style: normal;
       }
 
       footer address p {
-        margin: 2em 0 0 0;
+        margin: 1em 0 0 0;
         line-height: 1.4;
       }
 
       @media (min-width: 27em) {
+        aside > div {
+          margin-top: 1em;
+          display: inline-block;
+        }
+
         footer address p br {
           display: none;
         }
@@ -115,6 +129,13 @@
         </a>
       </section>
     </main>
+
+    <aside>
+      <div class="tw-share"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://hail2u.github.io/vim-color-scheme-advent-calendar-2013.html" data-text="Vim Color Scheme Advent Calendar 2013" data-via="hail2u_" data-related="hail2u_" data-dnt="true">Tweet</a></div>
+      <div class="fb-like" data-href="http://hail2u.github.io/vim-color-scheme-advent-calendar-2013.html" data-width="110" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+      <div class="g-plusone" data-size="medium" data-href="http://hail2u.github.io/vim-color-scheme-advent-calendar-2013.html"></div>
+      <div class="h-bookmark"><a href="http://b.hatena.ne.jp/entry/http://hail2u.github.io/vim-color-scheme-advent-calendar-2013.html" class="hatena-bookmark-button" data-hatena-bookmark-title="Vim Color Scheme Advent Calendar 2013" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="en" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></div>
+    </aside>
 
     <footer>
       <address>
@@ -273,5 +294,22 @@
         return section;
       }
     </script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/platform.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+<script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
   </body>
 </html>
