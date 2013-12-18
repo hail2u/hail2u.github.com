@@ -21,7 +21,7 @@ google.load("jquery", "1.3.2");
 <script type="text/javascript">
 $(function () {
   $("#pokedex").empty().append("データをロードしています･･･");
-  $.getScript("http://hail2u.github.io/pokedex.json");
+  $.getScript("./js/pokedex.json");
 });
 
 function cbPokedex (d) {
@@ -48,7 +48,7 @@ function cbPokedex (d) {
 </head>
 <body>
 <h1>pokedex.json の利用サンプル</h1>
-<p>ポケモンの基本的な能力を<a href="./pokedex.json">JSON化したデータ</a>を利用したサンプル。</p>
+<p>ポケモンの基本的な能力を<a href="./js/pokedex.json">JSON化したデータ</a>を利用したサンプル。</p>
 <hr>
 <div id="pokedex"></div>
 <hr>
