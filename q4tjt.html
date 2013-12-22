@@ -6,12 +6,12 @@
 
     <title>Quote for the Japanese Typography</title>
 
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton:400,400italic|Open+Sans:400|Vollkorn:400|Quattrocento+Sans:400|Merriweather:400|Alegreya:400|Source+Sans+Pro:400|Crimson+Text:400">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton:400,400italic|Lato:400,700,400italic,700italic">
     <style>
-      html,
       body {
         margin: 0;
         padding: 0;
+        font-family: "Open Sans", sans-serif;
       }
 
       p {
@@ -19,15 +19,10 @@
         line-height: 1.8;
       }
 
-      a {
-        text-decoration: none;
-      }
-
       header,
       .quote,
       footer {
         width: 100%;
-        height: 100%;
         position: relative;
       }
 
@@ -38,16 +33,16 @@
 
       header h1 {
         margin: 0 auto;
+        padding: 1.6em 0 2.4em 0;
+        max-width: 7.2em;
         font-family: "Neuton", sans-serif;
         font-weight: normal;
         font-size: 500%;
-        padding: 1.6em 0 2.4em 0;
-        max-width: 7.2em;
       }
 
       header h1 em {
         color: #e37;
-        font-style: normal;
+        font-size: 125%;
       }
 
       .quote:before,
@@ -58,7 +53,6 @@
         width: 100%;
         line-height: 1;
         content: "\25cf";
-        font-family: sans-serif;
         font-size: 400%;
         text-align: center;
       }
@@ -81,10 +75,13 @@
         font-style: normal;
       }
 
+      .quote a {
+        color: inherit;
+      }
+
       footer {
         color: #001;
         background-color: #ddc;
-        font-family: "Alegreya", serif;
       }
 
       footer:before {
@@ -93,98 +90,67 @@
 
       footer address {
         margin: 0 auto;
-        padding: 3.5em;
-        max-width: 41.143em;
-        font-style: normal;
-        font-size: 87.5%;
+        padding: 3em;
+        max-width: 36em;
+        font-family: "Neuton", sans-serif;
       }
 
       footer address a {
-        color: #b11;
+        color: #e37;
       }
 
-      .crimson-text {
+      .q1 {
         color: #eee;
         background-color: #f72;
-        font-family: "Crimson Text", serif;
       }
 
-      .crimson-text:before {
+      .q1:before {
         color: #f72;
       }
 
-      .crimson-text a {
-        color: #079;
-      }
-
-      .source-sans-pro {
+      .q2 {
         color: #333;
         background-color: #bc5;
-        font-family: "Source Sans Pro", sans-serif;
       }
 
-      .source-sans-pro:before {
+      .q2:before {
         color: #bc5;
       }
 
-      .source-sans-pro a {
-        color: #ffc;
+      .q3 {
+        color: #442;
+        background-color: #9cc;
       }
 
-      .open-sans {
-        color: #ddd;
-        background-color: #0ae;
-        font-family: "Open Sans", sans-serif;
+      .q3:before {
+        color: #9cc;
       }
 
-      .open-sans:before {
-        color: #0ae;
-      }
-
-      .open-sans a {
-        color: #238;
-      }
-
-      .vollkorn {
-        color: #001;
+      .q4 {
+        color: #111;
         background-color: #897;
-        font-family: "Vollkorn", serif;
       }
 
-      .vollkorn:before {
+      .q4:before {
         color: #897;
       }
 
-      .vollkorn a {
-        color: #ddd;
-      }
-
-      .quattrocento-sans {
+      .q5 {
         color: #ddc;
         background-color: #233;
-        font-family: "Quattrocento Sans", sans-serif;
       }
 
-      .quattrocento-sans:before {
+      .q5:before {
         color: #233;
       }
 
-      .quattrocento-sans a {
-        color: #e22;
-      }
-
-      .merriweather {
+      .q6 {
         color: #aab;
         background-color: #728;
-        font-family: "Merriweather", serif;
       }
 
-      .merriweather:before {
+      .q6:before {
         color: #728;
-      }
-
-      .merriweather a {
-        color: #6bd;
       }
     </style>
 
@@ -195,7 +161,7 @@
       <h1>Quote for the <em>Japanese</em> Typography</h1>
     </header>
 
-    <section class="quote crimson-text">
+    <section class="quote q6">
       <figure>
         <blockquote>
           <p>たとえば、本文処理などでもドロップキャップ処理を設定する場合、通常の組版であれば同一書体でそのまま拡大してしまいますが、ドロップキャップ文字のウエイトを調整することで、全体に落ち着きをもたらすことができます。欧文では、ドロップキャップ指定の文字だけを太らせたり括り文字にするといった処理が一般的ですが、ここではそれの逆の設定ということになります。</p>
@@ -205,7 +171,7 @@
       </figure>
     </section>
 
-    <section class="quote source-sans-pro">
+    <section class="quote q5">
       <figure>
         <blockquote>
           <p>タイポグラフィの根底にあるものは、原稿の書き手のイデアを読者に伝えることだと思います。特に本文用の書体はそのための媒体に徹するべきで、書体そのものが物を言う必要はありません。明朝でも、ゴシックでも、あまり個性を伝えるべきではないんですね。</p>
@@ -215,7 +181,7 @@
       </figure>
     </section>
 
-    <section class="quote open-sans">
+    <section class="quote q4">
       <figure>
         <blockquote>
           <p>「サンセリフ体を使おう」というガイドラインに付け足して、デザイナーにはVerdanaを使うようにこれまではアドバイスしていた。というのも、従来型のコンピュータにそれはよく合っていたからである。しかしながら、もう、Verdanaを推薦することはないだろう。とはいえ、それを使ったからといって、決して害があるわけではない。Verdanaは今の画面でも非常に読みやすい。ただ、もっといいやり方があるというだけである。</p>
@@ -225,7 +191,7 @@
       </figure>
     </section>
 
-    <section class="quote vollkorn">
+    <section class="quote q3">
       <figure>
         <p>まとめると、文字を組むときに決めなければならないことは、組み方向、並びモード、字間（字送り）、行長、行揃え、行間（行送り）、行数、です。中でも重要なのが、字間、行間、段間、版面のアキなどのスペースを決める作業でしょう。組版とは間をつくることである、と言ってもいいすぎではないぐらいです。</p>
         <p>段間や版面のアキを決める作業はレイアウトとの端境にあるもので、複雑な組版と割り付け作業はシームレスにつながっています。</p>
@@ -237,7 +203,7 @@
       </figure>
     </section>
 
-    <section class="quote quattrocento-sans">
+    <section class="quote q2">
       <figure>
         <blockquote>
           <p>これらの作品からは、日本語Webフォントによって、［HTML文書でも印刷物のような表現できる］だけでなく、［Webならではの表現が深化する］可能性も感じることができます。</p>
@@ -249,7 +215,7 @@
       </figure>
     </section>
 
-    <section class="quote merriweather">
+    <section class="quote q1">
       <figure>
         <blockquote>
           <p>そもそもWebフォントは一度システムフォントで表示した上に指定したフォントをレイヤーのように重ねて表示する仕組みが採られています。日本語フォントはそれだけで1書体あたり3MB〜15MBもあり、フォントデータを丸ごとダウンロードすると閲覧側のPCやブラウザ環境によって表示時間が掛かりすぎてしまうため、そのままではWeb向きではありません。そこでFONT+では使用文字だけをサブセット化することで容量を軽量化し、Webの世界でストレスなく使える仕組みを構築しました。</p>
