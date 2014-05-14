@@ -13,8 +13,9 @@
       }
 
       body {
+        margin: 0;
         line-height: 1;
-        font-family: "Palatino", "Palatino Linotype", serif;
+        font-family: "Hoefler Text", "Constantia", serif;
         text-align: center;
       }
 
@@ -23,7 +24,7 @@
       }
 
       header h1 {
-        margin-bottom: 64px;
+        margin: 64px auto;
         font-size: 96px;
       }
 
@@ -34,73 +35,73 @@
         zoom: 1;
       }
 
-      @media (min-width: 320px) {
+      @media (min-width: 340px) {
         #result {
           min-width: 320px;
         }
       }
 
-      @media (min-width: 640px) {
+      @media (min-width: 660px) {
         #result {
           min-width: 640px;
         }
       }
 
-      @media (min-width: 960px) {
+      @media (min-width: 980px) {
         #result {
           min-width: 960px;
         }
       }
 
-      @media (min-width: 1280px) {
+      @media (min-width: 1300px) {
         #result {
           min-width: 1280px;
         }
       }
 
-      @media (min-width: 1600px) {
+      @media (min-width: 1620px) {
         #result {
           min-width: 1600px;
         }
       }
 
-      @media (min-width: 1920px) {
+      @media (min-width: 1940px) {
         #result {
           min-width: 1920px;
         }
       }
 
-      @media (min-width: 2240px) {
+      @media (min-width: 2260px) {
         #result {
           min-width: 2240px;
         }
       }
 
-      @media (min-width: 2560px) {
+      @media (min-width: 2580px) {
         #result {
           min-width: 2560px;
         }
       }
 
-      @media (min-width: 2880px) {
+      @media (min-width: 2900px) {
         #result {
           min-width: 2880px;
         }
       }
 
-      @media (min-width: 3200px) {
+      @media (min-width: 3220px) {
         #result {
           min-width: 3200px;
         }
       }
 
-      @media (min-width: 3520px) {
+      @media (min-width: 3540px) {
         #result {
           min-width: 3520px;
         }
       }
 
-      @media (min-width: 3840px) {
+      @media (min-width: 3860px) {
         #result {
           min-width: 3840px;
         }
@@ -146,11 +147,15 @@
       }
 
       footer p {
-        margin-top: 24px;
+        margin-top: 16px;
       }
 
       footer p:first-child {
         margin-top: 64px;
+      }
+
+      footer p:last-child {
+        margin-bottom: 64px;
       }
     </style>
 
@@ -200,7 +205,7 @@
             preview.append(anchor).appendTo(previews);
           }
 
-          $('header h1').attr('style', fr);
+          $('body').attr('style', fr);
           t.empty().append(previews.children());
         });
       });
