@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
 
     <title>&amp;</title>
 
@@ -22,22 +23,93 @@
       }
 
       header h1 {
+        margin-bottom: 64px;
         font-size: 96px;
       }
 
       #result {
-        margin: auto;
-        width: 960px;
+        margin: 0 auto;
+        width: 160px;
         text-align: center;
         zoom: 1;
       }
 
+      @media (min-width: 320px) {
+        #result {
+          min-width: 320px;
+        }
+      }
+
+      @media (min-width: 640px) {
+        #result {
+          min-width: 640px;
+        }
+      }
+
+      @media (min-width: 960px) {
+        #result {
+          min-width: 960px;
+        }
+      }
+
+      @media (min-width: 1280px) {
+        #result {
+          min-width: 1280px;
+        }
+      }
+
+      @media (min-width: 1600px) {
+        #result {
+          min-width: 1600px;
+        }
+      }
+
+      @media (min-width: 1920px) {
+        #result {
+          min-width: 1920px;
+        }
+      }
+
+      @media (min-width: 2240px) {
+        #result {
+          min-width: 2240px;
+        }
+      }
+
+      @media (min-width: 2560px) {
+        #result {
+          min-width: 2560px;
+        }
+      }
+
+      @media (min-width: 2880px) {
+        #result {
+          min-width: 2880px;
+        }
+      }
+
+      @media (min-width: 3200px) {
+        #result {
+          min-width: 3200px;
+        }
+      }
+
+      @media (min-width: 3520px) {
+        #result {
+          min-width: 3520px;
+        }
+      }
+
+      @media (min-width: 3840px) {
+        #result {
+          min-width: 3840px;
+        }
+      }
+
       #result:before,
       #result:after {
-        display: block;
-        height: 0;
-        visibility: hidden;
-        content: "\0020";
+        display: table;
+        content: "";
       }
 
       #result:after {
@@ -45,9 +117,11 @@
       }
 
       .preview {
-        margin: 32px 10px 20px 10px;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 32px 8px 16px 8px;
         float: left;
-        width: 140px;
+        width: 160px;
       }
 
       .preview:hover {
@@ -64,11 +138,19 @@
       }
 
       .fontFamily {
-        margin: 0 10px 10px 10px;
+        margin: 0 8px 8px 8px;
         overflow: hidden;
         font-weight: normal;
         font-size: 16px;
         white-space: nowrap;
+      }
+
+      footer p {
+        margin-top: 24px;
+      }
+
+      footer p:first-child {
+        margin-top: 64px;
       }
     </style>
 
@@ -76,33 +158,6 @@
     <script src="./js/jquery.query-yql.min.js"></script>
     <script>
       var statement = "select * from json where url='https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyApMgI8vW2EfAFAeVa4hDvaLoaW9A3WY94&subsets=latin&sort=alpha'";
-
-      $(function () {
-        $.queryYQL(statement, function (d) {
-          var fonts = shuffle(d.query.results.json.items);
-          var t = $("#result").empty();
-
-          for (var i = 0, l = fonts.length; i < l; i++) {
-            var f = fonts[i];
-            var fe = f.family.replace(/ /g, "+");
-            var v = $.isArray(f.variants) ? f.variants.join(",") : f.variants;
-            var url = "http://fonts.googleapis.com/css?family=" + fe + ":" + v;
-            $("head").append($("<link/>").attr({
-              rel:  "stylesheet",
-              href: url
-            }));
-            var preview = $("<section/>", {
-              style: "font-family:'" + f.family + "',sans-serif"
-            }).addClass("preview");
-            var anchor = $("<a/>", {
-              href: "http://www.google.com/fonts/family?family=" + fe
-            });
-            anchor.append($("<p/>").addClass("ampersand").append("&"));
-            anchor.append($("<h1/>").addClass("fontFamily").append(f.family));
-            preview.append(anchor).appendTo(t);
-          }
-        });
-      });
 
       function shuffle (list) {
         var i = list.length;
@@ -117,6 +172,38 @@
 
         return list;
       }
+
+      $(function () {
+        $.queryYQL(statement, function (d) {
+          var fonts = shuffle(d.query.results.json.items);
+          var t = $('#result').html('<p>Loading' + fonts.length +  ' Fonts…</p>');
+          var previews = $('<div/>');
+
+          for (var i = 0, l = fonts.length; i < l; i++) {
+            var f = fonts[i];
+            var fe = f.family.replace(/ /g, '+');
+            var v = $.isArray(f.variants) ? f.variants.join(',') : f.variants;
+            var url = 'http://fonts.googleapis.com/css?family=' + fe + ':' + v;
+            $('head').append($('<link/>').attr({
+              rel:  'stylesheet',
+              href: url
+            }));
+            var fr = 'font-family:"' + f.family + '",sans-serif';
+            var preview = $('<section/>', {
+              style: fr
+            }).addClass('preview');
+            var anchor = $('<a/>', {
+              href: 'http://www.google.com/fonts/family?family=' + fe
+            });
+            anchor.append($('<p/>').addClass('ampersand').append('&'));
+            anchor.append($('<h1/>').addClass('fontFamily').append(f.family));
+            preview.append(anchor).appendTo(previews);
+          }
+
+          $('header h1').attr('style', fr);
+          t.empty().append(previews.children());
+        });
+      });
     </script>
   </head>
   <body>
@@ -125,15 +212,15 @@
     </header>
 
     <div id="result">
-      <p>Preview Google Web Fonts by &quot;&amp;&quot;</p>
+      <p>To view this webpage, you must enable JavaScript in your browser.</p>
     </div>
 
     <footer>
-      <p>This is a pure JavaScript alternative for <a href="http://opensourceampersands.com/">Open Source Ampersands</a>.</p>
+      <p>This is a pure JavaScript alternative for <a href="http://opensourceampersands.com/">Open Source Ampersands</a>. Please wait patiently until all fonts are loaded.</p>
+
       <p>All Fonts are provided by <a href="http://www.google.com/fonts">Google Fonts</a>.</p>
-      <address>
-        <p>&copy; 2011 Kyo Nagashima</p>
-      </address>
+
+      <p>&copy; 2011-2014 Kyo Nagashima</p>
     </footer>
   </body>
 </html>
