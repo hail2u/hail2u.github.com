@@ -33,11 +33,20 @@
 
       header h1 {
         margin: 0 auto;
-        padding: 1.6em 0 2.4em 0;
-        max-width: 7.2em;
+        padding: 1.333em 0.667em 2.667em;
+        max-width: 12em;
         font-family: "Neuton", sans-serif;
         font-weight: normal;
-        font-size: 500%;
+        font-size: 300%;
+        white-space: pre-line;
+      }
+
+      @media (min-width: 600px) {
+        header h1 {
+          padding: 0.8em 0.4em 1.6em;
+          max-width: 7.2em;
+          font-size: 500%;
+        }
       }
 
       header h1 em {
@@ -59,7 +68,7 @@
 
       .quote figure {
         margin: 0 auto;
-        padding: 8em;
+        padding: 4em 2em;
         max-width: 36em;
       }
 
@@ -90,7 +99,7 @@
 
       footer address {
         margin: 0 auto;
-        padding: 3em 3em 9em;
+        padding: 2em 2em 4em;
         max-width: 36em;
         font-family: "Neuton", sans-serif;
       }
@@ -167,7 +176,9 @@
   </head>
   <body>
     <header>
-      <h1>Quote for the <em>Japanese</em> Typography</h1>
+      <h1>Quote for the
+        <em>Japanese</em>
+        Typography</h1>
     </header>
 
     <section class="quote q7">
