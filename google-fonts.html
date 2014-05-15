@@ -59,41 +59,64 @@
         text-decoration: none;
       }
 
+      .preview {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        color: #000;
+        background-color: #fff;
+      }
+
       .preview,
       .to-top,
       .to-right,
       .to-bottom,
       .to-left {
-        -moz-transition: all 0.6s ease-in-out;
         -webkit-transition: all 0.6s ease-in-out;
-        -ms-transition: all 0.6s ease-in-out;
         transition: all 0.6s ease-in-out;
       }
 
-      .preview {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        color: #000;
-        background-color: #fff;
+      .to-top {
+        top: -100%;
+      }
+
+      .to-right {
+        left: 100%;
+      }
+
+      .to-bottom {
+        top: 100%;
+      }
+
+      .to-left {
+        left: -100%;
       }
 
       .preview p {
         margin: auto;
         position: absolute;
         top: 0;
-        right: 0;
         bottom: 0;
-        left: 0;
+        left: 50%;
         height: 1em;
         line-height: 1;
-        font-size: 600%;
+        font-size: 300%;
         white-space: nowrap;
       }
 
+      @media (min-width: 40em) {
+        font-size: 600%;
+      }
+
       .preview a {
+        display: block;
+        position: relative;
+        left: -50%;
         text-decoration: none;
       }
 
@@ -113,7 +136,7 @@
         display: block;
         width: 1em;
         height: 1em;
-        font-size: 300%;
+        font-size: 150%;
         opacity: 0.2;
       }
 
@@ -123,9 +146,16 @@
 
       #help ul {
         margin: 0;
-        line-height: 1.4;
-        text-align: left;
         display: none;
+        line-height: 1.4;
+        font-size: 75%;
+        text-align: left;
+      }
+
+      @media (min-width: 40em) {
+        #help {
+          font-size: 100%;
+        }
       }
 
       #help input {
@@ -152,6 +182,13 @@
         z-index: 10000;
       }
 
+      @media (min-width: 40em) {
+        footer {
+          bottom: 2em;
+          line-height: 1;
+        }
+      }
+
       footer address {
         display: inline-block;
         font-style: normal;
@@ -162,28 +199,7 @@
         font-style: normal;
       }
 
-      .to-top {
-        top: -100%;
-      }
-
-      .to-right {
-        left: 100%;
-      }
-
-      .to-bottom {
-        top: 100%;
-      }
-
-      .to-left {
-        left: -100%;
-      }
-
       @media (min-width: 30em) {
-        footer {
-          bottom: 2em;
-          line-height: 1;
-        }
-
         footer br {
           display: none;
         }
@@ -231,7 +247,7 @@
           $(this).toggleClass('show');
         });
 
-        $('.preview p').text('Loading...')
+        $('.preview p').html('<a>Loading...</a>')
 
         $.queryYQL(statement, function (d) {
           if (!d.query.results) {
@@ -337,7 +353,7 @@
 
     <main id="result">
       <section class="preview">
-        <p>Hoefler Text/Constantia</p>
+        <p><a>Hoefler Text/Constantia</a></p>
       </section>
     </main>
 
