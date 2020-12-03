@@ -1,0 +1,3 @@
+# robots.txt
+
+Sitemap: https://kyonagashima.com/sitemap.xml

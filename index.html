@@ -1,12 +1,176 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta content="0;URL='https://github.com/hail2u/hail2u.github.com'" http-equiv="refresh">
-    <meta content="width=device-width" name="viewport">
-    <title>See https://github.com/hail2u/hail2u.github.com</title>
-  </head>
-  <body>
-    <p>See <a href="https://github.com/hail2u/hail2u.github.com">https://github.com/hail2u/hail2u.github.com</a>.</p>
-  </body>
+<html lang="en-US" itemscope itemtype="http://schema.org/Person">
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width" name="viewport">
+
+		<title itemprop="name">Kyo Nagashima (hail2u)</title>
+
+		<meta content="Hello, I think I am a web designer" name="description">
+
+		<link href="/apple-touch-icon.png" rel="apple-touch-icon">
+		<link href="/" rel="author canonical">
+		<link href="/favicon.svg" rel="icon" type="image/svg+xml">
+		<link href="/" itemprop="url">
+
+		<meta content="Hello, I think I am a web designer" property="og:description">
+		<meta content="https://kyonagashima.com/apple-touch-icon.png" property="og:image">
+		<meta content="Kyo Nagashima" property="og:title">
+		<meta content="website" property="og:type">
+		<meta content="https://kyonagashima.com/" property="og:url">
+
+		<meta content="summary" name="twitter:card">
+		<meta content="@hail2u_" name="twitter:site">
+
+		<style>
+			html {
+				background-color: hsl(0, 0%, 99%);
+				color: hsl(0, 0%, 11%);
+				font-family: serif;
+				font-size: 112.5%;
+				font-size: clamp(
+					100%,
+					(100vw - 640px) * 0.004 + 100%,
+					125%
+				);
+				line-height: 1.5;
+			}
+
+			body {
+				margin: 0;
+				position: relative;
+			}
+
+			h1 {
+				font-family: sans-serif;
+			}
+
+			h2 {
+				font-family: sans-serif;
+			}
+
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+
+			.page {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				min-height: 100vh;
+				width: 100%;
+			}
+
+			.page:nth-child(2n + 1) {
+				background-color: hsl(0, 0%, 11%);
+				color: hsl(0, 0%, 99%);
+			}
+
+			.page::after {
+				background-image: linear-gradient(
+					to right bottom,
+					hsl(0, 0%, 99%),
+					hsl(0, 0%, 99%) 50%,
+					hsl(0, 0%, 11%) calc(50% + 1px),
+					hsl(0, 0%, 11%) 100%
+				);
+				content: "";
+				display: block;
+				height: 15vh;
+				width: 100%;
+			}
+
+			.page:nth-child(2n + 1)::after {
+				background-image: linear-gradient(
+					to right bottom,
+					hsl(0, 0%, 11%),
+					hsl(0, 0%, 11%) 50%,
+					hsl(0, 0%, 99%) calc(50% + 1px),
+					hsl(0, 0%, 99%) 100%
+				);
+			}
+
+			.title {
+				align-items: flex-end;
+				box-sizing: border-box;
+				display: flex;
+				font-size: 2.5rem;
+				line-height: 1.25;
+				margin: 0 auto;
+				max-width: 45rem;
+				min-height: 49vh;
+				padding: 0 1.5rem 0.5rem;
+				width: 100%;
+			}
+
+			.title:only-child {
+				align-items: center;
+				margin-top: 15vh;
+				min-height: 70vh;
+			}
+
+			.description {
+				box-sizing: border-box;
+				color: hsl(0, 0%, 33%);
+				margin: 0 auto;
+				max-width: 45rem;
+				min-height: 35vh;
+				padding: 0.5rem 1.5rem 0;
+				width: 100%;
+			}
+
+			.description:only-child {
+				align-items: center;
+				margin-top: 15vh;
+				min-height: 70vh;
+			}
+
+			.page:nth-child(2n + 1) > .description {
+				color: hsl(0, 0%, 77%);
+			}
+
+			.description a {
+				text-decoration: underline;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="page">
+			<h1 class="title">Kyo Nagashima (hail2u)</h1>
+
+			<p class="description" itemprop="description">Hello, I think I am a web designer</p>
+		</header>
+
+		<section class="page">
+			<h2 class="title">Interests</h2>
+
+			<p class="description">Accessibility, Beautiful Products, Cooking, CSS, HTML, Iteration, JavaScript, Making Things Simpler, Reading, Structure, Walking, Wasting Less, and Web Standards</p>
+		</section>
+
+		<section class="page">
+			<h2 class="title"><a href="https://hail2u.net/">Hail2u</a></h2>
+
+			<p class="description">Personal website</p>
+		</section>
+
+		<section class="page">
+			<h2 class="title"><a href="https://github.com/hail2u">GitHub</a></h2>
+
+			<p class="description">Open source projects</p>
+		</section>
+
+		<section class="page">
+			<h2 class="title"><a href="https://twitter.com/hail2u_">Twitter</a></h2>
+
+			<p class="description">Shared activities</p>
+		</section>
+
+		<footer class="page">
+			<h2 class="title">Contact</h2>
+
+			<p class="description"><a href="mailto:hail2u@gmail.com"><span itemprop="email">hail2u@gmail.com</span></a></p>
+		</footer>
+	</body>
 </html>
